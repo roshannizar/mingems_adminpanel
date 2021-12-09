@@ -11,12 +11,18 @@ import { AppComponent } from './app.component';
 import { AppRoutes } from './app.routing';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { InventoryViewComponent } from './modules/inventory-management/components/inventory-view/inventory-view.component';
+import { InventoryCreateComponent } from './modules/inventory-management/components/inventory-create/inventory-create.component';
+import { SupplierCreateComponent } from './modules/supplier-management/components/supplier-create/supplier-create.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AdminLayoutComponent
+    AdminLayoutComponent,
+    InventoryViewComponent,
+    InventoryCreateComponent,
+    SupplierCreateComponent
   ],
   imports: [
     BrowserAnimationsModule,
