@@ -34,6 +34,7 @@
     "express": "4.17.1",
     "jquery": "3.5.1",
     "moment": "2.29.1",
+    "ngx-bootstrap-icons": "^1.7.2",
     "ngx-toastr": "13.1.0",
     "rxjs": "6.6.3",
     "tslib": "2.0.2",
