@@ -1,0 +1,64 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Last Logged Users</h4>
+                                <p class="card-subtitle">Now you can last logged user details</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Search" type="text" 
+                                        class="mat-input" >
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Last Logged
+                                    </th>
+                                    <th>IP Address</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="block">
+                                        <td colspan="5">
+                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="users?.length == 0 && block == false" class="text-center">
+                                        <td colspan="5">
+                                            <span class="font-italic">No record found!</span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let user of users; let i = index">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{user.firstName}}</td>
+                                        <td>{{user.lastName}}</td>
+                                        <td>{{user.lastLogged | date: 'medium'}}</td>
+                                        <td>{{user.ipAddress || 'Not Available'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

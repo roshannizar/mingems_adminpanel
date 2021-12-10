@@ -1,0 +1,103 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Products</h4>
+                                <p class="card-subtitle">Now you can manipulate product details</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search"
+                                        class="mat-input" (input)="filterProduct()">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateModal()">New</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Category Name
+                                    </th>
+                                    <th>
+                                        Description Lines
+                                    </th>
+                                    <th>
+                                        Creation Date
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="block">
+                                        <td colspan="6" class="text-center">
+                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                            <label>This might take a while!</label>
+                                        </td>
+                                    </tr>
+
+                                    <tr *ngIf="viewProducts.length === 0 && block === false">
+                                        <td colspan="6" class="text-center">
+                                            <span class="font-italic">No record</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr *ngFor="let product of viewProducts; let i = index" [id]="product.id">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{product.name}}</td>
+                                        <td>{{product.category.name}}</td>
+                                        <td class="more-product" (click)="openDetailModal(product)">
+                                            {{product.descriptionLines.length}} Product(s) inside</td>
+                                        <td>{{product.creationDate | date}}</td>
+                                        <td>
+                                            <i class="material-icons btn-close"
+                                                (click)="openProductModal(product)">visibility</i>
+                                            <i class="material-icons btn-delete"
+                                               (click)="openProductEdit(product)">create</i>
+                                            <i class="material-icons btn-delete" (click)="openDeleteModal(product)">delete</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<aside class="aside-right" [ngClass]="{'open': display}">
+    <div *ngIf='display'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-product-view-dlg *ngIf="product != null && fullProduct" [product]="product"
+            (toggled)="toggleChange($event)"></app-product-view-dlg>
+        <app-product-description-view-dlg *ngIf="product != null && !fullProduct && !isDelete && !isUpdate" [product]="product"
+            (toggled)="toggleChange($event)"></app-product-description-view-dlg>
+        <app-product-create *ngIf="product == null" (created)="updatedModal()"></app-product-create>
+        <app-product-delete *ngIf="product !== null && isDelete" [product]="product" (deleted)="updatedModal()"></app-product-delete>
+        <app-product-update *ngIf="product !== null && isUpdate" [product]="product" (updated)="updatedModal()"></app-product-update>
+    </div>
+</aside>

@@ -1,38 +1,55 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { ToastrModule } from "ngx-toastr";
 
-import { SidebarModule } from './core/layouts/sidebar/sidebar.module';
-import { FooterModule } from './core/layouts/footer/footer.module';
-import { NavbarModule} from './core/layouts/navbar/navbar.module';
+
+import { AppRoutingModule } from './app.routing';
+import { ComponentsModule } from './core/components/components.module';
 
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routing';
 
-import { AdminLayoutComponent } from './core/admin-layout/admin-layout.component';
-import { InventoryViewComponent } from './modules/inventory-management/components/inventory-view/inventory-view.component';
-import { InventoryCreateComponent } from './modules/inventory-management/components/inventory-create/inventory-create.component';
-import { SupplierCreateComponent } from './modules/supplier-management/components/supplier-create/supplier-create.component';
-import { ModulesModule } from "./modules/modules.module";
-import { CoreModule } from "./core/core.module";
-
+import { AdminLayoutComponent } from './core/layouts/admin-layout/admin-layout.component';
+import { SharedModule } from './shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
+import { AuthModule } from './auth/auth.module';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ReleaseFeaturesComponent } from './core/dashboard/components/release-features/release-features.component';
 
 @NgModule({
+  imports: [
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    ComponentsModule,
+    RouterModule,
+    SharedModule,
+    AppRoutingModule,
+    AuthModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: false,
+    }),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+       allowedDomains: ['localhost:4200', 'http://placemeapi.azurewebsite.net/']
+       },
+    })
+  ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-  ],
-  imports: [
-    BrowserAnimationsModule,
-    RouterModule.forRoot(AppRoutes,{
-      useHash: false
-    }),
-    ModulesModule,
-    CoreModule,
-    ToastrModule.forRoot(),
+    ReleaseFeaturesComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }
+
+export function tokenGetter() {
+  return localStorage.getItem('session');
+}

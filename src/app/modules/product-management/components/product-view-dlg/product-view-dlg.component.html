@@ -1,0 +1,37 @@
+<div class="modal-body">
+    <div class="col-md-12">
+        <label>Product ID</label>
+        <p>{{product.id}}</p>
+        <label>Product Name</label>
+        <p>{{product.name}}</p>
+        <label>Long Description</label>
+        <p>{{product.longDescription || '-'}}</p>
+        <label>Description Lines | {{product.descriptionLines.length}} item(s)</label>
+    </div>
+    <div class="description-border" *ngFor="let item of product.descriptionLines; let i = index">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{item.name}}
+                </mat-panel-title>
+                <mat-panel-description *ngIf="item.quantity == 0">
+                    Out of Stock
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+            <label>Description ID</label>
+            <p>{{item.id}}</p>
+            <label>Name</label>
+            <p>{{item.name}}</p>
+            <label>MRP</label>
+            <p>{{item.mrp | currency: 'LKR'}}</p>
+            <label>Quantity</label>
+            <p>{{item.quantity}}</p>
+            <label>Unit Price</label>
+            <p>{{item.unitPrice | currency: 'LKR'}}</p>
+            <label *ngIf="item.quantity !== 0">Label as Out of stock</label>
+            <p *ngIf="item.quantity !== 0">
+                <mat-slide-toggle (change)="toggleChange(item, $event)"></mat-slide-toggle>
+            </p>
+        </mat-expansion-panel>
+    </div>
+</div>

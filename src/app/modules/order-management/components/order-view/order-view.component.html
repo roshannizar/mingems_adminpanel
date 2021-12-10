@@ -1,0 +1,240 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header" id="main_card_header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Orders</h4>
+                                <p class="card-subtitle">Now you can manipulate order details</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Search by Order Ref" type="text" class="mat-input"
+                                        [(ngModel)]="search" (input)="searchByEmail()">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip (click)="getOrders(4, 1)" [selected]="selectedOrderStatus === 4? true: false">All
+                        </mat-chip>
+                        <mat-chip (click)="getOrders(0, 1)" [selected]="selectedOrderStatus === 0? true: false">Pending
+                        </mat-chip>
+                        <mat-chip (click)="getOrders(1, 1)" [selected]="selectedOrderStatus === 1? true: false">Approved
+                        </mat-chip>
+                        <mat-chip (click)="getOrders(2, 1)" [selected]="selectedOrderStatus === 2? true: false">
+                            Delivered
+                        </mat-chip>
+                        <mat-chip (click)="getOrders(3, 1)" [selected]="selectedOrderStatus === 3? true: false">
+                            Cancelled
+                        </mat-chip>
+                    </mat-chip-list>
+
+                    <div *ngIf="block" class="text-center my-2">
+                        <app-loading-ui [block]="block"></app-loading-ui>
+                        <label>This might take a while!</label>
+                    </div>
+
+                    <div class="card-body" *ngIf="!block">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-striped">
+                                <thead class="text-white font-weight-bolder" id="main_table_header">
+                                    <tr>
+                                        <th class="font-weight-bold">
+                                            #
+                                        </th>
+                                        <th class="font-weight-bold">
+                                            Ref
+                                        </th>
+                                        <th class="font-weight-bold">
+                                            Email
+                                        </th>
+                                        <th class="font-weight-bold">
+                                            Product Items
+                                        </th>
+                                        <th class="font-weight-bold">
+                                            Date & Time
+                                        </th>
+                                        <th class="font-weight-bold">
+                                            Total
+                                        </th>
+                                        <th class="font-weight-bold">
+                                            Status
+                                        </th>
+                                        <th class="font-weight-bold">
+                                            Action
+                                        </th>
+                                    </tr>
+
+                                </thead>
+                                <tbody>
+
+                                    <tr *ngIf="orders.data.length === 0">
+                                        <td colspan="8" class="text-center">
+                                            <span class="font-italic">No records found!</span>
+                                        </td>
+                                    </tr>
+
+                                    <tr *ngFor="let order of orders.data; let i = index" class="font-weight-bold">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{order.orderRef}}</td>
+                                        <td>{{order.email}}</td>
+                                        <td>{{order.orderLines.length}} Product(s) available</td>
+                                        <td>{{order.date | date: 'medium'}}</td>
+                                        <td>{{order.orderTotal + order.deliveryCharge?.amount | currency: 'LKR '}}</td>
+                                        <td>
+                                            <span
+                                                [className]="getOrderStatusClass(order.status)">{{getOrderStatus(order.status)}}</span>
+
+                                            <div *ngIf="orderStatusBlock" class="text-center my-2">
+                                                <app-loading-ui [block]="orderStatusBlock"></app-loading-ui>
+                                            </div>
+
+                                            <button *ngIf="!orderStatusBlock || order.status !== 3" type="button"
+                                                [className]="getStatusButtonClass(order.status)"
+                                                (click)="updateOrderStatus(order.id)">{{getStatusButtonText(order.status)}}</button>
+                                        </td>
+                                        <td>
+                                            <i class="material-icons btn-view" title="View"
+                                                (click)="openSideNav(order)">visibility</i>
+                                            <i class="material-icons btn-view tentative" title="Tentative"
+                                                (click)="openDialog(order)">edit_note</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <mat-paginator *ngIf="orders.data.length !== 0 && !block" [length]="orders.totalRecords" [pageSize]="20" (page)="pageEvent($event)">
+                            </mat-paginator>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<aside class="aside-right" [ngClass]="{'open': display}">
+    <div *ngIf='display'>
+        <div class="modal-header">
+            <h4>View Order Details</h4>
+            <a class="btn-close btn-view" (click)="closeSideNav()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <div class="modal-body">
+            <div id="customer_details_heading">
+                <h4 class="py-2">Customer Details</h4>
+            </div>
+            <div id="customer_collapse">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td class="font-weight-bold">Full Name:</td>
+                                    <td>{{order.customers.firstName}} {{order.customers.lastName}}</td>
+                                </tr>
+
+                                <tr>
+                                    <td class="font-weight-bold">Contact No:</td>
+                                    <td *ngFor="let contact of order.contactNumbers">
+                                        {{contact.phoneNumber || '-'}}
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="font-weight-bold">Email:</td>
+                                    <td>{{order.email}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Address:</td>
+                                    <td>
+                                        <span>{{order.addressLines.number}},
+                                            {{order.addressLines.street}}, {{order.addressLines.city}}</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="font-weight-bold">Payment Type:</td>
+                                    <td>
+                                        {{getPaymentMethod(order.paymentType)}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div id="product_details_heading">
+                <div class="col-md-9">
+                    <h4 class="py-2">Product Details</h4>
+                </div>
+                <div class="col-md-3">
+                </div>
+            </div>
+
+            <div class="description-border mt-1" *ngFor="let orderLine of order.orderLines; let i = index">
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{orderLine.products.name === null ? '-' : orderLine.products.name}}
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <label>Description</label>
+                    <p>
+                        {{orderLine.products.descriptionLines.length === 0 ? 'Not available' :
+                        orderLine.products.descriptionLines[0].name}}
+                    </p>
+                    <label>Quantity</label>
+                    <p>
+                        {{orderLine.quantity}}
+                    </p>
+                    <label>Unit Price</label>
+                    <p>{{orderLine.unitPrice != 0? orderLine.unitPrice :
+                        orderLine.products.descriptionLines[0].unitPrice | currency: 'LKR '}}</p>
+                </mat-expansion-panel>
+            </div>
+            <hr>
+
+            <div id="order_notes_final_charges">
+                <div class="col-md-9">
+                    <h4 class="py-2">Order notes and Final Charges</h4>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <tbody>
+                                <tr>
+                                    <td class="font-weight-bold">Order Notes</td>
+                                    <td>{{order.orderNotes || "-"}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Sub Total</td>
+                                    <td>{{order.orderTotal | currency: 'LKR '}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Delivery Charges</td>
+                                    <td>{{order.deliveryCharge.amount | currency: 'LKR '}}</td>
+                                </tr>
+                                <tr>
+                                    <td class="font-weight-bold">Grand Price</td>
+                                    <td>{{order.orderTotal +order.deliveryCharge.amount | currency: 'LKR '}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</aside>

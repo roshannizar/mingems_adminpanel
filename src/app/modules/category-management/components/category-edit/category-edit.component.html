@@ -1,0 +1,19 @@
+<div class="card-body">
+    <form [formGroup]="categoryForm">
+        <div class="col-md-12">
+            <mat-form-field class="example-full-width">
+                <input matInput placeholder="Enter Category Name" formControlName="name" required>
+            </mat-form-field>
+        </div>
+        <div class="col-md-12">
+            <section class="example-section">
+                <mat-slide-toggle formControlName="isTentative">Tentative</mat-slide-toggle>
+              </section>
+        </div>
+        <div class="col-md-12">
+            <button mat-raised-button class="btn btn-danger pull-right" *ngIf="!categoryBlock" [disabled]="categoryForm.invalid" (click)="updateCategory()">Update
+                Category</button>
+                <app-loading-ui *ngIf="categoryBlock" [block]='categoryBlock'></app-loading-ui>
+        </div>
+    </form>
+</div>

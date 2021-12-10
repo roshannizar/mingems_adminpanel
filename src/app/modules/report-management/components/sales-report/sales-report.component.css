@@ -1,0 +1,11 @@
+.card-header {
+    background-color: #7bbf44;
+}
+.card-subtitle, .card-title {
+    color: white;
+}
+.create-btn {
+    background-color: white;
+    color: #7bbf44;
+    font-weight: bold;
+  }

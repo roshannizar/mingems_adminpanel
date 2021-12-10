@@ -1,0 +1,60 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="card">
+                    <div class="card-body table-responsive">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h4 class="card-title mt-0">Out of Stock Products</h4>
+                                    <p class="card-subtitle">Now you can manipulate Out of Stock Products details</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Search" type="text" class="mat-input" [(ngModel)]="search" (input)="searchByName()">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+                        <table class="table table-hover">
+                            <thead class="out-of-order-header">
+                                <tr>
+                                    <th>#</th>
+                                    <th>Product Name</th>
+                                    <th>Description Line</th>
+                                    <th>Unit Price</th>
+                                    <th>MRP</th>
+                                    <th>Move to Product</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="viewProducts.length == 0 && block == false" class="text-center">
+                                    <td colspan="6">
+                                        No Records Found!
+                                    </td>
+                                </tr>
+                                <tr *ngIf="block">
+                                    <td colspan="6">
+                                        <app-loading-ui [block]="block"></app-loading-ui>
+                                    </td>
+                                </tr>
+                                <tr *ngFor="let product of viewProducts; let i = index">
+                                    <td>{{i + 1}}</td>
+                                    <td>{{product?.singleProduct?.name}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.unitPrice | currency: 'LKR '}}</td>
+                                    <td>{{product.mrp | currency: 'LKR '}}</td>
+                                    <td>
+                                        <mat-slide-toggle (change)="addToProduct(product)"></mat-slide-toggle>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

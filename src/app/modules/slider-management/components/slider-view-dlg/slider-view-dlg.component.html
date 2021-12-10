@@ -1,0 +1,10 @@
+<div class="modal-body">
+    <div class="col-md-12">
+        <label>Slider Image</label>
+        <img [src]="slider.imageUrl" alt="Couldn't access the image" width="100%" height="100%" />
+        <label>Name</label>
+        <p>{{slider.name}}</p>
+        <label>Product Name</label>
+        <p>{{slider?.products?.name || "N/A"}}</p>
+    </div>
+</div>

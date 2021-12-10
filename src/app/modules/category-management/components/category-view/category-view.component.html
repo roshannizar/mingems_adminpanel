@@ -1,0 +1,92 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Categories</h4>
+                                <p class="card-subtitle">Now you can manipulate category details</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search"
+                                        class="mat-input" (input)="filterCategory()">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateModal()">New</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Name
+                                    </th>
+                                    <th>
+                                        Tentative
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="block">
+                                        <td colspan="4">
+                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="viewCategories?.length == 0 && block == false" class="text-center">
+                                        <td colspan="4">
+                                            <span class="font-italic">No record</span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let category of viewCategories; let i = index">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{category.name}}</td>
+                                        <td>{{category.isTentative ? 'Yes': 'No'}}</td>
+                                        <td>
+                                            <i class="material-icons btn-view"
+                                                (click)="openCategoryDlgModal(category)">visibility</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openCategoryEdit(category)">create</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openDeleteModal(category)">delete</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<aside class="aside-right" [ngClass]="{'open': display}">
+    <div *ngIf='display'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-category-create *ngIf="category == null" (created)="refresh()"></app-category-create>
+        <app-category-delete *ngIf="category != null && isDelete" [category]="category" (deleted)="refresh()">
+        </app-category-delete>
+        <app-category-edit *ngIf="category != null && isUpdate && isDelete == false" [category]="category"
+            (updated)="refresh()"></app-category-edit>
+        <app-category-view-dlg *ngIf="category != null && isUpdate == false && isDelete == false" [category]="category">
+        </app-category-view-dlg>
+    </div>
+</aside>
