@@ -6,7 +6,7 @@ import { FilterDialogComponent } from '../../modals/filter-dialog/filter-dialog.
 import { ReportService } from '../../services/report.service';
 import * as pdfMake from 'pdfmake/build/pdfmake';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
-const htmlToPdfmake = require('html-to-pdfmake');
+import * as htmlToPdfmake from 'html-to-pdfmake';
 (pdfMake as any).vfs = pdfFonts.pdfMake.vfs;
 
 @Component({

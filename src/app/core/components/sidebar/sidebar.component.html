@@ -1,21 +1,26 @@
 <div class="logo">
+    <a class="simple-text logo-mini">
+        <div class="logo-image-small">
+            <img src="assets/img/favicon.png" width="25%">
+        </div>
+    </a>
     <a href="dashboard" class="simple-text">
         MINGEMS | Admin
     </a>
 </div>
 <div class="sidebar-wrapper">
-  <div *ngIf="isMobileMenu()">
-    <ul class="nav navbar-nav nav-mobile-menu">
-        <li class="nav-item">
-            <a class="nav-link" href="javascript:void(0)">
-                <i class="material-icons">person</i>
-                <p>
-                    <span class="d-lg-none d-md-block">Account</span>
-                </p>
-            </a>
-        </li>
-    </ul>
-  </div>
+    <div *ngIf="isMobileMenu()">
+        <ul class="nav navbar-nav nav-mobile-menu">
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:void(0)">
+                    <i class="material-icons">person</i>
+                    <p>
+                        <span class="d-lg-none d-md-block">Account</span>
+                    </p>
+                </a>
+            </li>
+        </ul>
+    </div>
     <ul class="nav">
         <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
             <a class="nav-link" *ngIf="menuItem.class === ''" [routerLink]="[menuItem.path]">

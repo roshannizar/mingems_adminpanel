@@ -51,8 +51,8 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit() {
-    this.getDashboard();
-    this.showFeature();
+    //this.getDashboard();
+    //this.showFeature();
   }
 
   getDashboard() {

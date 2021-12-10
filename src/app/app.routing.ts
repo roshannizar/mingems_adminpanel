@@ -3,10 +3,8 @@ import { CommonModule, } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 
-import { AdminLayoutComponent } from './core/layouts/admin-layout/admin-layout.component';
-import { AuthModule } from './auth/auth.module';
+import { AdminLayoutComponent } from './core/admin-layout/admin-layout.component';
 import { AuthComponent } from './auth/auth.component';
-import { auth } from 'googleapis/build/src/apis/adexchangebuyer2';
 import { AuthGuardService } from './auth/services/auth-guard.service';
 
 const routes: Routes = [
@@ -22,10 +20,10 @@ const routes: Routes = [
   {
     path: '',
     component: AdminLayoutComponent,
-    canActivate: [AuthGuardService],
+    // canActivate: [AuthGuardService],
     children: [{
       path: '',
-      loadChildren: './core/layouts/admin-layout/admin-layout.module#AdminLayoutModule'
+      loadChildren: './core/admin-layout/admin-layout.module#AdminLayoutModule'
     }]
   }
 ];

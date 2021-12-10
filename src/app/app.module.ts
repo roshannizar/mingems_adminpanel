@@ -10,7 +10,7 @@ import { ComponentsModule } from './core/components/components.module';
 
 import { AppComponent } from './app.component';
 
-import { AdminLayoutComponent } from './core/layouts/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './core/admin-layout/admin-layout.component';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule } from 'ngx-toastr';
 import { AuthModule } from './auth/auth.module';
