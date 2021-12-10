@@ -1,0 +1,5 @@
+.setting-item:hover {
+    background-color: #ef8157;
+    color: whitesmoke;
+    cursor: pointer;
+}

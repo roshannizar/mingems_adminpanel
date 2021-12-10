@@ -1,14 +1,14 @@
-import { PdFreeAngularcliPage } from './app.po';
+import { MaterialDashboardAngularPage } from './app.po';
 
-describe('pd-free-angularcli App', () => {
-  let page: PdFreeAngularcliPage;
+describe('mingems-dashboard App', () => {
+  let page: MaterialDashboardAngularPage;
 
   beforeEach(() => {
-    page = new PdFreeAngularcliPage();
+    page = new MaterialDashboardAngularPage();
   });
 
-  it('should display welcome message', () => {
+  it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!!');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });

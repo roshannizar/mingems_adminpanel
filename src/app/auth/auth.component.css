@@ -1,0 +1,70 @@
+.reduce-margin {
+    margin-right:0
+}
+.side-panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width:75%;
+    background-color: #ef8157;
+}
+.side-panel-right {
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    width: 25%;
+}
+.increase-width {
+    width: 100%;
+}
+.form-box {
+    margin-top: 75%;
+}
+ @media only screen and (max-width: 600px) {
+     .side-panel {
+         width:0;
+     }
+     .side-panel-right {
+         margin-left:10px;
+         width: 100%;
+     }
+ }
+ .side-panel {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #ef8157;
+  }
+  
+  .text-label {
+    position: relative;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-size: 52px;
+    letter-spacing: 4px;
+    overflow: hidden;
+    background: linear-gradient(90deg, #ef8157, #fff, #ef8157);
+    background-repeat: no-repeat;
+    background-size: 90%;
+    animation: animate 5s linear infinite;
+    -webkit-text-fill-color: #ef8157;
+  }
+  
+  @keyframes animate {
+    0% {
+      background-position: -500%;
+    }
+    100% {
+      background-position: 500%;
+    }
+  }
+
+  .pointer-label {
+    cursor: pointer;
+  }

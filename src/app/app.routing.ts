@@ -1,22 +1,42 @@
-import { Routes } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule, } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { Routes, RouterModule } from '@angular/router';
 
-import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { AdminLayoutComponent } from './core/admin-layout/admin-layout.component';
+import { AuthComponent } from './auth/auth.component';
+import { AuthGuardService } from './auth/services/auth-guard.service';
 
-export const AppRoutes: Routes = [
+const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'login',
     pathMatch: 'full',
-  }, {
+  }, 
+  { 
+    path: 'login',
+    component: AuthComponent,
+  },
+  {
     path: '',
     component: AdminLayoutComponent,
-    children: [
-        {
+    // canActivate: [AuthGuardService],
+    children: [{
       path: '',
-      loadChildren: './layouts/admin-layout/admin-layout.module#AdminLayoutModule'
-  }]},
-  {
-    path: '**',
-    redirectTo: 'dashboard'
+      loadChildren: './core/admin-layout/admin-layout.module#AdminLayoutModule'
+    }]
   }
-]
+];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    BrowserModule,
+    RouterModule.forRoot(routes, {
+      useHash: false
+    })
+  ],
+  exports: [
+  ],
+})
+export class AppRoutingModule { }

@@ -1,0 +1,16 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-list>
+                    <mat-list-item class="setting-item" (click)="handleNavigation(setting.path)" *ngFor="let setting of settings">
+                        <mat-icon mat-list-icon>{{setting.icon}}</mat-icon>
+                        <div mat-line>{{setting.name}}</div>
+                        <div mat-line> {{setting.description}} </div>
+                        <mat-divider></mat-divider>
+                    </mat-list-item>
+                  </mat-list>
+            </div>
+        </div>
+    </div>
+</div>

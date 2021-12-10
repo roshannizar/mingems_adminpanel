@@ -1,0 +1,148 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">content_copy</i>
+                        </div>
+                        <p class="card-category">Total Products</p>
+                        <h3 class="card-title">{{dashboardModel?.stockCount || '0'}}
+                            <small></small>
+                        </h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons text-danger">warning</i>
+                            Total Products Available
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-success card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">store</i>
+                        </div>
+                        <p class="card-category">Total Sales</p>
+                        <h3 class="card-title">{{dashboardModel?.totalSalesToday || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">history</i> Last 24 Hours
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-danger card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">info_outline</i>
+                        </div>
+                        <p class="card-category">Out Of Stock</p>
+                        <h3 class="card-title">{{dashboardModel?.outOfStockCount || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">info_outline</i> Tracked from Products
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">account_box</i>
+                        </div>
+                        <p class="card-category">Users</p>
+                        <h3 class="card-title">{{dashboardModel?.totalUser || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">account_box</i>Total User Found
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning-top">
+                        <h4 class="card-title">Top 5 Products</h4>
+                        <p class="card-category">Based on product sold</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning-top">
+                                <th>Product Name</th>
+                                <th>Name</th>
+                                <th>Sold</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="block">
+                                    <td colspan="3">
+                                        <app-loading-ui [block]="block"></app-loading-ui>
+                                    </td>
+                                </tr>
+
+                                <tr *ngIf="dashboardModel.spProductsSolds?.length === 0">
+                                    <td colspan="3">
+                                        No Records Found!
+                                    </td>
+                                </tr>
+
+                                <tr *ngFor="let product of dashboardModel.spProductSolds">
+                                    <td>{{product.productName}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.salesCount}} Units</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+                <div class="card">
+                    <div class="card-header card-header-warning-top">
+                        <h4 class="card-title">Top 5 Customers</h4>
+                        <p class="card-category">Based on sales</p>
+                    </div>
+                    <div class="card-body table-responsive">
+                        <table class="table table-hover">
+                            <thead class="text-warning-top">
+                                <th>Full Name</th>
+                                <th>Email</th>
+                                <th>Amount</th>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="customerblock">
+                                    <td colspan="3">
+                                        <app-loading-ui [block]="customerblock"></app-loading-ui>
+                                    </td>
+                                </tr>
+
+                                <tr *ngIf="dashboardModel.spCustomers?.length === 0">
+                                    <td colspan="3">
+                                        No Records Found!
+                                    </td>
+                                </tr>
+
+                                <tr *ngFor="let customer of dashboardModel.spCustomers">
+                                    <td>{{customer.firstName}} {{customer.lastName}}</td>
+                                    <td>{{customer.email}}</td>
+                                    <td>{{customer.totalSum | currency:'LKR '}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,73 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Report</h4>
+                                <p class="card-subtitle">Sales Report (<span style="font-weight:bold">{{period_start}} -
+                                        {{period_end}} | {{salesModel.length}} records found</span>)</p>
+                            </div>
+                            <div class="col-md-6">
+                                <button *ngIf="!pdfBlock" class="btn btn-primary create-btn pull-right"
+                                    (click)="savePdf()">
+                                    <span class="material-icons"><span class="material-icons-outlined">
+                                            picture_as_pdf</span></span>
+                                </button>
+                                <app-loading-ui [pdfBlock]="pdfBlock"></app-loading-ui>
+                                <button class="btn btn-primary create-btn pull-right" (click)="openDialog()">
+                                    <span class="material-icons"><span class="material-icons-outlined">
+                                            filter_alt</span></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive" id="salescontent" #salescontent>
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Total Sale (LKR)
+                                    </th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="block">
+                                        <td colspan="5">
+                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="salesModel.length == 0 && block == false">
+                                        <td colspan="5" style="text-align: center;">
+                                            No Records Found
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let sales of salesModel; let i = index">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{sales.firstName}}</td>
+                                        <td>{{sales.lastName}}</td>
+                                        <td>{{sales.email}}</td>
+                                        <td>{{sales.totalSum | number: '1.2-2'}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
