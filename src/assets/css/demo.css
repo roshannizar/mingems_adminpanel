@@ -4,9 +4,9 @@
 * Paper Dashboard Angular - v2.1.0
 =========================================================
 
-* Product Page: https://www.creative-tim.com/product/paper-dashboard-angular
+* Product Page: https://www.creative-tim.com/product/mingems-dashboard
 * Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-angular/blob/master/LICENSE.md)
+* Licensed under MIT (https://github.com/creativetimofficial/mingems-dashboard/blob/master/LICENSE.md)
 
 * Coded by Creative Tim
 

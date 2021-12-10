@@ -1,7 +1,7 @@
-# [Paper Dashboard Angular](https://www.creative-tim.com/product/paper-dashboard-angular)
-![version](https://img.shields.io/badge/version-2.2.0-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/paper-dashboard-angular.svg?maxAge=2592000)]() [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/paper-dashboard-angular.svg?maxAge=2592000)]()  [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
+# [Paper Dashboard Angular](https://www.creative-tim.com/product/mingems-dashboard)
+![version](https://img.shields.io/badge/version-2.2.0-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) [![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/mingems-dashboard.svg?maxAge=2592000)]() [![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/mingems-dashboard.svg?maxAge=2592000)]()  [![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)](https://discord.gg/E4aHAQy)
 
-![Product Gif](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/paper-dashboard-angular/paper-dashboard-angular.gif)
+![Product Gif](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/mingems-dashboard/mingems-dashboard.gif)
 
 Paper Dashboard Angular is a Bootstrap Admin Template which combines soft colors with beautiful typography and spacious cards and graphics. It was built on top of Google's [Angular Framework](https://angular.io/) and the HTML version of [Paper Dashboard](https://www.creative-tim.com/product/paper-dashboard). It is a powerful dashboard but it is light and easy to be used. It has enough features to allow you to get the job done, but it is not crowded to the point where you can't find the files for a specific component.
 
@@ -28,27 +28,27 @@ Paper Dashboard Angular is a Bootstrap Admin Template which combines soft colors
  ## Versions
 
  [<img src="https://s3.amazonaws.com/creativetim_bucket/github/html.png" width="60" height="60" />](https://www.creative-tim.com/product/paper-dashboard-2)
- [<img src="https://s3.amazonaws.com/creativetim_bucket/github/angular.png" width="60" height="60" />](https://www.creative-tim.com/product/paper-dashboard-angular)
+ [<img src="https://s3.amazonaws.com/creativetim_bucket/github/angular.png" width="60" height="60" />](https://www.creative-tim.com/product/mingems-dashboard)
  [<img src="https://s3.amazonaws.com/creativetim_bucket/github/react.svg" width="60" height="60" />](https://www.creative-tim.com/product/paper-dashboard-react)
 
  | HTML | Angular | React |
  | --- | --- | --- |
- | [![Paper Dashboard 2 HTML](https://s3.amazonaws.com/creativetim_bucket/products/86/thumb/opt_pd2_thumbnail.jpg)](https://www.creative-tim.com/product/paper-dashboard-2) | [![Paper Dashboard Angular](https://s3.amazonaws.com/creativetim_bucket/products/58/thumb/opt_pd_angular_thumbnail.jpg)](https://www.creative-tim.com/product/paper-dashboard-angular) | [![Paper Dashboard React](https://s3.amazonaws.com/creativetim_bucket/products/98/thumb/opt_pd_react_thumbnail.jpg)](https://www.creative-tim.com/product/paper-dashboard-react) |
+ | [![Paper Dashboard 2 HTML](https://s3.amazonaws.com/creativetim_bucket/products/86/thumb/opt_pd2_thumbnail.jpg)](https://www.creative-tim.com/product/paper-dashboard-2) | [![Paper Dashboard Angular](https://s3.amazonaws.com/creativetim_bucket/products/58/thumb/opt_pd_angular_thumbnail.jpg)](https://www.creative-tim.com/product/mingems-dashboard) | [![Paper Dashboard React](https://s3.amazonaws.com/creativetim_bucket/products/98/thumb/opt_pd_react_thumbnail.jpg)](https://www.creative-tim.com/product/paper-dashboard-react) |
 
  ## Demo
 
  | Dashboard | User Profile | Tables | Icons | Notifications |
  | --- | --- | --- | --- | --- |
- | [![Start page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/paper-dashboard-angular/dashboard.png?raw=true)](https://demos.creative-tim.com/paper-dashboard-angular/#/dashboard) | [![User profile page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/paper-dashboard-angular/user-profile.png?raw=true)](https://demos.creative-tim.com/paper-dashboard-angular/#/user-profile) | [![Tables page ](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/paper-dashboard-angular/tables.png?raw=true)](https://demos.creative-tim.com/paper-dashboard-angular/#/table-list) | [![Icons Page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/paper-dashboard-angular/icons.png?raw=true)](https://demos.creative-tim.com/paper-dashboard-angular/#/maps) | [![Notifications page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/paper-dashboard-angular/notifications.png?raw=true)](https://demos.creative-tim.com/paper-dashboard-angular/#/notifications)
+ | [![Start page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/mingems-dashboard/dashboard.png?raw=true)](https://demos.creative-tim.com/mingems-dashboard/#/dashboard) | [![User profile page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/mingems-dashboard/user-profile.png?raw=true)](https://demos.creative-tim.com/mingems-dashboard/#/user-profile) | [![Tables page ](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/mingems-dashboard/tables.png?raw=true)](https://demos.creative-tim.com/mingems-dashboard/#/table-list) | [![Icons Page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/mingems-dashboard/icons.png?raw=true)](https://demos.creative-tim.com/mingems-dashboard/#/maps) | [![Notifications page](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/mingems-dashboard/notifications.png?raw=true)](https://demos.creative-tim.com/mingems-dashboard/#/notifications)
 
- [View More](https://demos.creative-tim.com/paper-dashboard-angular/#/dashboard).
+ [View More](https://demos.creative-tim.com/mingems-dashboard/#/dashboard).
 
 
 ## Quick start
 
 Quick start options:
 
-- [Download from Creative Tim](https://www.creative-tim.com/product/paper-dashboard-angular).
+- [Download from Creative Tim](https://www.creative-tim.com/product/mingems-dashboard).
 
 ## Terminal Commands
 
@@ -65,7 +65,7 @@ Quick start options:
 Within the download you'll find the following directories and files:
 
 ```
-paper-dashboard-angular
+mingems-dashboard
 ├── CHANGELOG.md
 ├── ISSUES_TEMPLATE.md
 ├── LICENSE.md
@@ -165,12 +165,12 @@ At present, we officially aim to support the last two versions of the following 
 
 
 ## Resources
-- Demo: https://demos.creative-tim.com/paper-dashboard-angular/#/dashboard
-- Download Page: https://www.creative-tim.com/product/paper-dashboard-angular
-- Documentation: https://demos.creative-tim.com/paper-dashboard-angular/#/documentation/tutorial
+- Demo: https://demos.creative-tim.com/mingems-dashboard/#/dashboard
+- Download Page: https://www.creative-tim.com/product/mingems-dashboard
+- Documentation: https://demos.creative-tim.com/mingems-dashboard/#/documentation/tutorial
 - License Agreement: https://www.creative-tim.com/license
 - Support: https://www.creative-tim.com/contact-us
-- Issues: [Github Issues Page](https://github.com/creativetimofficial/paper-dashboard-angular/issues)
+- Issues: [Github Issues Page](https://github.com/creativetimofficial/mingems-dashboard/issues)
 
 ## Reporting Issues
 We use GitHub Issues as the official bug tracker for the Paper Dashboard Angular. Here are some advices for our users that want to report an issue:
@@ -186,7 +186,7 @@ If you have questions or need help integrating the product please [contact us](h
 ## Licensing
 
 - Copyright 2019 Creative Tim (https://www.creative-tim.com)
-- Licensed under MIT (https://github.com/creativetimofficial/paper-dashboard-angular/blob/master/LICENSE.md)
+- Licensed under MIT (https://github.com/creativetimofficial/mingems-dashboard/blob/master/LICENSE.md)
 
 ## Useful Links
 
