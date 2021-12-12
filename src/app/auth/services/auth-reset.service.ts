@@ -16,6 +16,6 @@ export class AuthResetService extends BaseService<LinkModel> {
     }
 
     resetPasswordLink(linkModel: LinkModel) {
-        return this.put(`${this.baseUrl}/forgotpassword`, linkModel);
+        return this.authPost(`${this.baseUrl}/forgotpassword`, linkModel);
     }
 }
