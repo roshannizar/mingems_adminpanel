@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { SignalRService } from '../services/signalr.service';
 import { OrderHubModel } from '../models/order-hub-model';
 import { ToastrService } from 'ngx-toastr';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
     selector: 'app-navbar',
@@ -18,10 +19,11 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
     private orderHubModel = new Array<OrderHubModel>();
+    fullname: string;
 
     constructor(location: Location, private element: ElementRef,
         private router: Router, private signalrService: SignalRService,
-        private toastr: ToastrService) {
+        private toastr: ToastrService, private jwtService: JwtHelperService) {
         this.location = location;
         this.sidebarVisible = false;
     }
@@ -55,6 +57,12 @@ export class NavbarComponent implements OnInit {
     playAudio() {
         const audio: HTMLAudioElement = new Audio('../../../../assets/audio/noti.mp3');
         audio.play();
+    }
+
+    getUserName() {
+        const token = localStorage.getItem('session');
+        const payload = this.jwtService.decodeToken(token);
+        this.fullname = payload?.name;
     }
 
     logout() {
