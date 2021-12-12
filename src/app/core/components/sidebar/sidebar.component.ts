@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -15,7 +16,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/order', title: 'Order', icon: 'point_of_sale', class: '' },
   { path: '/supplier', title: 'Supplier', icon: 'local_shipping', class: '' },
   { path: '/customer', title: 'Customer', icon: 'people', class: '' },
-  { path: '/payments', title: 'Payments', icon: 'paid', class: 'value'},
+  { path: '/payments', title: 'Payments', icon: 'paid', class: 'value' },
   { path: '/more', title: 'More', icon: 'more_horiz', class: '' },
   { path: '/more/private-code', title: 'More/Out Of Stock', icon: 'more', class: 'value' },
   { path: '/more/users', title: 'More/Users', icon: 'more', class: 'value' },
@@ -32,7 +33,7 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   menuItems: any[];
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -43,4 +44,9 @@ export class SidebarComponent implements OnInit {
     }
     return true;
   };
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/login']);
+  }
 }
