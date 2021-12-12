@@ -81,7 +81,6 @@ export class AuthComponent implements OnInit {
         this.closeModal();
       },
       (error) => {
-        console.log(error);
         this.toastr.error(error.message, 'Failed to reset password');
         this.resetBlock = false;
       }
