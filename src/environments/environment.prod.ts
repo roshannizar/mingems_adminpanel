@@ -1,6 +1,6 @@
 export const environment = {
-  endpointUrl: 'https://placemeapi.herokuapp.com/api',
+  endpointUrl: 'https://mingems-api.herokuapp.com/api',
   signalrRUrl: 'https://placemeapi.herokuapp.com/order',
-  cloudStorageUrl: 'https://placeme-storage.herokuapp.com/api',
+  cloudStorageUrl: 'https://mingems-cloud.herokuapp.com/api',
   production: true
 };

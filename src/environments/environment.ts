@@ -4,8 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  endpointUrl: 'https://placemeapi.azurewebsites.net/api',
-  signalrRUrl: 'https://placemeapi.azurewebsites.net/order',
-  cloudStorageUrl: 'https://placeme-cloud.herokuapp.com/api',
+  endpointUrl: 'https://mingems-api.herokuapp.com/api',
+  signalrRUrl: 'https://placemeapi.herokuapp.com/order',
+  cloudStorageUrl: 'https://mingems-cloud.herokuapp.com/api',
   production: false
 };
