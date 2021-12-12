@@ -40,6 +40,7 @@ export class NavbarComponent implements OnInit {
                 this.mobile_menu_visible = 0;
             }
         });
+        this.getUserName();
         this.getOrders();
     }
 
@@ -62,7 +63,7 @@ export class NavbarComponent implements OnInit {
     getUserName() {
         const token = localStorage.getItem('session');
         const payload = this.jwtService.decodeToken(token);
-        this.fullname = payload?.name;
+        this.fullname = payload?.unique_name;
     }
 
     logout() {
