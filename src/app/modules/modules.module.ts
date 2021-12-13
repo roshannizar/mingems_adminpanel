@@ -9,10 +9,30 @@ import { SalesReportComponent } from './report-management/components/sales-repor
 import { ProductReportComponent } from './report-management/components/product-report/product-report.component';
 import { ReportsComponent } from './more-management/components/reports/reports.component';
 import { FilterDialogComponent } from './report-management/modals/filter-dialog/filter-dialog.component';
+import { InvestmentCreateComponent } from './investment-management/components/investment-create/investment-create.component';
+import { InvestmentViewComponent } from './investment-management/components/investment-view/investment-view.component';
+import { InvestmentUpdateComponent } from './investment-management/components/investment-update/investment-update.component';
+import { InvestmentDeleteComponent } from './investment-management/components/investment-delete/investment-delete.component';
+import { InventoryDeleteComponent } from './inventory-management/components/inventory-delete/inventory-delete.component';
+import { InventoryCreateComponent } from './inventory-management/components/inventory-create/inventory-create.component';
+import { InventoryViewComponent } from './inventory-management/components/inventory-view/inventory-view.component';
+import { InventoryUpdateComponent } from './inventory-management/components/inventory-update/inventory-update.component';
+import { SupplierUpdateComponent } from './supplier-management/components/supplier-update/supplier-update.component';
+import { SupplierCreateComponent } from './supplier-management/components/supplier-create/supplier-create.component';
+import { SupplierViewComponent } from './supplier-management/components/supplier-view/supplier-view.component';
+import { SupplierDeleteComponent } from './supplier-management/components/supplier-delete/supplier-delete.component';
+import { PurchaseDeleteComponent } from './purchase-management/components/purchase-delete/purchase-delete.component';
+import { PurchaseViewComponent } from './purchase-management/components/purchase-view/purchase-view.component';
+import { PurchaseCreateComponent } from './purchase-management/components/purchase-create/purchase-create.component';
+import { PurchaseUpdateComponent } from './purchase-management/components/purchase-update/purchase-update.component';
+import { PrivateCodeUpdateComponent } from './private-code-management/components/private-code-update/private-code-update.component';
+import { PrivateCodeCreateComponent } from './private-code-management/components/private-code-create/private-code-create.component';
+import { PrivateCodeViewComponent } from './private-code-management/components/private-code-view/private-code-view.component';
+import { PrivateCodeDeleteComponent } from './private-code-management/components/private-code-delete/private-code-delete.component';
 
 @NgModule({
   declarations: [
-    MoreProductsComponent, UserViewComponent, LastLoggedComponent, SalesReportComponent, ProductReportComponent, ReportsComponent, FilterDialogComponent],
+    MoreProductsComponent, UserViewComponent, LastLoggedComponent, SalesReportComponent, ProductReportComponent, ReportsComponent, FilterDialogComponent, InvestmentCreateComponent, InvestmentViewComponent, InvestmentUpdateComponent, InvestmentDeleteComponent, InventoryDeleteComponent, InventoryCreateComponent, InventoryViewComponent, InventoryUpdateComponent, SupplierUpdateComponent, SupplierCreateComponent, SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent, PurchaseCreateComponent, PurchaseUpdateComponent, PrivateCodeUpdateComponent, PrivateCodeCreateComponent, PrivateCodeViewComponent, PrivateCodeDeleteComponent],
   imports: [
     CommonModule,
     SharedModule,
