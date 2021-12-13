@@ -29,10 +29,16 @@ import { PrivateCodeUpdateComponent } from './private-code-management/components
 import { PrivateCodeCreateComponent } from './private-code-management/components/private-code-create/private-code-create.component';
 import { PrivateCodeViewComponent } from './private-code-management/components/private-code-view/private-code-view.component';
 import { PrivateCodeDeleteComponent } from './private-code-management/components/private-code-delete/private-code-delete.component';
+import { OrderViewComponent } from './order-management/components/order-view/order-view.component';
+import { CustomerViewComponent } from './customer-management/components/customer-view/customer-view.component';
+import { CustomerCreateComponent } from './customer-management/components/customer-create/customer-create.component';
+import { CustomerUpdateComponent } from './customer-management/components/customer-update/customer-update.component';
+import { CustomerDeleteComponent } from './customer-management/components/customer-delete/customer-delete.component';
+import { OrderCreateComponent } from './order-management/components/order-create/order-create.component';
 
 @NgModule({
   declarations: [
-    MoreProductsComponent, UserViewComponent, LastLoggedComponent, SalesReportComponent, ProductReportComponent, ReportsComponent, FilterDialogComponent, InvestmentCreateComponent, InvestmentViewComponent, InvestmentUpdateComponent, InvestmentDeleteComponent, InventoryDeleteComponent, InventoryCreateComponent, InventoryViewComponent, InventoryUpdateComponent, SupplierUpdateComponent, SupplierCreateComponent, SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent, PurchaseCreateComponent, PurchaseUpdateComponent, PrivateCodeUpdateComponent, PrivateCodeCreateComponent, PrivateCodeViewComponent, PrivateCodeDeleteComponent],
+    MoreProductsComponent, UserViewComponent, LastLoggedComponent, SalesReportComponent, ProductReportComponent, ReportsComponent, FilterDialogComponent, InvestmentCreateComponent, InvestmentViewComponent, InvestmentUpdateComponent, InvestmentDeleteComponent, InventoryDeleteComponent, InventoryCreateComponent, InventoryViewComponent, InventoryUpdateComponent, SupplierUpdateComponent, SupplierCreateComponent, SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent, PurchaseCreateComponent, PurchaseUpdateComponent, PrivateCodeUpdateComponent, PrivateCodeCreateComponent, PrivateCodeViewComponent, PrivateCodeDeleteComponent, OrderViewComponent, CustomerViewComponent, CustomerCreateComponent, CustomerUpdateComponent, CustomerDeleteComponent, OrderCreateComponent],
   imports: [
     CommonModule,
     SharedModule,
