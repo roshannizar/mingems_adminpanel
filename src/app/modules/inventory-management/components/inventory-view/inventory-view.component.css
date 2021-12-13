@@ -1,0 +1,12 @@
+.card-header {
+    background-color: #ef8157;
+}
+.card-title, .card-subtitle {
+    color: white;
+}
+.out-of-order-header {
+    color: #ef8157;
+}
+h4 {
+    font-weight: bold;
+}

@@ -44,6 +44,10 @@ export class NavbarComponent implements OnInit {
         this.getOrders();
     }
 
+    openLink() {
+        window.open('https://trello.com/b/AHZpGF1G/mingem', '_blank');
+    }
+
     getOrders() {
         this.signalrService.signalReceived.subscribe((signal: OrderHubModel) => {
             this.orderHubModel.push(signal);

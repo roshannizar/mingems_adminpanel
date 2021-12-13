@@ -1,0 +1,76 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Orders</h4>
+                                <p class="card-subtitle">Now you can view order details</p>
+                            </div>
+                            <div class="col-md-4">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Search" type="text" class="mat-input">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        First Name
+                                    </th>
+                                    <th>
+                                        Last Name
+                                    </th>
+                                    <th>
+                                        Email
+                                    </th>
+                                    <th>
+                                        Role
+                                    </th>
+                                    <th>
+                                        Account Status
+                                    </th>
+                                    <th>IP Address</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="block">
+                                        <td colspan="7">
+                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="users?.length == 0 && block == false" class="text-center">
+                                        <td colspan="7">
+                                            <span class="font-italic">No record found!</span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let user of users; let i = index">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{user.firstName}}</td>
+                                        <td>{{user.lastName}}</td>
+                                        <td>{{user.email}}</td>
+                                        <td>{{user.role === 0 ? "Super Admin" : user.role === 1 ? 'Admin' : user.role
+                                            === 2 ? 'User' : 'Customer'}}</td>
+                                        <td>{{user.verify ? 'Active': 'In-Active'}}</td>
+                                        <td>{{user.ipAddress || 'Not Available'}}</td>
+                                        <td>
+                                            <i class="material-icons btn-view"
+                                                (click)="openCategoryDlgModal(category)">visibility</i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
