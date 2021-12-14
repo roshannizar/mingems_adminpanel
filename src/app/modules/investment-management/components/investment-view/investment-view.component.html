@@ -14,6 +14,10 @@
                                     <input matInput placeholder="Search" type="text" class="mat-input">
                                 </mat-form-field>
                             </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateDialog()">New</button>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -33,36 +37,39 @@
                                         Email
                                     </th>
                                     <th>
-                                        Role
+                                        Contact No
                                     </th>
                                     <th>
-                                        Account Status
+                                        Amount(£)
                                     </th>
-                                    <th>IP Address</th>
+                                    <th>
+                                        Remaining Amount(£)
+                                    </th>
+                                    <th>
+                                        Action
+                                    </th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngIf="block">
-                                        <td colspan="7">
-                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                    <tr *ngIf="isBlock">
+                                        <td colspan="8">
+                                            <app-loading-ui [isBlock]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="users?.length == 0 && block == false" class="text-center">
-                                        <td colspan="7">
+                                    <tr *ngIf="investments.length == 0 && isBlock == false" class="text-center">
+                                        <td colspan="8">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let user of users; let i = index">
+                                    <tr *ngFor="let investment of investments; let i = index">
                                         <td>{{i + 1}}</td>
-                                        <td>{{user.firstName}}</td>
-                                        <td>{{user.lastName}}</td>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.role === 0 ? "Super Admin" : user.role === 1 ? 'Admin' : user.role
-                                            === 2 ? 'User' : 'Customer'}}</td>
-                                        <td>{{user.verify ? 'Active': 'In-Active'}}</td>
-                                        <td>{{user.ipAddress || 'Not Available'}}</td>
+                                        <td>{{investment.firstName}}</td>
+                                        <td>{{investment.lastName}}</td>
+                                        <td>{{investment.email}}</td>
+                                        <td>{{investment.contactNo}}</td>
+                                        <td>{{investment.amount | number: '1.2-2'}}</td>
+                                        <td>{{investment.remainingAmount | number: '1.2-2'}}</td>
                                         <td>
-                                            <i class="material-icons btn-view"
-                                                (click)="openCategoryDlgModal(category)">visibility</i>
+                                            <i class="material-icons btn-view">visibility</i>
                                         </td>
                                     </tr>
                                 </tbody>
