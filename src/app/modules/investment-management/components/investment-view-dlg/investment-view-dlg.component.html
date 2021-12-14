@@ -1,0 +1,16 @@
+<div class="modal-body">
+    <div class="col-md-12">
+        <label>Ref Id</label>
+        <p>{{investment.refId}}</p>
+        <label>Full Name</label>
+        <p>{{investment.firstName}} {{investment.lastName}}</p>
+        <label>Email Address</label>
+        <p>{{investment.email}}</p>
+        <label>Contact No</label>
+        <p>{{investment.contactNo}}</p>
+        <label>Amount (£)</label>
+        <p>{{investment.amount | number: '1.2-2'}}</p>
+        <label>Remaining Amount (£)</label>
+        <p>{{investment.remainingAmount | number: '1.2-2'}}</p>
+    </div>
+</div>
