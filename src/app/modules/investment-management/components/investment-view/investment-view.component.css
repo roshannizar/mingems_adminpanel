@@ -14,4 +14,11 @@ h4 {
     background-color: white;
     color: #ef8157;
     font-weight: bold;
-  }
+}
+.btn-delete {
+    cursor: pointer;
+    margin-left: 10px;
+}
+.btn-view {
+    cursor: pointer;
+}
