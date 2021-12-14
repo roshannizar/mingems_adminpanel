@@ -69,8 +69,10 @@
                                         <td>{{investment.amount | number: '1.2-2'}}</td>
                                         <td>{{investment.remainingAmount | number: '1.2-2'}}</td>
                                         <td>
-                                            <i class="material-icons btn-view">visibility</i>
-                                            <i class="material-icons btn-delete">create</i>
+                                            <i class="material-icons btn-view"
+                                                (click)="openInvestmentModal(investment)">visibility</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openUpdateDialog(investment.id)">create</i>
                                             <i class="material-icons btn-delete">delete</i>
                                         </td>
                                     </tr>
@@ -83,3 +85,15 @@
         </div>
     </div>
 </div>
+
+<aside class="aside-right" [ngClass]="{'open': isDisplay}">
+    <div *ngIf='isDisplay'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-investment-view-dlg *ngIf="investment != null" [investment]="investment"></app-investment-view-dlg>
+    </div>
+</aside>

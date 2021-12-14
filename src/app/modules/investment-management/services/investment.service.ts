@@ -20,7 +20,7 @@ export class InvestmentService extends BaseService<InvestmentModel> {
     }
 
     getInvestment(id: string) {
-        return this.getById(`${this.baseUrl}?id=${id}`);
+        return this.getById(`${this.baseUrl}/${id}`);
     }
 
     createInvestment(model: InvestmentModel) {

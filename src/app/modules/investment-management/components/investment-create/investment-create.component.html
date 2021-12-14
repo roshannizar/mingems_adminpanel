@@ -38,6 +38,6 @@
 </div>
 
 <div mat-dialog-actions class="align-right" *ngIf="!isBlock">
-    <button mat-button>Cancel</button>
+    <button mat-button (click)="close()">Cancel</button>
     <button mat-button id="btn-update" (click)="onSave()">Save</button>
 </div>
