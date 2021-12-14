@@ -52,7 +52,7 @@
                                 <tbody>
                                     <tr *ngIf="isBlock">
                                         <td colspan="8">
-                                            <app-loading-ui [isBlock]="isBlock"></app-loading-ui>
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
                                     <tr *ngIf="investments.length == 0 && isBlock == false" class="text-center">
