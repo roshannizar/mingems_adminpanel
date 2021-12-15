@@ -15,7 +15,6 @@ export class ConfirmationModalComponent implements OnInit {
   appForm: FormGroup;
 
   @Input() block = false;
-  @Input() message: string;
   @Input() appName: string;
   @Input() confirmText: string;
   @Output() onConfirm: EventEmitter<any> = new EventEmitter();

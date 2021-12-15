@@ -14,18 +14,17 @@ import { InvestmentViewComponent } from '../investment-view/investment-view.comp
 export class InvestmentUpdateComponent implements OnInit {
 
   isBlock = false;
-  isWholeBlock = false;
 
   investmentGroup: FormGroup;
   investment: InvestmentModel;
 
-  constructor(public dialogRef: MatDialogRef<InvestmentViewComponent>, 
-    @Inject(MAT_DIALOG_DATA) public data: string, private fb: FormBuilder, 
+  constructor(public dialogRef: MatDialogRef<InvestmentViewComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: InvestmentModel, private fb: FormBuilder,
     private investmentService: InvestmentService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.createInvestment();
-    this.getInvestment(this.data);
+    this.patchInvestment(this.data);
   }
 
   createInvestment() {
@@ -38,21 +37,6 @@ export class InvestmentUpdateComponent implements OnInit {
       contactno: ['', Validators.required],
       amount: [0, Validators.required]
     })
-  }
-
-  getInvestment(id: string) {
-    this.isWholeBlock = true;
-    this.investmentService.getInvestment(id).subscribe(
-      (result) => {
-        this.investment = result;
-        this.patchInvestment(result);
-        this.isWholeBlock = false;
-      },
-      (error) => {
-        this.isWholeBlock = false;
-        this.toastr.error(error.message, 'Failed to load investment');
-      }
-    );
   }
 
   patchInvestment(investment: InvestmentModel) {

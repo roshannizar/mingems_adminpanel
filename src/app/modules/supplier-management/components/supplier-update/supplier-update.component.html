@@ -1,1 +1,36 @@
-<p>supplier-update works!</p>
+<h1 mat-dialog-title>Update Supplier</h1>
+<div mat-dialog-content>
+    <div class="container">
+        <form [formGroup]="supplierGroup" class="row">
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Full Name" formControlName="name" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Email" formControlName="id" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter City" formControlName="city">
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Contact No" formControlName="contactNo" required>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="isBlock">
+    <app-loading-ui [block]="isBlock"></app-loading-ui>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="!isBlock">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button id="btn-update" (click)="onUpdate()" [disabled]="!supplierGroup.dirty">Update</button>
+</div>

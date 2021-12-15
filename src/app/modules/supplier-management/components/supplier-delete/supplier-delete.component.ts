@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { SupplierModel } from '../../models/supplier-model';
+import { SupplierService } from '../../services/supplier.service';
 
 @Component({
   selector: 'app-supplier-delete',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SupplierDeleteComponent implements OnInit {
 
-  constructor() { }
+  isBlock = false;
+  name: string;
+
+  @Input() supplier: SupplierModel;
+  @Output() deleted = new EventEmitter();
+
+  constructor(private supplierService: SupplierService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
+    this.name = this.supplier.name;
   }
 
+  confirmDelete(id: string) {
+    this.isBlock = true;
+    this.supplierService.deleteSupplier(id).subscribe(
+      (result) => {
+        this.isBlock = false;
+        this.deleted.emit();
+        this.toastr.success('Deleted successfully!');
+      },
+      (error) => {
+        this.isBlock = false;
+        this.toastr.error(error.message, `Failed to delete ${id}`);
+      }
+    );
+  }
 }
