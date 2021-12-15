@@ -11,10 +11,8 @@ import { InvestmentService } from '../../services/investment.service';
 export class InvestmentDeleteComponent implements OnInit {
 
   isBlock = false;
-  isClear = false;
 
   name: string;
-  message: string;
 
   @Input() investment: InvestmentModel;
   @Output() deleted = new EventEmitter();
@@ -22,8 +20,7 @@ export class InvestmentDeleteComponent implements OnInit {
   constructor(private toastr: ToastrService, private investmentService: InvestmentService) { }
 
   ngOnInit(): void {
-    this.message = `'${this.investment.refId}'`;
-    this.name = this.investment.refId;
+    this.name = `'${this.investment.refId}'`;
   }
 
   confirmDelete(id: string) {
@@ -31,7 +28,6 @@ export class InvestmentDeleteComponent implements OnInit {
     this.investmentService.deleteInvestment(id).subscribe(
       (result) => {
         this.isBlock = false;
-        this.isClear = true;
         this.deleted.emit();
         this.toastr.success('Deleted successfully!');
       },

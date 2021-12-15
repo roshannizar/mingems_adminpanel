@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Update Investment</h1>
 <div mat-dialog-content>
     <div class="container">
-        <form [formGroup]="investmentGroup" class="row" *ngIf="!isWholeBlock">
+        <form [formGroup]="investmentGroup" class="row">
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="Enter First Name" formControlName="firstName" required>
@@ -30,9 +30,6 @@
                 </mat-form-field>
             </div>
         </form>
-        <div class="col-md-12" *ngIf="isWholeBlock">
-            <app-loading-ui class="align-center" [block]="isWholeBlock"></app-loading-ui>
-        </div>
     </div>
 </div>
 

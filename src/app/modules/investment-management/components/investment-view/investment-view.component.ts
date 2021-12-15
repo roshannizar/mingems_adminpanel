@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { SupplierModel } from 'app/modules/supplier-management/models/supplier-model';
 import { ToastrService } from 'ngx-toastr';
 import { InvestmentModel } from '../../models/investment-model';
 import { InvestmentService } from '../../services/investment.service';
@@ -53,10 +54,10 @@ export class InvestmentViewComponent implements OnInit {
     });
   }
 
-  openUpdateDialog(id: string) {
+  openUpdateDialog(model: InvestmentModel) {
     const dialogRef = this.dialog.open(InvestmentUpdateComponent, {
       width: '800px',
-      data: id
+      data: model
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -70,7 +71,7 @@ export class InvestmentViewComponent implements OnInit {
     this.isDelete = false;
   }
 
-  openInvestmentModal(investment: InvestmentModel) {
+  openViewModal(investment: InvestmentModel) {
     this.isDisplay = true;
     this.heading_text = 'View Investment';
     this.investment = investment;

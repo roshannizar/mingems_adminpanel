@@ -70,9 +70,9 @@
                                         <td>{{investment.remainingAmount | number: '1.2-2'}}</td>
                                         <td>
                                             <i class="material-icons btn-view"
-                                                (click)="openInvestmentModal(investment)">visibility</i>
+                                                (click)="openViewModal(investment)">visibility</i>
                                             <i class="material-icons btn-delete"
-                                                (click)="openUpdateDialog(investment.id)">create</i>
+                                                (click)="openUpdateDialog(investment)">create</i>
                                             <i class="material-icons btn-delete"
                                                 (click)="openDeleteModal(investment)">delete</i>
                                         </td>
