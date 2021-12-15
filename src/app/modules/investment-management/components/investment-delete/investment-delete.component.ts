@@ -20,7 +20,7 @@ export class InvestmentDeleteComponent implements OnInit {
   constructor(private toastr: ToastrService, private investmentService: InvestmentService) { }
 
   ngOnInit(): void {
-    this.name = `'${this.investment.refId}'`;
+    this.name = this.investment.refId;
   }
 
   confirmDelete(id: string) {
