@@ -8,13 +8,17 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class ConfirmationModalComponent implements OnInit {
 
-  @Output() onConfirm: EventEmitter<any> = new EventEmitter();
+  error = false;
+  isBlock = false;
+
+  item: any;
+  appForm: FormGroup;
+
+  @Input() block = false;
   @Input() message: string;
   @Input() appName: string;
   @Input() confirmText: string;
-  item: any;
-  error = false;
-  appForm: FormGroup;
+  @Output() onConfirm: EventEmitter<any> = new EventEmitter();
 
   constructor(private fb: FormBuilder) { }
 
@@ -29,10 +33,10 @@ export class ConfirmationModalComponent implements OnInit {
   }
 
   confirm(): void {
-    if(this.appName === this.appForm.get("name").value) {
-    this.onConfirm.emit(this.item);
-    this.error = false;
-    this.appForm.reset();
+    if (this.appName === this.appForm.get('name').value) {
+      this.onConfirm.emit(this.item);
+      this.error = false;
+      this.appForm.reset();
     } else {
       this.error = true;
     }
