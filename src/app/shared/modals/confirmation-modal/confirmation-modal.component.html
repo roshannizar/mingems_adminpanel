@@ -1,10 +1,12 @@
 <form [formGroup]="appForm">
-    <label style="font-weight: bold;">{{message}}</label>
-    <div class="col-md-12">
-        <input matInput placeholder="Enter name to confirm" style="border-bottom: 2px solid black;" required formControlName="name">
-        <br/><br/>
-        <button class="btn btn-primary" [disabled]="appForm.invalid" (click)="confirm()">Delete</button>
-        <br />
-        <label style="font-weight: bold;color: red;" *ngIf="error">Could not match the name</label>
+    <p>Are you sure that you want to remove <strong>{{message}}</strong></p>
+    <input matInput placeholder="Enter name to confirm" style="border-bottom: 2px solid black;" required
+        formControlName="name">
+    <br /><br />
+    <button class="btn btn-primary" *ngIf="!block" [disabled]="appForm.invalid" (click)="confirm()">Delete</button>
+    <div class="align-right" *ngIf="block">
+        <app-loading-ui [block]="block"></app-loading-ui>
     </div>
+    <br />
+    <label style="font-weight: bold;color: red;" *ngIf="error">Could not match the name</label>
 </form>

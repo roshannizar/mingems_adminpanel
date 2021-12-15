@@ -14,6 +14,7 @@ import { InvestmentUpdateComponent } from '../investment-update/investment-updat
 export class InvestmentViewComponent implements OnInit {
 
   isBlock = false;
+  isDelete = false;
   isDisplay = false;
 
   heading_text: string;
@@ -66,6 +67,7 @@ export class InvestmentViewComponent implements OnInit {
   closeModal() {
     this.isDisplay = false;
     this.investment = null;
+    this.isDelete = false;
   }
 
   openInvestmentModal(investment: InvestmentModel) {
@@ -74,4 +76,15 @@ export class InvestmentViewComponent implements OnInit {
     this.investment = investment;
   }
 
+  openDeleteModal(investment: InvestmentModel) {
+    this.isDelete = true;
+    this.investment = investment;
+    this.isDisplay = true;
+    this.heading_text = `Delete ${investment.refId}`;
+  }
+
+  refresh(): void {
+    this.closeModal();
+    this.getInvestments();
+  }
 }

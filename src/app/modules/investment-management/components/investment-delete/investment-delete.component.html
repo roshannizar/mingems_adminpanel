@@ -1,1 +1,3 @@
-<p>investment-delete works!</p>
+<div class="card-body">
+    <app-confirmation-modal (onConfirm)="confirmDelete(investment.id)" [confirmText]="'Delete'" [message]="message" [block]="isBlock" [appName]="name"></app-confirmation-modal>
+</div>

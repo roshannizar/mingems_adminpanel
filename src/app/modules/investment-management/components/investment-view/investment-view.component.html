@@ -73,7 +73,8 @@
                                                 (click)="openInvestmentModal(investment)">visibility</i>
                                             <i class="material-icons btn-delete"
                                                 (click)="openUpdateDialog(investment.id)">create</i>
-                                            <i class="material-icons btn-delete">delete</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openDeleteModal(investment)">delete</i>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -94,6 +95,9 @@
                 <i class="material-icons">close</i>
             </a>
         </div>
-        <app-investment-view-dlg *ngIf="investment != null" [investment]="investment"></app-investment-view-dlg>
+        <app-investment-view-dlg *ngIf="investment != null && !isDelete" [investment]="investment">
+        </app-investment-view-dlg>
+        <app-investment-delete *ngIf="investment != null && isDelete" [investment]="investment" (deleted)="refresh()">
+        </app-investment-delete>
     </div>
 </aside>
