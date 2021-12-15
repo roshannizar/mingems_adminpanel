@@ -29,7 +29,7 @@ export class SupplierUpdateComponent implements OnInit {
 
   createSupplier() {
     this.supplierGroup = this.fb.group({
-      id: ['', Validators.required],
+      email: ['', Validators.required],
       name: ['', Validators.required],
       city: [''],
       contactNo: ['', Validators.required]
@@ -39,6 +39,7 @@ export class SupplierUpdateComponent implements OnInit {
   patchSupplier(supplierModel: SupplierModel) {
     this.supplierGroup.patchValue({
       id: supplierModel.id,
+      email: supplierModel.email,
       name: supplierModel.name,
       city: supplierModel.city,
       contactNo: supplierModel.contactNo

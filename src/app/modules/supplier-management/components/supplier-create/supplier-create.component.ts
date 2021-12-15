@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { InvestmentViewComponent } from 'app/modules/investment-management/components/investment-view/investment-view.component';
+import { ToastrService } from 'ngx-toastr';
+import { SupplierModel } from '../../models/supplier-model';
+import { SupplierService } from '../../services/supplier.service';
 
 @Component({
   selector: 'app-supplier-create',
@@ -12,9 +15,11 @@ export class SupplierCreateComponent implements OnInit {
 
   isBlock = false;
 
+  supplier: SupplierModel;
   supplierGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<InvestmentViewComponent>) { }
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<InvestmentViewComponent>,
+    private supplierService: SupplierService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.createSupplier();
@@ -22,11 +27,26 @@ export class SupplierCreateComponent implements OnInit {
 
   createSupplier() {
     this.supplierGroup = this.fb.group({
-      id: ['', Validators.required],
+      email: ['', Validators.email],
       name: ['', Validators.required],
       city: [''],
       contactNo: ['', Validators.required]
     });
+  }
+
+  onSave() {
+    this.isBlock = true;
+    this.supplier = Object.assign({}, this.supplier, this.supplierGroup.value);
+    this.supplierService.createSupplier(this.supplier).subscribe(
+      (result) => {
+        this.isBlock = false;
+        this.toastr.success('Supplier created successfully!', 'Success');
+      },
+      (error) => {
+        this.isBlock = false;
+        this.toastr.error(error.message, 'Failed to save supplier');
+      }
+    );
   }
 
   close() {
