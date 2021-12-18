@@ -66,6 +66,7 @@ export class AuthComponent implements OnInit {
       },
       (error) => {
         this.toastr.error(error.message, 'Invalid Credentials!');
+        this.redirectName = 'SIGN IN';
         this.block = false;
       }
     )

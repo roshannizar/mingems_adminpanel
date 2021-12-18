@@ -40,6 +40,7 @@ export class SupplierCreateComponent implements OnInit {
     this.supplierService.createSupplier(this.supplier).subscribe(
       (result) => {
         this.isBlock = false;
+        this.close();
         this.toastr.success('Supplier created successfully!', 'Success');
       },
       (error) => {
