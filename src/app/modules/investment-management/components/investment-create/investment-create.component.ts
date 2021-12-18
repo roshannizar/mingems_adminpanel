@@ -47,7 +47,7 @@ export class InvestmentCreateComponent implements OnInit {
       },
       (error) => {
         this.isBlock = false;
-        this.toastr.error(error.message, 'Failed to created invesmtnet');
+        this.toastr.error(error.message, 'Failed to created investment');
       }
     );
   }
