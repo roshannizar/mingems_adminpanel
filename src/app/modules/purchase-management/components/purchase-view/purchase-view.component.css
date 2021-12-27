@@ -10,3 +10,8 @@
 h4 {
     font-weight: bold;
 }
+.create-btn {
+    background-color: white;
+    color: #ef8157;
+    font-weight: bold;
+}

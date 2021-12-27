@@ -14,6 +14,10 @@
                                     <input matInput placeholder="Search" type="text" class="mat-input">
                                 </mat-form-field>
                             </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateDialog()">New</button>
+                            </div>
                         </div>
                     </div>
                     <div class="card-body">
@@ -24,21 +28,21 @@
                                         #
                                     </th>
                                     <th>
-                                        First Name
+                                        Product Name
                                     </th>
                                     <th>
-                                        Last Name
+                                        Investor
                                     </th>
                                     <th>
-                                        Email
+                                        Supplier
                                     </th>
                                     <th>
-                                        Role
+                                        Date
                                     </th>
                                     <th>
-                                        Account Status
+                                        Cost
                                     </th>
-                                    <th>IP Address</th>
+                                    <th>Action</th>
                                 </thead>
                                 <tbody>
                                     <tr *ngIf="block">
@@ -46,23 +50,20 @@
                                             <app-loading-ui [block]="block"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="users?.length == 0 && block == false" class="text-center">
+                                    <tr *ngIf="purchases.length == 0 && !block" class="text-center">
                                         <td colspan="7">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let user of users; let i = index">
+                                    <tr *ngFor="let purchase of purchases; let i = index">
                                         <td>{{i + 1}}</td>
-                                        <td>{{user.firstName}}</td>
-                                        <td>{{user.lastName}}</td>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.role === 0 ? "Super Admin" : user.role === 1 ? 'Admin' : user.role
-                                            === 2 ? 'User' : 'Customer'}}</td>
-                                        <td>{{user.verify ? 'Active': 'In-Active'}}</td>
-                                        <td>{{user.ipAddress || 'Not Available'}}</td>
+                                        <td>{{purchase.name}}</td>
+                                        <td>{{purchase.investment.firstName}}</td>
+                                        <td>{{purchase.supplier.name}}</td>
+                                        <td>{{purchase.transactionDate | date: 'medium'}}</td>
+                                        <td>{{purchase.unitPrice}}</td>
                                         <td>
-                                            <i class="material-icons btn-view"
-                                                (click)="openCategoryDlgModal(category)">visibility</i>
+                                            <i class="material-icons btn-view">visibility</i>
                                         </td>
                                     </tr>
                                 </tbody>

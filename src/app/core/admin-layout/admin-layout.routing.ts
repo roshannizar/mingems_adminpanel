@@ -13,12 +13,14 @@ import { PrivateCodeViewComponent } from 'app/modules/private-code-management/co
 import { SupplierViewComponent } from 'app/modules/supplier-management/components/supplier-view/supplier-view.component';
 import { InventoryViewComponent } from 'app/modules/inventory-management/components/inventory-view/inventory-view.component';
 import { CustomerViewComponent } from 'app/modules/customer-management/components/customer-view/customer-view.component';
+import { PurchaseCreateComponent } from 'app/modules/purchase-management/components/purchase-create/purchase-create.component';
 
 export const AdminLayoutRoutes: Routes = [
 
     { path: 'dashboard', component: DashboardComponent },
     { path: 'inventory', component: InventoryViewComponent},
     { path: 'purchase', component: PurchaseViewComponent},
+    { path: 'purchase/create', component: PurchaseCreateComponent},
     { path: 'order', component: OrderViewComponent},
     { path: 'supplier', component: SupplierViewComponent},
     { path: 'investment', component: InvestmentViewComponent},
