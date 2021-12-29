@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { PurchaseInvestorModel, PurchaseModel, PurchaseSupplierModel } from '../../model/purchase-model';
 import { PurchaseInvestorService } from '../../services/purchase-investor.service';
 import { PurchaseSupplierService } from '../../services/purchase-supplier.service';
 import { PurchaseService } from '../../services/purchase.service';
+import { PurchaseViewComponent } from '../purchase-view/purchase-view.component';
 
 @Component({
   selector: 'app-purchase-create',
@@ -24,7 +26,7 @@ export class PurchaseCreateComponent implements OnInit {
   constructor(private fb: FormBuilder, private toastrService: ToastrService,
     private purchaseInvestorService: PurchaseInvestorService,
     private purchaseSupplierService: PurchaseSupplierService,
-    private purchaseService: PurchaseService) { }
+    private purchaseService: PurchaseService, public dialogRef: MatDialogRef<PurchaseViewComponent>) { }
 
   ngOnInit(): void {
     this.createPurchaseGroup();
@@ -84,5 +86,9 @@ export class PurchaseCreateComponent implements OnInit {
         this.toastrService.error(error.message, 'Failed to save purchase');
       }
     );
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 }

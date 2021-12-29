@@ -1,0 +1,16 @@
+<div class="modal-body">
+    <div class="col-md-12">
+        <label>Product Name</label>
+        <p>{{purchase.name}}</p>
+        <label>Investor</label>
+        <p>{{purchase.investment.firstName}} {{purchase.investment.lastName}}</p>
+        <label>Supplier</label>
+        <p>{{purchase.supplier.name}}</p>
+        <label>Transaction Date</label>
+        <p>{{purchase.transactionDate}}</p>
+        <label>Unit Price(£)</label>
+        <p>{{purchase.unitPrice | number: '1.2-2'}}</p>
+        <label>Export Cost(£)</label>
+        <p>{{purchase.exportCost | number: '1.2-2'}}</p>
+    </div>
+</div>

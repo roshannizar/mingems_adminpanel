@@ -40,17 +40,17 @@
                                         Date
                                     </th>
                                     <th>
-                                        Cost
+                                        Cost(£)
                                     </th>
                                     <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngIf="block">
+                                    <tr *ngIf="isBlock">
                                         <td colspan="7">
-                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="purchases.length == 0 && !block" class="text-center">
+                                    <tr *ngIf="purchases.length == 0 && !isBlock" class="text-center">
                                         <td colspan="7">
                                             <span class="font-italic">No record found!</span>
                                         </td>
@@ -61,9 +61,13 @@
                                         <td>{{purchase.investment.firstName}}</td>
                                         <td>{{purchase.supplier.name}}</td>
                                         <td>{{purchase.transactionDate | date: 'medium'}}</td>
-                                        <td>{{purchase.unitPrice}}</td>
+                                        <td>{{purchase.unitPrice | number: '1.2-2'}}</td>
                                         <td>
-                                            <i class="material-icons btn-view">visibility</i>
+                                            <i class="material-icons btn-view" (click)="openViewModal(purchase)">visibility</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openUpdateDialog(purchase)">create</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openDeleteModal(purchase)">delete</i>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -75,3 +79,18 @@
         </div>
     </div>
 </div>
+
+<aside class="aside-right" [ngClass]="{'open': isDisplay}">
+    <div *ngIf='isDisplay'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-purchase-view-dlg *ngIf="purchase != null && !isDelete" [purchase]="purchase">
+        </app-purchase-view-dlg>
+        <app-purchase-delete *ngIf="purchase != null && isDelete" [purchase]="purchase" (deleted)="refresh()">
+        </app-purchase-delete>
+    </div>
+</aside>

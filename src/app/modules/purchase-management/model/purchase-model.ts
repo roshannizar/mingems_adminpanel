@@ -7,7 +7,6 @@ export class PurchaseModel {
     unitPrice: number;
     exportCost: number;
     supplierId: string;
-    investmentId: string;
     supplier: PurchaseSupplierModel
     investment: PurchaseInvestorModel;
 }

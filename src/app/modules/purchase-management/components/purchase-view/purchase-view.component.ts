@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { PurchaseModel } from '../../model/purchase-model';
 import { PurchaseService } from '../../services/purchase.service';
 import { PurchaseCreateComponent } from '../purchase-create/purchase-create.component';
+import { PurchaseUpdateComponent } from '../purchase-update/purchase-update.component';
 
 @Component({
   selector: 'app-purchase-view',
@@ -14,8 +15,13 @@ import { PurchaseCreateComponent } from '../purchase-create/purchase-create.comp
 export class PurchaseViewComponent implements OnInit {
 
   isBlock = false;
+  isDelete = false;
+  isDisplay = false;
+
+  heading_text = 'View Purchase'
 
   purchases = new Array<PurchaseModel>();
+  purchase = new PurchaseModel();
 
   constructor(private dialog: MatDialog, private purchaseService: PurchaseService,
     private toastrService: ToastrService) { }
@@ -44,6 +50,42 @@ export class PurchaseViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      this.getPurchases();
     });
+  }
+
+  openUpdateDialog(purchase: PurchaseModel) {
+    const dialogRef = this.dialog.open(PurchaseUpdateComponent, {
+      width: '800px',
+      data: purchase
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getPurchases();
+    });
+  }
+
+  closeModal() {
+    this.isDisplay = false;
+    this.purchase = null;
+    this.isDelete = false;
+  }
+
+  openViewModal(purchase: PurchaseModel) {
+    this.isDisplay = true;
+    this.heading_text = 'View Purchase';
+    this.purchase = purchase;
+  }
+
+  openDeleteModal(purchase: PurchaseModel) {
+    this.isDelete = true;
+    this.purchase = purchase;
+    this.isDisplay = true;
+    this.heading_text = `Delete ${purchase.name}`;
+  }
+
+  refresh(): void {
+    this.closeModal();
+    this.getPurchases();
   }
 }
