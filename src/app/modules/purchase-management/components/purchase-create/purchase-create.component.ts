@@ -79,6 +79,7 @@ export class PurchaseCreateComponent implements OnInit {
     this.purchaseService.createPurchase(this.purchase).subscribe(
       (result) => {
         this.isBlock = false;
+        this.close();
         this.toastrService.success('Purchase saved successfully!', 'Success');
       },
       (error) => {
