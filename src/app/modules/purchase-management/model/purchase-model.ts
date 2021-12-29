@@ -21,4 +21,5 @@ export class PurchaseInvestorModel {
     refId: string;
     firstName: string;
     lastName: string;
+    amount: number;
 }

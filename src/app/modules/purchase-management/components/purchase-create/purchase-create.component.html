@@ -14,7 +14,8 @@
             </div>
             <p *ngIf="isBlock">Loading Investors. Please Wait! ...</p>
             <div class="col-md-6">
-                <ng-select formControlName="investorId" required placeholder="Select Investor">
+                <ng-select formControlName="investorId" required placeholder="Select Investor"
+                    (change)="activateAmount($event)">
                     <ng-option *ngFor="let investor of investors" [value]="investor.id">{{investor.firstName}}
                         {{investor.lastName}}</ng-option>
                 </ng-select>
@@ -25,9 +26,14 @@
                     <ng-option *ngFor="let supplier of suppliers" [value]="supplier.id">{{supplier.name}}</ng-option>
                 </ng-select>
             </div>
+            <div class="col-md-3" *ngIf="enableAmount">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Investor Remaining Amount" disabled value="{{remainingAmount}}">
+                </mat-form-field>
+            </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter UnitPrice" formControlName="unitPrice">
+                    <input matInput placeholder="Enter UnitPrice" formControlName="unitPrice" (input)="reduceAmount()">
                 </mat-form-field>
             </div>
             <div class="col-md-3">
