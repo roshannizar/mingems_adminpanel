@@ -31,6 +31,6 @@ export class PurchaseService extends BaseService<PurchaseModel> {
     }
 
     deletePurchase(id: string) {
-        this.delete(`${this.baseUrl}?id=${id}`);
+        return this.delete(`${this.baseUrl}?id=${id}`);
     }
 }
