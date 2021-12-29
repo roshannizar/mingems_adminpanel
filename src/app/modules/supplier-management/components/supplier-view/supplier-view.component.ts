@@ -52,10 +52,10 @@ export class SupplierViewComponent implements OnInit {
     });
   }
 
-  openUpdateDialog(id: string) {
+  openUpdateDialog(model: SupplierModel) {
     const dialogRef = this.dialog.open(SupplierUpdateComponent, {
       width: '800px',
-      data: id
+      data: model
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { InvestmentViewComponent } from 'app/modules/investment-management/components/investment-view/investment-view.component';
 import { ToastrService } from 'ngx-toastr';
 import { SupplierModel } from '../../models/supplier-model';
 import { SupplierService } from '../../services/supplier.service';
+import { SupplierViewComponent } from '../supplier-view/supplier-view.component';
 
 @Component({
   selector: 'app-supplier-create',
@@ -18,7 +18,7 @@ export class SupplierCreateComponent implements OnInit {
   supplier: SupplierModel;
   supplierGroup: FormGroup;
 
-  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<InvestmentViewComponent>,
+  constructor(private fb: FormBuilder, public dialogRef: MatDialogRef<SupplierViewComponent>,
     private supplierService: SupplierService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
