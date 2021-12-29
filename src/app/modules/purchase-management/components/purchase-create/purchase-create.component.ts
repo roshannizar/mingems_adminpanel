@@ -16,6 +16,8 @@ import { PurchaseViewComponent } from '../purchase-view/purchase-view.component'
 export class PurchaseCreateComponent implements OnInit {
 
   isBlock = false;
+  enableAmount = false;
+  remainingAmount = 0;
 
   purchaseGroup: FormGroup;
 
@@ -91,5 +93,29 @@ export class PurchaseCreateComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  activateAmount(event) {
+    if (event) {
+      this.enableAmount = true;
+      const tempInvestor = this.investors.find(i => i.id === event);
+      this.remainingAmount = tempInvestor.amount;
+    } else {
+      this.enableAmount = false;
+    }
+  }
+
+  reduceAmount() {
+    const value = this.purchaseGroup.get('unitPrice').value;
+    const investorId = this.purchaseGroup.get('investorId').value
+    const investorAmount = this.investors.find(i => i.id === investorId);
+
+    if (value <= investorAmount.amount) {
+      this.remainingAmount = investorAmount.amount - value;
+    } else {
+      this.toastrService.warning('Investor amount balance exceeded');
+      this.remainingAmount = investorAmount.amount;
+      this.purchaseGroup.get('unitPrice').setValue(0);
+    }
   }
 }
