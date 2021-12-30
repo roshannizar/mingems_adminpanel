@@ -3,6 +3,7 @@ export class PurchaseModel {
     name: string;
     description: string;
     investorId: string;
+    previousInvestorId: string;
     transactionDate: Date;
     unitPrice: number;
     exportCost: number;
@@ -22,4 +23,5 @@ export class PurchaseInvestorModel {
     firstName: string;
     lastName: string;
     amount: number;
+    remainingAmount: number;
 }
