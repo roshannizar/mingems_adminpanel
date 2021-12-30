@@ -16,6 +16,9 @@ import { PurchaseViewComponent } from '../purchase-view/purchase-view.component'
 export class PurchaseUpdateComponent implements OnInit {
 
   isBlock = false;
+  remainingAmount = 0;
+  enableAmount = false;
+  previousInvestorId = null;
 
   purchaseGroup: FormGroup;
 
@@ -60,6 +63,7 @@ export class PurchaseUpdateComponent implements OnInit {
       unitPrice: purchase.unitPrice,
       exportCost: purchase.exportCost
     });
+    this.previousInvestorId = purchase.investorId;
   }
 
   getInvestors() {
@@ -67,6 +71,7 @@ export class PurchaseUpdateComponent implements OnInit {
     this.purchaseInvestorService.getInvestors().subscribe(
       (result) => {
         this.investors = result;
+        this.activateAmount(this.data.investorId);
         this.isBlock = false;
       },
       (error) => {
@@ -93,6 +98,7 @@ export class PurchaseUpdateComponent implements OnInit {
   onUpdate() {
     this.isBlock = true;
     this.purchase = Object.assign({}, this.purchase, this.purchaseGroup.value);
+    this.purchase.previousInvestorId = this.previousInvestorId;
     this.purchaseService.updatePurchase(this.purchase).subscribe(
       (result) => {
         this.isBlock = false;
@@ -104,5 +110,37 @@ export class PurchaseUpdateComponent implements OnInit {
         this.toastrService.error(error.message, 'Failed to update purchases');
       }
     );
+  }
+
+  activateAmount(event) {
+    if (event) {
+      this.enableAmount = true;
+      const tempInvestor = this.investors.find(i => i.id === event);
+      this.remainingAmount = tempInvestor.remainingAmount;
+
+      if (this.previousInvestorId !== event) {
+        this.reduceAmount();
+      }
+    } else {
+      this.enableAmount = false;
+    }
+  }
+
+  reduceAmount() {
+    const value = this.purchaseGroup.get('unitPrice').value;
+    const investorId = this.purchaseGroup.get('investorId').value
+    const investorAmount = this.investors.find(i => i.id === investorId);
+
+    if (value <= investorAmount.remainingAmount) {
+      this.remainingAmount = investorAmount.amount - value;
+    } else {
+      this.toastrService.warning('Investor amount balance exceeded');
+      this.remainingAmount = investorAmount.remainingAmount;
+      this.purchaseGroup.get('unitPrice').setValue(0);
+    }
+  }
+
+  close() {
+    this.dialogRef.close();
   }
 }
