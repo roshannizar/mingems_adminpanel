@@ -41,7 +41,7 @@ export class NavbarComponent implements OnInit {
             }
         });
         this.getUserName();
-        this.getOrders();
+        //this.getOrders();
     }
 
     openLink() {
