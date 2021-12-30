@@ -13,8 +13,8 @@ export class SignalRService {
     signalSent = new EventEmitter<boolean>();
 
     constructor(private toastr: ToastrService) {
-        this.buildConnection();
-        this.startConnection();
+        //this.buildConnection();
+        //this.startConnection();
     }
 
     private buildConnection = () => {
