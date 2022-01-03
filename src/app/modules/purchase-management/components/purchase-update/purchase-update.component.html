@@ -12,16 +12,16 @@
                     <input matInput placeholder="Enter Description" formControlName="description">
                 </mat-form-field>
             </div>
-            <p *ngIf="isBlock">Loading Investors. Please Wait! ...</p>
-            <div class="col-md-6">
+            <p *ngIf="isBlockExtra">Loading Investors. Please Wait! ...</p>
+            <div class="col-md-6" *ngIf="!isBlockExtra">
                 <ng-select formControlName="investorId" required placeholder="Select Investor"
                     (change)="activateAmount($event)">
                     <ng-option *ngFor="let investor of investors" [value]="investor.id">{{investor.firstName}}
                         {{investor.lastName}}</ng-option>
                 </ng-select>
             </div>
-            <p *ngIf="isBlock">Loading Suppliers. Please Wait! ...</p>
-            <div class="col-md-6">
+            <p *ngIf="isBlockExtra">Loading Suppliers. Please Wait! ...</p>
+            <div class="col-md-6" *ngIf="!isBlockExtra">
                 <ng-select formControlName="supplierId" required placeholder="Select Supplier">
                     <ng-option *ngFor="let supplier of suppliers" [value]="supplier.id">{{supplier.name}}</ng-option>
                 </ng-select>

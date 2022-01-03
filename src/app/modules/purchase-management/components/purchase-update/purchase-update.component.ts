@@ -18,6 +18,7 @@ export class PurchaseUpdateComponent implements OnInit {
   isBlock = false;
   remainingAmount = 0;
   enableAmount = false;
+  isBlockExtra = false;
   previousInvestorId = null;
 
   purchaseGroup: FormGroup;
@@ -67,29 +68,29 @@ export class PurchaseUpdateComponent implements OnInit {
   }
 
   getInvestors() {
-    this.isBlock = true;
+    this.isBlockExtra = true;
     this.purchaseInvestorService.getInvestors().subscribe(
       (result) => {
         this.investors = result;
         this.activateAmount(this.data.investorId);
-        this.isBlock = false;
+        this.isBlockExtra = false;
       },
       (error) => {
-        this.isBlock = false;
+        this.isBlockExtra = false;
         this.toastrService.error(error.message, 'Failed to load investors for purchase');
       }
     );
   }
 
   getSuppliers() {
-    this.isBlock = true;
+    this.isBlockExtra = true;
     this.purchaseSupplierService.getSuppliers().subscribe(
       (result) => {
         this.suppliers = result;
-        this.isBlock = false;
+        this.isBlockExtra = false;
       },
       (error) => {
-        this.isBlock = false;
+        this.isBlockExtra = false;
         this.toastrService.error(error.message, 'Failed to load suppliers for purchase');
       }
     );
