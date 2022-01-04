@@ -99,7 +99,7 @@ export class PurchaseCreateComponent implements OnInit {
     if (event) {
       this.enableAmount = true;
       const tempInvestor = this.investors.find(i => i.id === event);
-      this.remainingAmount = tempInvestor.amount;
+      this.remainingAmount = tempInvestor.remainingAmount;
     } else {
       this.enableAmount = false;
     }
@@ -110,11 +110,11 @@ export class PurchaseCreateComponent implements OnInit {
     const investorId = this.purchaseGroup.get('investorId').value
     const investorAmount = this.investors.find(i => i.id === investorId);
 
-    if (value <= investorAmount.amount) {
-      this.remainingAmount = investorAmount.amount - value;
+    if (value <= investorAmount.remainingAmount) {
+      this.remainingAmount = investorAmount.remainingAmount - value;
     } else {
       this.toastrService.warning('Investor amount balance exceeded');
-      this.remainingAmount = investorAmount.amount;
+      this.remainingAmount = investorAmount.remainingAmount;
       this.purchaseGroup.get('unitPrice').setValue(0);
     }
   }
