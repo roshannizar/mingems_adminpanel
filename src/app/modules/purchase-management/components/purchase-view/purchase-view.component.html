@@ -58,8 +58,8 @@
                                     <tr *ngFor="let purchase of purchases; let i = index">
                                         <td>{{i + 1}}</td>
                                         <td>{{purchase.name}}</td>
-                                        <td>{{purchase.investment.firstName}}</td>
-                                        <td>{{purchase.supplier.name}}</td>
+                                        <td>{{purchase?.investment?.firstName || 'N/A'}}</td>
+                                        <td>{{purchase?.supplier?.name || 'N/A'}}</td>
                                         <td>{{purchase.transactionDate | date: 'medium'}}</td>
                                         <td>{{purchase.unitPrice | number: '1.2-2'}}</td>
                                         <td>
