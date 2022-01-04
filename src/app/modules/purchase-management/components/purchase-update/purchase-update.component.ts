@@ -16,6 +16,7 @@ import { PurchaseViewComponent } from '../purchase-view/purchase-view.component'
 export class PurchaseUpdateComponent implements OnInit {
 
   isBlock = false;
+  lock = false;
   remainingAmount = 0;
   enableAmount = false;
   isBlockExtra = false;
@@ -132,12 +133,19 @@ export class PurchaseUpdateComponent implements OnInit {
     const investorId = this.purchaseGroup.get('investorId').value
     const investorAmount = this.investors.find(i => i.id === investorId);
 
-    if (value <= investorAmount.remainingAmount) {
-      this.remainingAmount = investorAmount.amount - value;
+    if (this.remainingAmount >= 0) {
+      this.remainingAmount = investorAmount.remainingAmount - value;
     } else {
       this.toastrService.warning('Investor amount balance exceeded');
       this.remainingAmount = investorAmount.remainingAmount;
       this.purchaseGroup.get('unitPrice').setValue(0);
+    }
+
+    if (this.previousInvestorId === investorAmount.id && !this.lock) {
+      this.remainingAmount = investorAmount.remainingAmount + this.data.unitPrice;
+      investorAmount.remainingAmount = this.remainingAmount;
+      this.purchaseGroup.get('unitPrice').setValue(0);
+      this.lock = true;
     }
   }
 
