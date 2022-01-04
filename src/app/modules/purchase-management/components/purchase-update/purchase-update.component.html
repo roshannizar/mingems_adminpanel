@@ -20,7 +20,6 @@
                         {{investor.lastName}}</ng-option>
                 </ng-select>
             </div>
-            <p *ngIf="isBlockExtra">Loading Suppliers. Please Wait! ...</p>
             <div class="col-md-6" *ngIf="!isBlockExtra">
                 <ng-select formControlName="supplierId" required placeholder="Select Supplier">
                     <ng-option *ngFor="let supplier of suppliers" [value]="supplier.id">{{supplier.name}}</ng-option>
