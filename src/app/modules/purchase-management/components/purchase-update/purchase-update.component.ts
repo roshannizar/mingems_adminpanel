@@ -134,7 +134,15 @@ export class PurchaseUpdateComponent implements OnInit {
     const investorAmount = this.investors.find(i => i.id === investorId);
 
     if (this.remainingAmount >= 0) {
-      this.remainingAmount = investorAmount.remainingAmount - value;
+      const tempValue = investorAmount.remainingAmount - value;
+
+      if (tempValue <= 0) {
+        this.toastrService.warning('Investor amount balance exceeded');
+        this.remainingAmount = investorAmount.remainingAmount;
+        this.purchaseGroup.get('unitPrice').setValue(0);
+      } else {
+        this.remainingAmount = investorAmount.remainingAmount - value;
+      }
     } else {
       this.toastrService.warning('Investor amount balance exceeded');
       this.remainingAmount = investorAmount.remainingAmount;
