@@ -90,8 +90,8 @@
                                     </td>
                                 </tr>
 
-                                <tr *ngIf="dashboardModel.spProductsSolds?.length === 0">
-                                    <td colspan="3">
+                                <tr *ngIf="!block">
+                                    <td colspan="3" style="text-align: center;">
                                         No Records Found!
                                     </td>
                                 </tr>
@@ -127,8 +127,8 @@
                                     </td>
                                 </tr>
 
-                                <tr *ngIf="dashboardModel.spCustomers?.length === 0">
-                                    <td colspan="3">
+                                <tr *ngIf="!block">
+                                    <td colspan="3" style="text-align: center;">
                                         No Records Found!
                                     </td>
                                 </tr>
