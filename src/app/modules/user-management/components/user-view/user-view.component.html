@@ -55,9 +55,8 @@
                                         <td>{{i + 1}}</td>
                                         <td>{{user.firstName}}</td>
                                         <td>{{user.lastName}}</td>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.role === 0 ? "Super Admin" : user.role === 1 ? 'Admin' : user.role
-                                            === 2 ? 'User' : 'Customer'}}</td>
+                                        <td>{{user.id}}</td>
+                                        <td>{{user.role === 0 ? 'Admin' : 'Customer'}}</td>
                                         <td>{{user.verify ? 'Active': 'In-Active'}}</td>
                                         <td>{{user.ipAddress || 'Not Available'}}</td>
                                         <td>
