@@ -27,12 +27,12 @@
             </div>
             <div class="col-md-3" *ngIf="enableAmount">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Investor Remaining Amount" disabled value="{{remainingAmount}}">
+                    <input matInput type="number" placeholder="Investor Remaining Amount" disabled value="{{remainingAmount}}">
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter UnitPrice" formControlName="unitPrice" (input)="reduceAmount()">
+                    <input matInput type="number" placeholder="Enter UnitPrice" formControlName="unitPrice" (input)="reduceAmount()">
                 </mat-form-field>
             </div>
             <div class="col-md-3">

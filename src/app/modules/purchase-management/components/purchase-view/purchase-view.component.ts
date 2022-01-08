@@ -18,6 +18,7 @@ export class PurchaseViewComponent implements OnInit {
   isDelete = false;
   isDisplay = false;
 
+  search: string;
   heading_text = 'View Purchase'
 
   purchases = new Array<PurchaseModel>();
@@ -87,5 +88,25 @@ export class PurchaseViewComponent implements OnInit {
   refresh(): void {
     this.closeModal();
     this.getPurchases();
+  }
+
+  searchPurchase() {
+    if (this.search !== '') {
+      let tempPurchase = this.purchases.filter(s => s.name.toLowerCase().match(this.search.toLowerCase()));
+
+      if (tempPurchase.length === 0) {
+        tempPurchase = this.purchases.filter(s => s.investment.firstName.toLowerCase().match(this.search.toLowerCase()));
+
+        if(tempPurchase.length === 0) {
+          this.purchases = this.purchases.filter(s => s.supplier.name.toLowerCase().match(this.search.toLowerCase()));
+        } else {
+          this.purchases = tempPurchase;
+        }
+      } else {
+        this.purchases = tempPurchase;
+      }
+    } else {
+      this.getPurchases();
+    }
   }
 }
