@@ -18,6 +18,7 @@ export class InvestmentViewComponent implements OnInit {
   isDelete = false;
   isDisplay = false;
 
+  search: string;
   heading_text: string;
 
   investment = new InvestmentModel();
@@ -87,5 +88,21 @@ export class InvestmentViewComponent implements OnInit {
   refresh(): void {
     this.closeModal();
     this.getInvestments();
+  }
+
+  searchInvestment() {
+    if (this.search !== '') {
+      const tempinvestment = this.investments.filter(s => s.firstName.toLowerCase()
+      .match(this.search.toLowerCase()));
+
+      if (tempinvestment.length === 0) {
+        this.investments = this.investments.filter(s => s.lastName.toLowerCase()
+        .match(this.search.toLowerCase()));
+      } else {
+        this.investments = tempinvestment;
+      }
+    } else {
+      this.getInvestments();
+    }
   }
 }

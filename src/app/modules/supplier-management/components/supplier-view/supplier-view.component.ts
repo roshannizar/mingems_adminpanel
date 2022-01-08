@@ -17,6 +17,8 @@ export class SupplierViewComponent implements OnInit {
   isDelete = false;
   isDisplay = false;
 
+
+  search: string;
   heading_text: string;
 
   suppliers = new Array<SupplierModel>();
@@ -85,5 +87,19 @@ export class SupplierViewComponent implements OnInit {
   refresh(): void {
     this.closeModal();
     this.getSuppliers();
+  }
+
+  searchSupplier() {
+    if (this.search !== '') {
+      const tempSupplier = this.suppliers.filter(s => s.name.toLowerCase().match(this.search.toLowerCase()));
+
+      if (tempSupplier.length === 0) {
+        this.suppliers = this.suppliers.filter(s => s.city.toLowerCase().match(this.search.toLowerCase()));
+      } else {
+        this.suppliers = tempSupplier;
+      }
+    } else {
+      this.getSuppliers();
+    }
   }
 }
