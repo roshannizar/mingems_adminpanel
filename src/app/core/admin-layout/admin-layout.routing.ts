@@ -23,7 +23,7 @@ export const AdminLayoutRoutes: Routes = [
     // { path: 'order', component: OrderViewComponent},
     { path: 'supplier', component: SupplierViewComponent},
     { path: 'investment', component: InvestmentViewComponent},
-    // { path: 'customer', component: CustomerViewComponent},
+    { path: 'customer', component: CustomerViewComponent},
     // { path: 'more', component: MoreProductsComponent },
     // { path: 'more/users', component: UserViewComponent },
     // { path: 'more/report', component: ReportsComponent },
