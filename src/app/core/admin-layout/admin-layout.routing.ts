@@ -18,17 +18,16 @@ import { PurchaseCreateComponent } from 'app/modules/purchase-management/compone
 export const AdminLayoutRoutes: Routes = [
 
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'inventory', component: InventoryViewComponent},
+    // { path: 'inventory', component: InventoryViewComponent},
     { path: 'purchase', component: PurchaseViewComponent},
-    { path: 'purchase/create', component: PurchaseCreateComponent},
-    { path: 'order', component: OrderViewComponent},
+    // { path: 'order', component: OrderViewComponent},
     { path: 'supplier', component: SupplierViewComponent},
     { path: 'investment', component: InvestmentViewComponent},
-    { path: 'customer', component: CustomerViewComponent},
-    { path: 'more', component: MoreProductsComponent },
-    { path: 'more/users', component: UserViewComponent },
-    { path: 'more/report', component: ReportsComponent },
-    { path: 'more/lastlogged', component: LastLoggedComponent },
-    { path: 'more/private-code', component: PrivateCodeViewComponent},
-    { path: 'more/report/sales-report', component: SalesReportComponent }
+    // { path: 'customer', component: CustomerViewComponent},
+    // { path: 'more', component: MoreProductsComponent },
+    // { path: 'more/users', component: UserViewComponent },
+    // { path: 'more/report', component: ReportsComponent },
+    // { path: 'more/lastlogged', component: LastLoggedComponent },
+    // { path: 'more/private-code', component: PrivateCodeViewComponent},
+    // { path: 'more/report/sales-report', component: SalesReportComponent }
 ];
