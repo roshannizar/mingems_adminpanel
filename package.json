@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "heroku-postbuild": "ng build",
+    "heroku-postbuild": "npm version patch && ng build",
     "build": "npm version patch && ng build",
     "test": "ng test",
     "lint": "ng lint",
