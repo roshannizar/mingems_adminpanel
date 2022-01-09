@@ -1,12 +1,12 @@
 {
   "name": "mingems-dashboard",
-  "version": "2.5.0",
+  "version": "1.0.2",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
     "heroku-postbuild": "ng build",
-    "build": "ng build",
+    "build": "npm version patch && ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
