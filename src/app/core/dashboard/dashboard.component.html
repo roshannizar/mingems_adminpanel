@@ -80,8 +80,8 @@
                         <table class="table table-hover">
                             <thead class="text-warning-top">
                                 <th>Full Name</th>
-                                <th>Name</th>
-                                <th>Sold</th>
+                                <th>Total Investment</th>
+                                <th>Balance</th>
                             </thead>
                             <tbody>
                                 <tr *ngIf="block">
@@ -121,9 +121,9 @@
                                 <th>Amount</th>
                             </thead>
                             <tbody>
-                                <tr *ngIf="customerblock">
+                                <tr *ngIf="block">
                                     <td colspan="3">
-                                        <app-loading-ui [block]="customerblock"></app-loading-ui>
+                                        <app-loading-ui [block]="block"></app-loading-ui>
                                     </td>
                                 </tr>
 
