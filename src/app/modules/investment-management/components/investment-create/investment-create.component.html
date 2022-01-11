@@ -1,6 +1,7 @@
 <h1 mat-dialog-title>Create Investment</h1>
 <div mat-dialog-content>
     <div class="container">
+        <p *ngIf="isInvestorBlock">Loading Details. Please Wait! ...</p>
         <form [formGroup]="investmentGroup" class="row">
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
@@ -11,6 +12,11 @@
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="Enter Last Name" formControlName="lastName" required>
                 </mat-form-field>
+            </div>
+            <div class="col-md-6" *ngIf="!isInvestorBlock">
+                <ng-select formControlName="refId" required placeholder="Select Investor">
+                    <ng-option *ngFor="let investor of investors" [value]="investor.refId">{{investor.firstName }} {{investor.lastname}} - £&nbsp;{{investor.remainingAmount}}</ng-option>
+                </ng-select>
             </div>
             <div class="col-md-6">
                 <mat-form-field class="example-full-width">

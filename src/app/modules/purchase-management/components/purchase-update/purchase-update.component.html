@@ -17,7 +17,7 @@
                 <ng-select formControlName="investorId" required placeholder="Select Investor"
                     (change)="activateAmount($event)">
                     <ng-option *ngFor="let investor of investors" [value]="investor.id">{{investor.firstName}}
-                        {{investor.lastName}}</ng-option>
+                        {{investor.lastName}} - £&nbsp;{{investor.remainingAmount}}</ng-option>
                 </ng-select>
             </div>
             <div class="col-md-6" *ngIf="!isBlockExtra">
