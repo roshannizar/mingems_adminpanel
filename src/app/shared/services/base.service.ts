@@ -13,7 +13,9 @@ export abstract class BaseService<T> {
     errorMessage: { status: any; message: string };
     protected baseApiEndPoint = environment.endpointUrl;
     imageBaseUrl = environment.cloudStorageUrl;
-    constructor(protected http: HttpClient, private router: Router) { }
+    private router: Router;
+
+    constructor(protected http: HttpClient) { }
 
     public get(url: string): Observable<Array<T>> {
         return this.http.get<Array<T>>(`${this.baseApiEndPoint}/${url}`, this.getAuthHeader()).pipe(catchError(this.errorHandle));
