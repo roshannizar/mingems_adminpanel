@@ -80,8 +80,8 @@
                         <table class="table table-hover">
                             <thead class="text-warning-top">
                                 <th>Full Name</th>
-                                <th>Total Investment</th>
-                                <th>Balance</th>
+                                <th>Total Investment (£)</th>
+                                <th>Balance (£)</th>
                             </thead>
                             <tbody>
                                 <tr *ngIf="block">
@@ -90,16 +90,16 @@
                                     </td>
                                 </tr>
 
-                                <tr *ngIf="!block">
+                                <tr *ngIf="dashboardModel.investors.length === 0 && !block">
                                     <td colspan="3" style="text-align: center;">
                                         No Records Found!
                                     </td>
                                 </tr>
 
-                                <tr *ngFor="let product of dashboardModel.spProductSolds">
-                                    <td>{{product.productName}}</td>
-                                    <td>{{product.name}}</td>
-                                    <td>{{product.salesCount}} Units</td>
+                                <tr *ngFor="let investor of dashboardModel.investors">
+                                    <td>{{investor.firstName}} {{investor.lastName}}</td>
+                                    <td>{{investor.fund | number: '1.2-2'}}</td>
+                                    <td>{{investor.balance | number: '1.2-2'}}</td>
                                 </tr>
                             </tbody>
                         </table>
