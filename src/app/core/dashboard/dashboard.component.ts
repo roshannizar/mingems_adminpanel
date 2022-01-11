@@ -18,41 +18,12 @@ export class DashboardComponent implements OnInit {
   customerblock = false;
   dashboardModel = new DashboardModel();
 
-  public barChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public barChartLabels: Label[] = [];
-  public barChartType: ChartType = 'bar';
-  public barChartLegend = true;
-  public barChartPlugins = [];
-
-  public barChartData: ChartDataSets[] = [
-    { data: [], label: 'Daily Sales' }
-  ];
-
-  public lineChartData: ChartDataSets[] = [
-    { data: [65, 59, 80, 81, 56, 55, 40], label: 'Monthly Sales' },
-  ];
-  public lineChartLabels: Label[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-  public lineChartOptions: ChartOptions = {
-    responsive: true,
-  };
-  public lineChartColors: Color[] = [
-    {
-      borderColor: 'black',
-      backgroundColor: 'rgba(255,0,0,0.3)',
-    },
-  ];
-  public lineChartLegend = true;
-  public lineChartType = 'line';
-  public lineChartPlugins = [];
-
   constructor(private dashboardService: DashboardService, private toastr: ToastrService, private dialog: MatDialog) { }
 
 
   ngOnInit() {
-    //this.getDashboard();
-    //this.showFeature();
+    this.getDashboard();
+    // this.showFeature();
   }
 
   getDashboard() {
@@ -68,6 +39,7 @@ export class DashboardComponent implements OnInit {
       }
     );
   }
+
   openFeature() {
     const dialogRef = this.dialog.open(ReleaseFeaturesComponent, {
       width: '600px',

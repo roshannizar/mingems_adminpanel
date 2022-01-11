@@ -8,7 +8,7 @@
                             <i class="material-icons">content_copy</i>
                         </div>
                         <p class="card-category">Total Products</p>
-                        <h3 class="card-title">{{dashboardModel?.stockCount || '0'}}
+                        <h3 class="card-title">{{dashboardModel.totalStocks || '0'}}
                             <small></small>
                         </h3>
                     </div>
@@ -27,7 +27,7 @@
                             <i class="material-icons">store</i>
                         </div>
                         <p class="card-category">Total Sales</p>
-                        <h3 class="card-title">{{dashboardModel?.totalSalesToday || '0'}}</h3>
+                        <h3 class="card-title">{{dashboardModel.totalSales || '0'}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -40,14 +40,14 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+                            <i class="material-icons">money</i>
                         </div>
-                        <p class="card-category">Out Of Stock</p>
-                        <h3 class="card-title">{{dashboardModel?.outOfStockCount || '0'}}</h3>
+                        <p class="card-category">Investors</p>
+                        <h3 class="card-title">{{dashboardModel.totalInvestor || '0'}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">info_outline</i> Tracked from Products
+                            <i class="material-icons">info_outline</i> Tracked from Investors
                         </div>
                     </div>
                 </div>
@@ -58,8 +58,8 @@
                         <div class="card-icon">
                             <i class="material-icons">account_box</i>
                         </div>
-                        <p class="card-category">Users</p>
-                        <h3 class="card-title">{{dashboardModel?.totalUser || '0'}}</h3>
+                        <p class="card-category">Customer</p>
+                        <h3 class="card-title">{{dashboardModel.totalCustomers || '0'}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -73,13 +73,13 @@
             <div class="col-lg-6 col-md-12">
                 <div class="card">
                     <div class="card-header card-header-warning-top">
-                        <h4 class="card-title">Top 5 Products</h4>
-                        <p class="card-category">Based on product sold</p>
+                        <h4 class="card-title">Top 5 Investors</h4>
+                        <p class="card-category">Based on investors investment</p>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-hover">
                             <thead class="text-warning-top">
-                                <th>Product Name</th>
+                                <th>Full Name</th>
                                 <th>Name</th>
                                 <th>Sold</th>
                             </thead>

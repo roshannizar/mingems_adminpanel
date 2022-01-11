@@ -1,5 +1,5 @@
 export class InvestmentModel {
-    id:string;
+    id: string;
     refId: string;
     firstName: string;
     lastName: string;
