@@ -14,9 +14,12 @@ import { InvestmentViewComponent } from '../investment-view/investment-view.comp
 export class InvestmentUpdateComponent implements OnInit {
 
   isBlock = false;
+  isInvestorBlock = false;
 
   investmentGroup: FormGroup;
   investment: InvestmentModel;
+
+  investors = new Array<InvestmentModel>();
 
   constructor(public dialogRef: MatDialogRef<InvestmentViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: InvestmentModel, private fb: FormBuilder,
@@ -24,6 +27,7 @@ export class InvestmentUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createInvestment();
+    this.getInvestors();
     this.patchInvestment(this.data);
   }
 
@@ -37,6 +41,20 @@ export class InvestmentUpdateComponent implements OnInit {
       contactno: ['', Validators.required],
       amount: [0, Validators.required]
     })
+  }
+
+  getInvestors() {
+    this.isInvestorBlock = true;
+    this.investmentService.getInvestments().subscribe(
+      (result) => {
+        this.investors = result;
+        this.isInvestorBlock = false;
+      },
+      (error) => {
+        this.isInvestorBlock = false;
+        this.toastr.error(error.message, 'Failed to load investors');
+      }
+    );
   }
 
   patchInvestment(investment: InvestmentModel) {

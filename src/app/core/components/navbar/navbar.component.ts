@@ -6,6 +6,7 @@ import { SignalRService } from '../services/signalr.service';
 import { OrderHubModel } from '../models/order-hub-model';
 import { ToastrService } from 'ngx-toastr';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { version } from '../../../../../package.json';
 
 @Component({
     selector: 'app-navbar',
@@ -20,6 +21,7 @@ export class NavbarComponent implements OnInit {
     private sidebarVisible: boolean;
     private orderHubModel = new Array<OrderHubModel>();
     fullname: string;
+    app_version = version;
 
     constructor(location: Location, private element: ElementRef,
         private router: Router, private signalrService: SignalRService,
@@ -41,7 +43,7 @@ export class NavbarComponent implements OnInit {
             }
         });
         this.getUserName();
-        //this.getOrders();
+        // this.getOrders();
     }
 
     openLink() {

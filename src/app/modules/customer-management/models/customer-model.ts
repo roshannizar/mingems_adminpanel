@@ -1,10 +1,7 @@
-export class InvestmentModel {
+export class CustomerModel {
     id: string;
-    refId: string;
     firstName: string;
     lastName: string;
     email: string;
     contactNo: string;
-    amount: number;
-    remainingAmount: number;
 }

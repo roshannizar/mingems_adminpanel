@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrivateCodeCreateComponent } from './private-code-create.component';
+import { CustomerViewDlgComponent } from './customer-view-dlg.component';
 
-describe('PrivateCodeCreateComponent', () => {
-  let component: PrivateCodeCreateComponent;
-  let fixture: ComponentFixture<PrivateCodeCreateComponent>;
+describe('CustomerViewDlgComponent', () => {
+  let component: CustomerViewDlgComponent;
+  let fixture: ComponentFixture<CustomerViewDlgComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrivateCodeCreateComponent ]
+      declarations: [ CustomerViewDlgComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrivateCodeCreateComponent);
+    fixture = TestBed.createComponent(CustomerViewDlgComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

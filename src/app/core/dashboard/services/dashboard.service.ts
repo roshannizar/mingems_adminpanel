@@ -12,7 +12,7 @@ export class DashboardService extends BaseService<DashboardModel> {
 
     constructor(protected http: HttpClient) {
         super(http);
-        this.baseUrl = 'v1/utility/meta'
+        this.baseUrl = 'v1/reports/meta'
     }
 
     getDashboard() {
