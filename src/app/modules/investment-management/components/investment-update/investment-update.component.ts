@@ -45,7 +45,7 @@ export class InvestmentUpdateComponent implements OnInit {
 
   getInvestors() {
     this.isInvestorBlock = true;
-    this.investmentService.getInvestments().subscribe(
+    this.investmentService.getOriginInvestments().subscribe(
       (result) => {
         this.investors = result;
         this.isInvestorBlock = false;
