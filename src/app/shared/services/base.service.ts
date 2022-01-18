@@ -73,6 +73,7 @@ export abstract class BaseService<T> {
                 message: 'Please check your internet connection',
                 status: error.status
             };
+            this.router.navigate(['login']);
         } else if (error.status === 401) {
             this.errorMessage = {
                 message: error.error,

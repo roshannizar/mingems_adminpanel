@@ -63,7 +63,7 @@ export class InvestmentUpdateComponent implements OnInit {
       refId: investment.refId,
       firstName: investment.firstName,
       lastName: investment.lastName,
-      email:  investment.email,
+      email: investment.email,
       contactno: investment.contactNo,
       amount: investment.amount
     });
@@ -76,7 +76,7 @@ export class InvestmentUpdateComponent implements OnInit {
       (result) => {
         this.isBlock = false;
         this.close();
-        this.toastr.success('Updated successfully!','Success');
+        this.toastr.success('Updated successfully!', 'Success');
       },
       (error) => {
         this.isBlock = false;
