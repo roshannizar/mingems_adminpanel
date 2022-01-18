@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ResetPasswordComponent } from 'app/auth/components/reset-password/reset-password.component';
 
 @Component({
     selector: 'app-more-products',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MoreProductsComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    constructor(private router: Router, private dialog: MatDialog) { }
 
     ngOnInit(): void {
     }
@@ -27,5 +29,15 @@ export class MoreProductsComponent implements OnInit {
 
     navigateReport() {
         this.router.navigate(['/more/report']);
+    }
+
+    openResetModal() {
+        const dialogRef = this.dialog.open(ResetPasswordComponent, {
+            width: '400px',
+            data: null
+        });
+
+        dialogRef.afterClosed().subscribe(result => {
+        });
     }
 }
