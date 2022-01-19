@@ -4,7 +4,7 @@ export class UserModel {
     verify: boolean;
     role: UserRoleEnums;
     email: string;
-    lastLogged: Date;
+    lastLoggedDate: Date;
     ipAddress: string;
 }
 

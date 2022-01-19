@@ -19,7 +19,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/more', title: 'More', icon: 'more_horiz', class: '' },
   // { path: '/more/private-code', title: 'More/Out Of Stock', icon: 'more', class: 'value' },
   { path: '/more/users', title: 'More/Users', icon: 'more', class: 'value' },
-  // { path: '/more/lastlogged', title: 'More/Last Logged', icon: 'more', class: 'value' },
+  { path: '/more/lastlogged', title: 'More/Last Logged', icon: 'more', class: 'value' },
   // { path: '/more/report', title: 'More/Report', icon: 'more', class: 'value' },
   // { path: '/more/report/sales-report', title: 'More/Report/Sales Report', icon: 'more', class: 'value' }
 ];
