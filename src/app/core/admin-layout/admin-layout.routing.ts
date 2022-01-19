@@ -26,7 +26,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'more', component: MoreProductsComponent },
     { path: 'more/users', component: UserViewComponent },
     // { path: 'more/report', component: ReportsComponent },
-    // { path: 'more/lastlogged', component: LastLoggedComponent },
+    { path: 'more/lastlogged', component: LastLoggedComponent },
     // { path: 'more/private-code', component: PrivateCodeViewComponent},
     // { path: 'more/report/sales-report', component: SalesReportComponent }
 ];

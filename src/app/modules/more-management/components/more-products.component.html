@@ -41,16 +41,16 @@
 
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="card card-stats">
-                    <div class="card-header card-header-icon">
+                    <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">account_box</i>
+                            <i class="material-icons">preview</i>
                         </div>
-                        <p class="card-category">Profile</p>
+                        <p class="card-category">Last Login</p>
                     </div>
                     <div class="card-footer">
-                        <button class="more-btn" >
+                        <button class="more-btn" (click)="navigateLastLogged()">
                             <div class="stats">
-                                COMING SOON
+                                GO
                                 <i class="material-icons text-danger">arrow_right_alt</i>
                             </div>
                         </button>
@@ -62,12 +62,12 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">preview</i>
+                            <i class="material-icons">account_box</i>
                         </div>
-                        <p class="card-category">Last Login</p>
+                        <p class="card-category">Profile</p>
                     </div>
                     <div class="card-footer">
-                        <button class="more-btn">
+                        <button class="more-btn" >
                             <div class="stats">
                                 COMING SOON
                                 <i class="material-icons text-danger">arrow_right_alt</i>
