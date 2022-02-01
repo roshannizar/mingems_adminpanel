@@ -1,119 +1,24 @@
 <div class="main-content more-margin-top">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let item of more">
                 <div class="card card-stats">
-                    <div class="card-header card-header-success card-header-icon">
+                    <div class="card-header card-header-icon" [ngClass]=item.cardcss>
                         <div class="card-icon">
-                            <i class="material-icons">people_alt</i>
+                            <i class="material-icons">{{item.icon}}</i>
                         </div>
-                        <p class="card-category">Users</p>
+                        <p class="card-category">{{item.name}}</p>
                     </div>
                     <div class="card-footer">
-                        <button class="more-btn" (click)="navigateToUsers()">
+                        <button class="more-btn" (click)="navigateToPath(item.path)">
                             <div class="stats">
-                                GO
+                                {{item.btnname}}
                                 <i class="material-icons text-danger">arrow_right_alt</i>
                             </div>
                         </button>
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-report card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">pattern</i>
-                        </div>
-                        <p class="card-category">Reset Password</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="more-btn" (click)="openResetModal()">
-                            <div class="stats">
-                                GO
-                                <i class="material-icons text-danger">arrow_right_alt</i>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-danger card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">preview</i>
-                        </div>
-                        <p class="card-category">Last Login</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="more-btn" (click)="navigateLastLogged()">
-                            <div class="stats">
-                                GO
-                                <i class="material-icons text-danger">arrow_right_alt</i>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">account_box</i>
-                        </div>
-                        <p class="card-category">Profile</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="more-btn" >
-                            <div class="stats">
-                                COMING SOON
-                                <i class="material-icons text-danger">arrow_right_alt</i>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">summarize</i>
-                        </div>
-                        <p class="card-category">Reports</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="more-btn" >
-                            <div class="stats">
-                                COMING SOON
-                                <i class="material-icons text-danger">arrow_right_alt</i>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <div class="card card-stats">
-                    <div class="card-header card-header-icon">
-                        <div class="card-icon">
-                            <i class="material-icons">add_business</i>
-                        </div>
-                        <p class="card-category">Marketing</p>
-                    </div>
-                    <div class="card-footer">
-                        <button class="more-btn">
-                            <div class="stats">
-                                COMING SOON
-                                <i class="material-icons text-danger">arrow_right_alt</i>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            
         </div>
     </div>
 </div>
