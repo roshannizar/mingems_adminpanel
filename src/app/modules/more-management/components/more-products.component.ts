@@ -10,25 +10,30 @@ import { ResetPasswordComponent } from 'app/auth/components/reset-password/reset
 })
 export class MoreProductsComponent implements OnInit {
 
+    more = [
+        { name: 'Users', icon: 'people_alt', path: '/more/users', cardcss: 'card-header-success',
+        btnname: 'GO' },
+        { name: 'Last Login', icon: 'preview', path: '/more/lastlogged', cardcss: 'card-header-danger', btnname: 'GO' },
+        { name: 'Reset Password', icon: 'pattern', path: 'extra', cardcss: 'card-header-report',
+        btnname: 'GO' },
+        { name: 'Out Of Stock', icon: 'error', path: '', cardcss: '', btnname: 'COMING SOON' },
+        { name: 'Report', icon: 'error', path: '', cardcss: '', btnname: 'COMING SOON' },
+
+        { name: 'Notification', icon: 'error', path: '', cardcss: '', btnname: 'COMING SOON' },
+        { name: 'Advertisement', icon: 'error', path: '', cardcss: '', btnname: 'COMING SOON' },
+        { name: 'Marketing', icon: 'error', path: '', cardcss: '', btnname: 'COMING SOON' },
+    ];
     constructor(private router: Router, private dialog: MatDialog) { }
 
     ngOnInit(): void {
     }
 
-    navigateOutOfStock() {
-        this.router.navigate(['/more/outofstock']);
-    }
-
-    navigateToUsers() {
-        this.router.navigate(['/more/users']);
-    }
-
-    navigateLastLogged() {
-        this.router.navigate(['/more/lastlogged']);
-    }
-
-    navigateReport() {
-        this.router.navigate(['/more/report']);
+    navigateToPath(path: string) {
+        if (path !== 'extra') {
+            this.router.navigate([path]);
+        } else {
+            this.openResetModal();
+        }
     }
 
     openResetModal() {
