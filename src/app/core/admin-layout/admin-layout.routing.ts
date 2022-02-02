@@ -17,7 +17,7 @@ import { PurchaseCreateComponent } from 'app/modules/purchase-management/compone
 export const AdminLayoutRoutes: Routes = [
 
     { path: 'dashboard', component: DashboardComponent },
-    // { path: 'inventory', component: InventoryViewComponent},
+    { path: 'inventory', component: InventoryViewComponent},
     { path: 'purchase', component: PurchaseViewComponent},
     // { path: 'order', component: OrderViewComponent},
     { path: 'supplier', component: SupplierViewComponent},
