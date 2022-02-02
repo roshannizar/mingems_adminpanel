@@ -10,6 +10,7 @@ export class PurchaseModel {
     supplierId: string;
     supplier: PurchaseSupplierModel
     investment: PurchaseInvestorModel;
+    moved: boolean;
 }
 
 export class PurchaseSupplierModel {

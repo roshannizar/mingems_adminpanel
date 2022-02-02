@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { MoveProductComponent } from '../../modals/move-product/move-product.component';
 import { PurchaseModel } from '../../model/purchase-model';
 import { PurchaseService } from '../../services/purchase.service';
 import { PurchaseCreateComponent } from '../purchase-create/purchase-create.component';
@@ -108,5 +109,20 @@ export class PurchaseViewComponent implements OnInit {
     } else {
       this.getPurchases();
     }
+  }
+
+  moveToProduct(purchase: PurchaseModel) {
+    this.openMoveProductDialog(purchase);
+  }
+
+  private openMoveProductDialog(purchase: PurchaseModel) {
+    const dialogRef = this.dialog.open(MoveProductComponent, {
+      width: '100%',
+      data: purchase
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.getPurchases();
+    });
   }
 }
