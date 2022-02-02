@@ -1,7 +1,28 @@
 <h1 mat-dialog-title>Create Inventory</h1>
 <div mat-dialog-content>
     <div class="container">
+        <div class="row scrollable-row">
+            <div class="container-image unselected" *ngIf="filePath != null">
+                <img [src]="filePath" alt="image" class="image">
+                <div class="middle row">
+                    <app-loading-ui [block]="isImageBlock"></app-loading-ui>
+                    <i class="material-icons" *ngIf="!isImageBlock" (click)="onImageUpload()">save</i>
+                    <i class="material-icons" *ngIf="!isImageBlock" (click)="onRemoveImage()">close</i>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input type="file" multiple accept='image/*' (change)="onFileChange($event)" />
+            </div>
+            <div class="container-image selected" *ngFor="let image of imageLines;let i= index;">
+                <img [src]="image.url" alt="image" class="image">
+                <div class="middle row">
+                    <i class="material-icons" (click)="onRemoveSavedImage(i)">close</i>
+                </div>
+            </div>
+        </div>
+        <hr>
         <form [formGroup]="inventoryGroup" class="row">
+            <hr />
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="Enter barcode" formControlName="barcode" required>
@@ -9,7 +30,7 @@
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Name" formControlName="name" required>
+                    <input matInput placeholder="Enter Product Name" formControlName="name" required>
                 </mat-form-field>
             </div>
             <div class="col-md-6">
@@ -19,27 +40,27 @@
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Quantity" formControlName="quantity" required>
+                    <input matInput type="number" placeholder="Enter Unit Price" formControlName="unitPrice" required>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Unit Price" formControlName="unitPrice" required>
+                    <input matInput type="number" placeholder="Enter Recutting Cost" formControlName="recuttingCost" required>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Recutting Cost" formControlName="recuttingCost" required>
+                    <input matInput type="number" placeholder="Enter Certificate Cost" formControlName="certificateCost" required>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Certificate Cost" formControlName="certificateCost" required>
+                    <input matInput type="number" placeholder="Enter Commission Cost" formControlName="commissionCost" required>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Export Cost" formControlName="exportCost" required>
+                    <input matInput type="number" placeholder="Enter Export Cost" formControlName="exportCost" required>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
@@ -62,6 +83,11 @@
                     <input matInput placeholder="Enter Last Code" formControlName="lastPriceCode" required>
                 </mat-form-field>
             </div>
+            <div class="col-md-3" *ngIf="false">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter InvestorId" formControlName="investorId" required>
+                </mat-form-field>
+            </div>
         </form>
     </div>
 </div>
@@ -72,5 +98,6 @@
 
 <div mat-dialog-actions class="align-right" *ngIf="!isBlock">
     <button mat-button (click)="close()">Cancel</button>
-    <button mat-button id="btn-update" [disabled]="inventoryGroup.invalid" (click)="onSave()">Save</button>
+    <button mat-button id="btn-update" [disabled]="inventoryGroup.invalid" (click)="onSave()">Move</button>
+    <button mat-button id="btn-update" disabled>Print</button>
 </div>
