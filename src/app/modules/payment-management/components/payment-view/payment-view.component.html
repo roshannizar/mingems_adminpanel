@@ -1,0 +1,76 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Payment</h4>
+                                <p class="card-subtitle">Now you can view payment details</p>
+                            </div>
+                            <!-- <div class="col-md-2">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateDialog()">New</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Description
+                                    </th>
+                                    <th>
+                                        Bill Date For
+                                    </th>
+                                    <th>
+                                        Due Date
+                                    </th>
+                                    <th>
+                                        Cost (LKR)
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <!-- <th>Action</th> -->
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="isBlock">
+                                        <td colspan="6">
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="subscriptions.length == 0 && isBlock == false" class="text-center">
+                                        <td colspan="6">
+                                            <span class="font-italic">No record found!</span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let subscription of subscriptions; let i = index">
+                                        <td>{{i + 1}}</td>
+                                        <td>{{subscription.description}}</td>
+                                        <td>{{subscription.billDate | date: 'longDate'}}
+                                        </td>
+                                        <td>{{subscription.dueDate | date: 'longDate'}}</td>
+                                        <td>{{subscription.cost | number: '1.2-2'}}</td>
+                                        <td>{{subscription.subscriptionStatus === 0 ? 'Not Paid' :
+                                            subscription.subscriptionStatus === 1 ? 'Pending' : 'Paid'}}
+                                        </td>
+                                        <!-- <td>
+                                            <i class="material-icons btn-view"
+                                                (click)="openCategoryDlgModal(category)">create</i>
+                                        </td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

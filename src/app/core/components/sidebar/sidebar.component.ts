@@ -16,6 +16,7 @@ export const ROUTES: RouteInfo[] = [
   // { path: '/order', title: 'Order', icon: 'point_of_sale', class: '' },
   { path: '/supplier', title: 'Supplier', icon: 'local_shipping', class: '' },
   { path: '/customer', title: 'Customer', icon: 'people', class: '' },
+  { path: '/payment', title: 'Payment', icon: 'credit_card_outline', class: '' },
   { path: '/more', title: 'More', icon: 'more_horiz', class: '' },
   // { path: '/more/private-code', title: 'More/Out Of Stock', icon: 'more', class: 'value' },
   { path: '/more/users', title: 'More/Users', icon: 'more', class: 'value' },
