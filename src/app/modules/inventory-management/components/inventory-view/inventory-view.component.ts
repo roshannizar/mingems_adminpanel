@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { PrintDlgComponent } from '../../modals/print-dlg/print-dlg.component';
 import { InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
 import { InventoryCreateComponent } from '../inventory-create/inventory-create.component';
@@ -46,4 +47,13 @@ export class InventoryViewComponent implements OnInit {
     });
   }
 
+  openPrintDialog(id: string) {
+    const dialogRef = this.dialog.open(PrintDlgComponent, {
+      width: '300px',
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
 }

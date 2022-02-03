@@ -104,7 +104,7 @@ export class PurchaseUpdateComponent implements OnInit {
     this.purchaseService.updatePurchase(this.purchase).subscribe(
       (result) => {
         this.isBlock = false;
-        this.dialogRef.close();
+        this.close('refresh');
         this.toastrService.success('Purchase updated successfully!', 'Success');
       },
       (error) => {
@@ -157,7 +157,7 @@ export class PurchaseUpdateComponent implements OnInit {
     }
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }

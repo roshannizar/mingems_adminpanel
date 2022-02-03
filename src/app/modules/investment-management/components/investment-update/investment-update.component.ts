@@ -75,7 +75,7 @@ export class InvestmentUpdateComponent implements OnInit {
     this.investmentService.updateInvestment(this.investment).subscribe(
       (result) => {
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastr.success('Updated successfully!', 'Success');
       },
       (error) => {
@@ -85,7 +85,7 @@ export class InvestmentUpdateComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }

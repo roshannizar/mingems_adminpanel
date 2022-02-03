@@ -50,7 +50,9 @@ export class CustomerViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getCustomers();
+      if (result === 'refresh') {
+        this.getCustomers();
+      }
     });
   }
 
@@ -61,7 +63,9 @@ export class CustomerViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getCustomers();
+      if (result === 'refresh') {
+        this.getCustomers();
+      }
     });
   }
 

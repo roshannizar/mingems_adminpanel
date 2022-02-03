@@ -23,6 +23,7 @@ import { ChartsModule } from 'ng2-charts';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxBarcodeModule } from 'ngx-barcode';
 
 @NgModule({
   declarations: [LoadingUiComponent, ConfirmationModalComponent],
@@ -61,7 +62,8 @@ import { MatIconModule } from '@angular/material/icon';
     ChartsModule,
     MatPaginatorModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    NgxBarcodeModule
   ],
   providers: [
     {

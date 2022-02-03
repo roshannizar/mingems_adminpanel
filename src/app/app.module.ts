@@ -35,8 +35,8 @@ import { ReleaseFeaturesComponent } from './core/dashboard/components/release-fe
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-       allowedDomains: ['localhost:4200', 'http://placemeapi.azurewebsite.net/']
-       },
+        allowedDomains: ['localhost:4200', 'http://placemeapi.azurewebsite.net/']
+      },
     })
   ],
   declarations: [

@@ -60,7 +60,7 @@ export class InvestmentCreateComponent implements OnInit {
       (result) => {
         this.investmentGroup.reset();
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastr.success('Investment created successfully!', 'Success');
       },
       (error) => {
@@ -70,7 +70,7 @@ export class InvestmentCreateComponent implements OnInit {
     );
   }
 
-  close(): void {
-    this.dialogRef.close();
+  close(response: string): void {
+    this.dialogRef.close(response);
   }
 }

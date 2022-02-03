@@ -2,6 +2,7 @@ export class InventoryModel {
     id: string;
     imageLines = new Array<ImageLines>();
     investorId: string;
+    // tslint:disable-next-line: no-use-before-declare
     investment = new InventoryInvestor();
     barcode: string;
     name: string;

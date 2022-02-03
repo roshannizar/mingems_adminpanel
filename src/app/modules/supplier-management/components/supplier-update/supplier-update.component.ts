@@ -52,7 +52,7 @@ export class SupplierUpdateComponent implements OnInit {
     this.supplierService.updateSupplier(this.supplier).subscribe(
       (result) => {
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastr.success('Supplier updated successfully!', 'Updated');
       },
       (error) => {
@@ -62,7 +62,7 @@ export class SupplierUpdateComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }
