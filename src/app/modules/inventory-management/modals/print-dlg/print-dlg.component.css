@@ -1,0 +1,10 @@
+.page-one {
+    text-align: center;
+}
+.page-two {
+    border: 1px solid black;
+    padding: 5px;
+}
+.page-two span {
+    font-weight: bold;
+}

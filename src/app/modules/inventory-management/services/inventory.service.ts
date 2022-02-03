@@ -24,6 +24,10 @@ export class InventoryService extends BaseService<InventoryModel> {
         return this.getById(`${this.baseUrl}/${id}`);
     }
 
+    getInventoryPurchase(id: string) {
+        return this.getById(`${this.baseUrl}/${id}/purchase`);
+    }
+
     createInventory(inventoryModel: InventoryModel) {
         return this.post(this.baseUrl, inventoryModel);
     }

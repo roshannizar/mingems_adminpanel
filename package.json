@@ -1,6 +1,6 @@
 {
   "name": "mingems-dashboard",
-  "version": "3.2.2",
+  "version": "3.3.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -51,6 +51,7 @@
     "jspdf": "^1.5.3",
     "moment": "2.29.1",
     "ng2-charts": "^2.3.0",
+    "ngx-barcode": "^0.3.0",
     "ngx-toastr": "^13.2.0",
     "pdfmake": "^0.2.4",
     "perfect-scrollbar": "1.5.0",

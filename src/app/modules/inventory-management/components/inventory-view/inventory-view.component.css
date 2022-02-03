@@ -22,3 +22,7 @@ h4 {
     color: blue;
     cursor: pointer;
 }
+.btn-view {
+    margin-left: 10px;
+    cursor: pointer;
+}

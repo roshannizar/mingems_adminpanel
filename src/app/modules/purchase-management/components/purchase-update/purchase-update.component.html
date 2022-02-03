@@ -49,6 +49,6 @@
 </div>
 
 <div mat-dialog-actions class="align-right" *ngIf="!isBlock">
-    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button (click)="close('close')">Cancel</button>
     <button mat-button id="btn-update" [disabled]="!purchaseGroup.dirty && purchaseGroup.invalid" (click)="onUpdate()">Update</button>
 </div>

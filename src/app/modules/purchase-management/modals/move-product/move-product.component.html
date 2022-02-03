@@ -25,11 +25,6 @@
             <hr />
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter barcode" formControlName="barcode" required>
-                </mat-form-field>
-            </div>
-            <div class="col-md-3">
-                <mat-form-field class="example-full-width">
                     <input matInput placeholder="Enter Product Name" formControlName="name" required>
                 </mat-form-field>
             </div>
@@ -97,7 +92,7 @@
 </div>
 
 <div mat-dialog-actions class="align-right" *ngIf="!isBlock">
-    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button (click)="close('close')">Cancel</button>
     <button mat-button id="btn-update" [disabled]="inventoryGroup.invalid" (click)="onSave()">Move</button>
     <button mat-button id="btn-update" disabled>Print</button>
 </div>

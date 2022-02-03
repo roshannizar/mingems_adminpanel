@@ -34,7 +34,6 @@ export class MoveProductComponent implements OnInit {
 
   createInventory(data: PurchaseModel) {
     this.inventoryGroup = this.fb.group({
-      barcode: ['', Validators.required],
       name: data.name,
       description: data.description,
       quantity: [1, Validators.required],
@@ -98,7 +97,7 @@ export class MoveProductComponent implements OnInit {
         this.inventoryGroup.reset();
         this.imageLines = null;
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastr.success('Inventory Moved Successfully!', 'Success');
       },
       (error) => {
@@ -108,7 +107,7 @@ export class MoveProductComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }

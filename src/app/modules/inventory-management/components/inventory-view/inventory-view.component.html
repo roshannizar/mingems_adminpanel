@@ -43,16 +43,16 @@
                                         Measurement
                                     </th>
                                     <th>Total Cost(£)</th>
-                                    <!-- <th>Action</th> -->
+                                    <th>Action</th>
                                 </thead>
                                 <tbody>
                                     <tr *ngIf="isBlock">
-                                        <td colspan="7">
+                                        <td colspan="8">
                                             <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
                                     <tr *ngIf="inventories.length == 0 && isBlock == false" class="text-center">
-                                        <td colspan="7">
+                                        <td colspan="8">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
@@ -60,14 +60,19 @@
                                         <td>{{i + 1}}</td>
                                         <td class="image-viewer">View Images</td>
                                         <td>{{inventory.name}}</td>
-                                        <td>{{inventory.investment?.firstName || 'N/A'}}</td>
+                                        <td>{{inventory.investment?.firstName || ''}} {{inventory.investment?.lastName
+                                            || 'N/A'}}</td>
                                         <td>{{inventory.weight}}</td>
                                         <td>{{inventory.measurement}}</td>
-                                        <td>{{(inventory.unitPrice + inventory.exportCost + inventory.commissionCost + inventory.certificateCost + inventory.recuttingCost) | number: '1.2-2'}}</td>
-                                        <!-- <td>
+                                        <td>{{(inventory.unitPrice + inventory.exportCost + inventory.commissionCost +
+                                            inventory.certificateCost + inventory.recuttingCost) | number: '1.2-2'}}
+                                        </td>
+                                        <td>
+                                            <!-- <i class="material-icons btn-view"
+                                                (click)="openCategoryDlgModal(category)">visibility</i> -->
                                             <i class="material-icons btn-view"
-                                                (click)="openCategoryDlgModal(category)">visibility</i>
-                                        </td> -->
+                                                (click)="openPrintDialog(inventory.purchaseId)">print</i>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>

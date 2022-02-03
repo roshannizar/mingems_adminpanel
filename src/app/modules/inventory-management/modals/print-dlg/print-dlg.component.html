@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Print Dialog {{!pageNo ? '1': '2'}} of 2</h1>
+<div mat-dialog-content>
+    <div class="page-one" id="page-one" *ngIf="!pageNo">
+        <ngx-barcode [bc-value]="inventory.barcode" [bc-display-value]="true"></ngx-barcode>
+    </div>
+    <div class="page-two" id="page-two" *ngIf="pageNo">
+        <div class="row">
+            <div class="col-md-6">
+                <span>{{inventory.name}}</span>
+            </div>
+            <div class="col-md-6 pull-right">
+                <span class="pull-right">{{inventory.investorId.substring(0,4)}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <span>{{inventory.weight}}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <span>{{inventory.priceCode}}</span>
+            </div>
+            <div class="col-md-6">
+                <span class="pull-right">{{inventory.lastPriceCode}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center" *ngIf="isBlock">
+    <app-loading-ui [block]="isBlock"></app-loading-ui>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="!isBlock">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button id="btn-update" (click)="print()">Print</button>
+    <button mat-button id="btn-update" *ngIf="pageNo" (click)="movePage()">Previous</button>
+    <button mat-button id="btn-update" *ngIf="!pageNo" (click)="movePage()">Next</button>
+</div>
