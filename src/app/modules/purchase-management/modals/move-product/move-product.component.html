@@ -93,5 +93,5 @@
 
 <div mat-dialog-actions class="align-right" *ngIf="!isBlock">
     <button mat-button (click)="close('close')">Cancel</button>
-    <button mat-button id="btn-update" [disabled]="inventoryGroup.invalid" (click)="onSave()">Move</button>
+    <button mat-button id="btn-update" [disabled]="inventoryGroup.invalid || imageLines.length === 0" (click)="onSave()">Move</button>
 </div>

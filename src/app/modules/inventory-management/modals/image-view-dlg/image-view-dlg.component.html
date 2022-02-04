@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>{{inventory.name}} - Image(s)</h1>
+<div mat-dialog-content>
+    <div class="container">
+        <p *ngIf="inventory.imageLines.length === 0">No Image(s) Found</p>
+        <div *ngIf="inventory.imageLines.length !== 0">
+            <img [src]="image.url" alt="Image" width="50%" *ngFor="let image of inventory.imageLines"/>
+        </div>
+    </div>
+</div>
