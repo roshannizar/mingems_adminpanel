@@ -18,7 +18,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'inventory', component: InventoryViewComponent },
     { path: 'purchase', component: PurchaseViewComponent },
     // { path: 'order', component: OrderViewComponent},
-    { path: 'subscription', component: PaymentViewComponent },
+    { path: 'more/subscription', component: PaymentViewComponent },
     { path: 'supplier', component: SupplierViewComponent },
     { path: 'investment', component: InvestmentViewComponent },
     { path: 'customer', component: CustomerViewComponent },
