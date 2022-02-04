@@ -1,6 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DashboardCustomerModel } from 'app/shared/models/dashboard-customer-model';
 import { ToastrService } from 'ngx-toastr';
 import { FilterDialogComponent } from '../../modals/filter-dialog/filter-dialog.component';
 import { ReportService } from '../../services/report.service';
@@ -20,7 +19,6 @@ export class SalesReportComponent implements OnInit {
   pdfBlock = false;
   period_end: string;
   period_start: string;
-  salesModel = new Array<DashboardCustomerModel>();
   @ViewChild('salescontent') content: ElementRef;
 
   constructor(private dialog: MatDialog, private reportService: ReportService, private toastr: ToastrService) { }
@@ -38,7 +36,6 @@ export class SalesReportComponent implements OnInit {
         this.block = true;
         this.reportService.getSalesReport().subscribe(
           (response) => {
-            this.salesModel = response;
             this.block = false;
             this.period_start = this.reportService.fromDate;
             this.period_end = this.reportService.toDate;

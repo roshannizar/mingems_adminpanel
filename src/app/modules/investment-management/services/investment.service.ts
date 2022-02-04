@@ -19,6 +19,10 @@ export class InvestmentService extends BaseService<InvestmentModel> {
         return this.get(this.baseUrl);
     }
 
+    getOriginInvestments(): Observable<Array<InvestmentModel>> {
+        return this.get(`${this.baseUrl}/origin`);
+    }
+
     getInvestment(id: string) {
         return this.getById(`${this.baseUrl}/${id}`);
     }

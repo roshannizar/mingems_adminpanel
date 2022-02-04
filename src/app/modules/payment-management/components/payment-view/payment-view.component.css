@@ -1,0 +1,24 @@
+.card-header {
+    background-color: #ef8157;
+}
+.card-title, .card-subtitle {
+    color: white;
+}
+.out-of-order-header {
+    color: #ef8157;
+}
+h4 {
+    font-weight: bold;
+}
+.create-btn {
+    background-color: white;
+    color: #ef8157;
+    font-weight: bold;
+}
+.create-btn:hover {
+    border: 2px solid white;
+}
+.image-viewer {
+    color: blue;
+    cursor: pointer;
+}

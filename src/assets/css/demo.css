@@ -23,7 +23,12 @@
   background-color: #ef8157;
   color: #fff;
 }
-
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: #ef8157;
+}
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #ef8157;
+}
 .spinner-border {
   border-right-color: #ef8157;
 }

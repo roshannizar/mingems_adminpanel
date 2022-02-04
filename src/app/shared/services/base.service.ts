@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
 import { Observable, throwError, timer } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -12,6 +13,8 @@ export abstract class BaseService<T> {
     errorMessage: { status: any; message: string };
     protected baseApiEndPoint = environment.endpointUrl;
     imageBaseUrl = environment.cloudStorageUrl;
+    private router: Router;
+
     constructor(protected http: HttpClient) { }
 
     public get(url: string): Observable<Array<T>> {
@@ -41,7 +44,7 @@ export abstract class BaseService<T> {
     public filePost(url: string, file: File) {
         const formData: FormData = new FormData();
         if (file != null && file !== undefined) {
-                formData.append('file', file);
+            formData.append('file', file);
         }
         return this.http.post(`${this.imageBaseUrl}/${url}`, formData, this.getAuthHeader()).pipe(catchError(this.errorHandle));
     }
@@ -70,6 +73,7 @@ export abstract class BaseService<T> {
                 message: 'Please check your internet connection',
                 status: error.status
             };
+            this.router.navigate(['login']);
         } else if (error.status === 401) {
             this.errorMessage = {
                 message: error.error,
@@ -81,10 +85,14 @@ export abstract class BaseService<T> {
                 status: error.status
             };
         } else {
-            this.errorMessage = {
-                message: error.error.Message,
-                status: error.status
-            };
+            if (error.error.Message === 'Token expired') {
+                this.router.navigate(['login']);
+            } else {
+                this.errorMessage = {
+                    message: error.error.Message,
+                    status: error.status
+                };
+            }
         }
         const errorMsg = Object.assign({}, this.errorMessage);
         return throwError(errorMsg);

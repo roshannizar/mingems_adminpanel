@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { PrintDlgComponent } from 'app/modules/inventory-management/modals/print-dlg/print-dlg.component';
+import { InventoryModel } from 'app/modules/inventory-management/models/inventory-model';
+import { InventoryService } from 'app/modules/inventory-management/services/inventory.service';
 import { ToastrService } from 'ngx-toastr';
+import { MoveProductComponent } from '../../modals/move-product/move-product.component';
 import { PurchaseModel } from '../../model/purchase-model';
 import { PurchaseService } from '../../services/purchase.service';
 import { PurchaseCreateComponent } from '../purchase-create/purchase-create.component';
@@ -25,7 +29,7 @@ export class PurchaseViewComponent implements OnInit {
   purchase = new PurchaseModel();
 
   constructor(private dialog: MatDialog, private purchaseService: PurchaseService,
-    private toastrService: ToastrService) { }
+    private toastr: ToastrService, private inventoryService: InventoryService) { }
 
   ngOnInit(): void {
     this.getPurchases();
@@ -40,7 +44,7 @@ export class PurchaseViewComponent implements OnInit {
       },
       (error) => {
         this.isBlock = false;
-        this.toastrService.error(error.message, 'Failed to load purchases');
+        this.toastr.error(error.message, 'Failed to load purchases');
       }
     );
   }
@@ -51,7 +55,9 @@ export class PurchaseViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getPurchases();
+      if (result === 'refresh') {
+        this.getPurchases();
+      }
     });
   }
 
@@ -62,7 +68,9 @@ export class PurchaseViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getPurchases();
+      if (result === 'refresh') {
+        this.getPurchases();
+      }
     });
   }
 
@@ -97,7 +105,7 @@ export class PurchaseViewComponent implements OnInit {
       if (tempPurchase.length === 0) {
         tempPurchase = this.purchases.filter(s => s.investment.firstName.toLowerCase().match(this.search.toLowerCase()));
 
-        if(tempPurchase.length === 0) {
+        if (tempPurchase.length === 0) {
           this.purchases = this.purchases.filter(s => s.supplier.name.toLowerCase().match(this.search.toLowerCase()));
         } else {
           this.purchases = tempPurchase;
@@ -108,5 +116,32 @@ export class PurchaseViewComponent implements OnInit {
     } else {
       this.getPurchases();
     }
+  }
+
+  moveToProduct(purchase: PurchaseModel) {
+    this.openMoveProductDialog(purchase);
+  }
+
+  private openMoveProductDialog(purchase: PurchaseModel) {
+    const dialogRef = this.dialog.open(MoveProductComponent, {
+      width: '100%',
+      data: purchase
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'refresh') {
+        this.getPurchases();
+        this.openPrintDialog(purchase.id);
+      }
+    });
+  }
+  private openPrintDialog(id) {
+    const dialogRef = this.dialog.open(PrintDlgComponent, {
+      width: '300px',
+      data: id
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
   }
 }

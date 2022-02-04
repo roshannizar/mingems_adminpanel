@@ -81,7 +81,7 @@ export class PurchaseCreateComponent implements OnInit {
     this.purchaseService.createPurchase(this.purchase).subscribe(
       (result) => {
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastrService.success('Purchase saved successfully!', 'Success');
       },
       (error) => {
@@ -91,8 +91,8 @@ export class PurchaseCreateComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 
   activateAmount(event) {

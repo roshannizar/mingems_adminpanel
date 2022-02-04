@@ -39,7 +39,7 @@ export class CustomerCreateComponent implements OnInit {
     this.customerService.createCustomer(this.customer).subscribe(
       (result) => {
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastr.success('Customer created successfully!', 'Success');
       },
       (error) => {
@@ -49,7 +49,7 @@ export class CustomerCreateComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }

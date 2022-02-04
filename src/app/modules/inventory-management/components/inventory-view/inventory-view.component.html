@@ -9,11 +9,15 @@
                                 <h4 class="card-title mt-0">Inventory</h4>
                                 <p class="card-subtitle">Now you can view inventory details</p>
                             </div>
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Search" type="text" class="mat-input">
                                 </mat-form-field>
-                            </div>
+                            </div> -->
+                            <!-- <div class="col-md-2">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateDialog()">New</button>
+                            </div> -->
                         </div>
                     </div>
                     <div class="card-body">
@@ -24,45 +28,50 @@
                                         #
                                     </th>
                                     <th>
-                                        First Name
+                                        Images
                                     </th>
                                     <th>
-                                        Last Name
+                                        Name
                                     </th>
                                     <th>
-                                        Email
+                                        Investor
                                     </th>
                                     <th>
-                                        Role
+                                        Weight
                                     </th>
                                     <th>
-                                        Account Status
+                                        Measurement
                                     </th>
-                                    <th>IP Address</th>
+                                    <th>Total Cost(£)</th>
+                                    <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngIf="block">
-                                        <td colspan="7">
-                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                    <tr *ngIf="isBlock">
+                                        <td colspan="8">
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="users?.length == 0 && block == false" class="text-center">
-                                        <td colspan="7">
+                                    <tr *ngIf="inventories.length == 0 && isBlock == false" class="text-center">
+                                        <td colspan="8">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let user of users; let i = index">
+                                    <tr *ngFor="let inventory of inventories; let i = index">
                                         <td>{{i + 1}}</td>
-                                        <td>{{user.firstName}}</td>
-                                        <td>{{user.lastName}}</td>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.role === 0 ? "Super Admin" : user.role === 1 ? 'Admin' : user.role
-                                            === 2 ? 'User' : 'Customer'}}</td>
-                                        <td>{{user.verify ? 'Active': 'In-Active'}}</td>
-                                        <td>{{user.ipAddress || 'Not Available'}}</td>
+                                        <td class="image-viewer">View Images</td>
+                                        <td>{{inventory.name}}</td>
+                                        <td>{{inventory.investment?.firstName || ''}} {{inventory.investment?.lastName
+                                            || 'N/A'}}</td>
+                                        <td>{{inventory.weight}}</td>
+                                        <td>{{inventory.measurement}}</td>
+                                        <td>{{(inventory.unitPrice + inventory.exportCost + inventory.commissionCost +
+                                            inventory.certificateCost + inventory.recuttingCost) | number: '1.2-2'}}
+                                        </td>
                                         <td>
+                                            <!-- <i class="material-icons btn-view"
+                                                (click)="openCategoryDlgModal(category)">visibility</i> -->
                                             <i class="material-icons btn-view"
-                                                (click)="openCategoryDlgModal(category)">visibility</i>
+                                                (click)="openPrintDialog(inventory.purchaseId)">print</i>
                                         </td>
                                     </tr>
                                 </tbody>

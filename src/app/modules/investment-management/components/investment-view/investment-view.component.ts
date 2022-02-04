@@ -51,7 +51,9 @@ export class InvestmentViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      if (result === 'refresh') {
       this.getInvestments();
+      }
     });
   }
 
@@ -62,7 +64,9 @@ export class InvestmentViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getInvestments();
+      if (result === 'refresh') {
+        this.getInvestments();
+        }
     });
   }
 

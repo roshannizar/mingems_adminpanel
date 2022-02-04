@@ -10,3 +10,19 @@
 h4 {
     font-weight: bold;
 }
+.create-btn {
+    background-color: white;
+    color: #ef8157;
+    font-weight: bold;
+}
+.create-btn:hover {
+    border: 2px solid white;
+}
+.image-viewer {
+    color: blue;
+    cursor: pointer;
+}
+.btn-view {
+    margin-left: 10px;
+    cursor: pointer;
+}
