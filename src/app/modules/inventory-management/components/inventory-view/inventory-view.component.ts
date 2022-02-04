@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { ImageViewDlgComponent } from '../../modals/image-view-dlg/image-view-dlg.component';
 import { PrintDlgComponent } from '../../modals/print-dlg/print-dlg.component';
 import { InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
@@ -14,7 +15,13 @@ import { InventoryCreateComponent } from '../inventory-create/inventory-create.c
 export class InventoryViewComponent implements OnInit {
 
   isBlock = false;
+  isDelete = false;
+  isDisplay = false;
+
+  heading_text: string;
+
   inventories = new Array<InventoryModel>();
+  inventory = new InventoryModel();
 
   constructor(private dialog: MatDialog, private inventoryService: InventoryService,
     private toastr: ToastrService) { }
@@ -55,5 +62,39 @@ export class InventoryViewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  openImageDialog(inventory: InventoryModel) {
+    const dialogRef = this.dialog.open(ImageViewDlgComponent, {
+      width: '300px',
+      data: inventory
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+    });
+  }
+
+  closeModal() {
+    this.isDisplay = false;
+    this.inventory = null;
+    this.isDelete = false;
+  }
+
+  openViewModal(inventory: InventoryModel) {
+    this.isDisplay = true;
+    this.heading_text = 'View Inventory';
+    this.inventory = inventory;
+  }
+
+  openDeleteModal(inventory: InventoryModel) {
+    this.isDelete = true;
+    this.inventory = inventory;
+    this.isDisplay = true;
+    this.heading_text = `Delete ${inventory.name}`;
+  }
+
+  refresh(): void {
+    this.closeModal();
+    this.getInventories();
   }
 }
