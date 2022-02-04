@@ -58,7 +58,7 @@
                                     </tr>
                                     <tr *ngFor="let inventory of inventories; let i = index">
                                         <td>{{i + 1}}</td>
-                                        <td class="image-viewer">View Images</td>
+                                        <td class="image-viewer" (click)="openImageDialog(inventory)">View Images</td>
                                         <td>{{inventory.name}}</td>
                                         <td>{{inventory.investment?.firstName || ''}} {{inventory.investment?.lastName
                                             || 'N/A'}}</td>
@@ -68,8 +68,8 @@
                                             inventory.certificateCost + inventory.recuttingCost) | number: '1.2-2'}}
                                         </td>
                                         <td>
-                                            <!-- <i class="material-icons btn-view"
-                                                (click)="openCategoryDlgModal(category)">visibility</i> -->
+                                            <i class="material-icons btn-view"
+                                                (click)="openViewModal(inventory)">visibility</i>
                                             <i class="material-icons btn-view"
                                                 (click)="openPrintDialog(inventory.purchaseId)">print</i>
                                         </td>
@@ -83,3 +83,18 @@
         </div>
     </div>
 </div>
+
+<aside class="aside-right" [ngClass]="{'open': isDisplay}">
+    <div *ngIf='isDisplay'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-inventory-view-dlg *ngIf="inventory != null && !isDelete" [inventory]="inventory">
+        </app-inventory-view-dlg>
+        <app-inventory-delete *ngIf="inventory != null && isDelete" [customer]="inventory" (deleted)="refresh()">
+        </app-inventory-delete>
+    </div>
+</aside>
