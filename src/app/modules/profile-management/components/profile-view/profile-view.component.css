@@ -1,0 +1,9 @@
+.card-header {
+    background-color: #ef8157;
+}
+.card-title, .card-subtitle {
+    color: white;
+}
+.slight-margin-top {
+    margin-top: 35px;
+}

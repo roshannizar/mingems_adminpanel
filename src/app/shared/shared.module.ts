@@ -24,6 +24,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { NgxBarcodeModule } from 'ngx-barcode';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [LoadingUiComponent, ConfirmationModalComponent],
@@ -63,7 +64,8 @@ import { NgxBarcodeModule } from 'ngx-barcode';
     MatPaginatorModule,
     MatListModule,
     MatIconModule,
-    NgxBarcodeModule
+    NgxBarcodeModule,
+    MatToolbarModule
   ],
   providers: [
     {

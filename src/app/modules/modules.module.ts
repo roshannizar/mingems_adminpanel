@@ -39,6 +39,7 @@ import { MoveProductComponent } from './purchase-management/modals/move-product/
 import { PaymentViewComponent } from './payment-management/components/payment-view/payment-view.component';
 import { PaymentUpdateComponent } from './payment-management/components/payment-update/payment-update.component';
 import { PrintDlgComponent } from './inventory-management/modals/print-dlg/print-dlg.component';
+import { ProfileViewComponent } from './profile-management/components/profile-view/profile-view.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,7 @@ import { PrintDlgComponent } from './inventory-management/modals/print-dlg/print
     SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent,
     PurchaseCreateComponent, PurchaseUpdateComponent, OrderViewComponent,
     CustomerViewComponent, CustomerCreateComponent, CustomerUpdateComponent, CustomerDeleteComponent,
-    OrderCreateComponent, InvestmentViewDlgComponent, SupplierViewDlgComponent, PurchaseViewDlgComponent, CustomerViewDlgComponent, MoveProductComponent, PaymentViewComponent, PaymentUpdateComponent, PrintDlgComponent],
+    OrderCreateComponent, InvestmentViewDlgComponent, SupplierViewDlgComponent, PurchaseViewDlgComponent, CustomerViewDlgComponent, MoveProductComponent, PaymentViewComponent, PaymentUpdateComponent, PrintDlgComponent, ProfileViewComponent],
   imports: [
     CommonModule,
     SharedModule,

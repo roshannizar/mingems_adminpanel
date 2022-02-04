@@ -10,6 +10,7 @@ import { SupplierViewComponent } from 'app/modules/supplier-management/component
 import { InventoryViewComponent } from 'app/modules/inventory-management/components/inventory-view/inventory-view.component';
 import { CustomerViewComponent } from 'app/modules/customer-management/components/customer-view/customer-view.component';
 import { PaymentViewComponent } from 'app/modules/payment-management/components/payment-view/payment-view.component';
+import { ProfileViewComponent } from 'app/modules/profile-management/components/profile-view/profile-view.component';
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -25,6 +26,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'more/users', component: UserViewComponent },
     // { path: 'more/report', component: ReportsComponent },
     { path: 'more/lastlogged', component: LastLoggedComponent },
+    { path: 'more/profile', component: ProfileViewComponent },
     // { path: 'more/private-code', component: PrivateCodeViewComponent},
     // { path: 'more/report/sales-report', component: SalesReportComponent }
 ];
