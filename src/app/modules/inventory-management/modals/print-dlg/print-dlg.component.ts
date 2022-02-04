@@ -54,7 +54,7 @@ export class PrintDlgComponent implements OnInit {
       const popupWin = window.open('', '_blank', 'width=300,height=300');
       popupWin.document.open();
       popupWin.document.write(
-        '<html><head></head><body onload="window.print()">' + printContents + '</body></html>');
+        '<html><head><style>.page-two span {font-weight: bold;}.side-one {float:left; width: 49%;}.side-two {float:right;width: 49%;text-align: right;}.side-middle {width: 100%;text-align: center;}</style></head><body style="width:14%" onload="window.print()">' + printContents + '</body></html>');
       popupWin.document.close();
     } else {
       const printContents = document.getElementById('page-one').innerHTML;
