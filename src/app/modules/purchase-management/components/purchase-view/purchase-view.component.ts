@@ -119,7 +119,16 @@ export class PurchaseViewComponent implements OnInit {
   }
 
   moveToProduct(purchase: PurchaseModel) {
-    this.openMoveProductDialog(purchase);
+    if (purchase.supplier !== null) {
+      if(purchase.investment !== null) {
+      this.openMoveProductDialog(purchase);
+      } else {
+        this.toastr.warning('Investor cannot be null!', 'Invalid values');
+      }
+    } else {
+      this.toastr.warning('Supplier cannot be null!', 'Invalid values');
+
+    }
   }
 
   private openMoveProductDialog(purchase: PurchaseModel) {
