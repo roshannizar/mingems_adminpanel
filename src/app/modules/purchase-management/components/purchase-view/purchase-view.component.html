@@ -63,7 +63,7 @@
                                         </td>
                                         <td>
                                             <mat-slide-toggle [disabled]="purchase.moved ? true:false"
-                                                (change)="moveToProduct(purchase)"
+                                                (change)="moveToProduct(purchase, i)" id="toggle{{i}}"
                                                 [checked]="purchase.moved ? true : false">
                                             </mat-slide-toggle>
                                         </td>
