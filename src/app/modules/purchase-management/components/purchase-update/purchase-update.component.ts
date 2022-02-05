@@ -60,8 +60,8 @@ export class PurchaseUpdateComponent implements OnInit {
       id: purchase.id,
       name: purchase.name,
       description: purchase.description,
-      supplierId: purchase.supplierId,
-      investorId: purchase.investorId,
+      supplierId: purchase.supplier !== null ? purchase.supplierId : null,
+      investorId: purchase.investment !== null ? purchase.investorId : null,
       unitPrice: purchase.unitPrice,
       exportCost: purchase.exportCost
     });
