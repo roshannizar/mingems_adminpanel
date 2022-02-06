@@ -6,6 +6,7 @@ import { PrintDlgComponent } from '../../modals/print-dlg/print-dlg.component';
 import { InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
 import { InventoryCreateComponent } from '../inventory-create/inventory-create.component';
+import { InventoryUpdateComponent } from '../inventory-update/inventory-update.component';
 
 @Component({
   selector: 'app-inventory-view',
@@ -51,6 +52,19 @@ export class InventoryViewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.getInventories();
+    });
+  }
+
+  openUpdateDialog(inventory: InventoryModel) {
+    const dialogRef = this.dialog.open(InventoryUpdateComponent, {
+      width: '800px',
+      data: inventory
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'refresh') {
+        this.getInventories();
+      }
     });
   }
 
