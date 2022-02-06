@@ -23,8 +23,7 @@
         <label>Export Cost(£)</label>
         <p>{{inventory.exportCost | number: '1.2-2'}}</p>
         <label>Total Cost(£)</label>
-        <p>{{(inventory.unitPrice + inventory.exportCost + inventory.commissionCost +
-            inventory.certificateCost + inventory.recuttingCost) | number: '1.2-2'}}</p>
+        <p>{{getTotalCost(inventory) | number: '1.2-2'}}</p>
         <label>Price Code</label>
         <p>{{inventory.priceCode}}</p>
         <label>Last Price Code</label>

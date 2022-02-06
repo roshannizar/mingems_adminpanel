@@ -28,16 +28,19 @@
             <div class="col-md-3" *ngIf="enableAmount">
                 <mat-form-field class="example-full-width">
                     <input matInput type="number" placeholder="Investor Remaining Amount" disabled value="{{remainingAmount}}">
+                    <span matPrefix>£&nbsp;</span>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
                     <input matInput type="number" placeholder="Enter UnitPrice" formControlName="unitPrice" (input)="reduceAmount()">
+                    <span matPrefix>£&nbsp;</span>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="Enter Export Cost" formControlName="exportCost" required>
+                    <span matPrefix>£&nbsp;</span>
                 </mat-form-field>
             </div>
         </form>

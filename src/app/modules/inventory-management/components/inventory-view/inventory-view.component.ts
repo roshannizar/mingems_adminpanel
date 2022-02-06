@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ImageViewDlgComponent } from '../../modals/image-view-dlg/image-view-dlg.component';
+import { InventorySearchDlgComponent } from '../../modals/inventory-search-dlg/inventory-search-dlg.component';
 import { PrintDlgComponent } from '../../modals/print-dlg/print-dlg.component';
 import { InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
@@ -17,6 +18,7 @@ export class InventoryViewComponent implements OnInit {
 
   isBlock = false;
   isDelete = false;
+  isSearch = false;
   isDisplay = false;
 
   heading_text: string;
@@ -88,6 +90,10 @@ export class InventoryViewComponent implements OnInit {
     });
   }
 
+  openFilterDialog() {
+    this.isSearch = true;
+  }
+
   closeModal() {
     this.isDisplay = false;
     this.inventory = null;
@@ -110,5 +116,9 @@ export class InventoryViewComponent implements OnInit {
   refresh(): void {
     this.closeModal();
     this.getInventories();
+  }
+
+  getTotalCost(inventory: InventoryModel) {
+    return inventory.unitPrice + inventory.exportCost + inventory.commissionCost + inventory.certificateCost + inventory.recuttingCost
   }
 }

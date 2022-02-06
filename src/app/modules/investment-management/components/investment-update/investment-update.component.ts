@@ -57,6 +57,25 @@ export class InvestmentUpdateComponent implements OnInit {
     );
   }
 
+  onSelectInvestor(event) {
+    const investor = this.investors.find(i => i.refId === event);
+    if (investor) {
+      this.investmentGroup.patchValue({
+        firstName: investor.firstName,
+        lastName: investor.lastName,
+        email: investor.email,
+        contactno: investor.contactNo
+      });
+    } else {
+      this.investmentGroup.patchValue({
+        firstName: null,
+        lastName: null,
+        email: null,
+        contactno: null
+      })
+    }
+  }
+
   patchInvestment(investment: InvestmentModel) {
     this.investmentGroup.patchValue({
       id: investment.id,
