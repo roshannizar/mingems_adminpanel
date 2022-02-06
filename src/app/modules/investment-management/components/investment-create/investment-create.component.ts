@@ -53,6 +53,18 @@ export class InvestmentCreateComponent implements OnInit {
     );
   }
 
+  onSelectInvestor(event) {
+    const investor = this.investors.find(i => i.refId === event);
+    if (investor) {
+      this.investmentGroup.patchValue({
+        firstName: investor.firstName,
+        lastName: investor.lastName,
+        email: investor.email,
+        contactno: investor.contactNo
+      })
+    }
+  }
+
   onSave() {
     this.isBlock = true;
     this.investment = Object.assign({}, this.investment, this.investmentGroup.value);

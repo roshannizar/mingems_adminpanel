@@ -40,12 +40,12 @@
                                     <th>Actions</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngIf="block">
+                                    <tr *ngIf="isBlock">
                                         <td colspan="6">
-                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="customers.length == 0 && block == false" class="text-center">
+                                    <tr *ngIf="customers.length == 0 && isBlock == false" class="text-center">
                                         <td colspan="6">
                                             <span class="font-italic">No record found!</span>
                                         </td>
