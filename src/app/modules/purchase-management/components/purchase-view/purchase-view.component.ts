@@ -118,8 +118,19 @@ export class PurchaseViewComponent implements OnInit {
     }
   }
 
-  moveToProduct(purchase: PurchaseModel) {
-    this.openMoveProductDialog(purchase);
+  moveToProduct(purchase: PurchaseModel, index: number) {
+    if (purchase.supplier !== null) {
+      if (purchase.investment !== null) {
+        this.openMoveProductDialog(purchase);
+      } else {
+        this.getPurchases();
+        this.toastr.warning('Investor cannot be null!', 'Invalid values');
+      }
+    } else {
+      this.getPurchases();
+      this.toastr.warning('Supplier cannot be null!', 'Invalid values');
+
+    }
   }
 
   private openMoveProductDialog(purchase: PurchaseModel) {
@@ -132,6 +143,8 @@ export class PurchaseViewComponent implements OnInit {
       if (result === 'refresh') {
         this.getPurchases();
         this.openPrintDialog(purchase.id);
+      } else {
+        this.getPurchases();
       }
     });
   }

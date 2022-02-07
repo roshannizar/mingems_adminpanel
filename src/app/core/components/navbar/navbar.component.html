@@ -11,14 +11,19 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <ul class="navbar-nav">
-                <li>
+                <li class="nav-item">
                     <a class="nav-link">
                         Welcome {{fullname}}
                     </a>
                 </li>
-                <li>
+                <li class="nav-item">
                     <a class="nav-link">
                         <span style="font-size: 9px;">VERSION {{app_version}}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/inventory']">
+                        <span class="material-icons">search</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
@@ -42,7 +47,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="cursor: pointer;" (click)="logout()">
+                    <a class="nav-link" (click)="logout()">
                         <i class="material-icons">exit_to_app</i>
                         <p>
                             <span class="d-lg-none d-md-block">Logout</span>

@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { ImageViewDlgComponent } from '../../modals/image-view-dlg/image-view-dlg.component';
+import { InventorySearchDlgComponent } from '../../modals/inventory-search-dlg/inventory-search-dlg.component';
 import { PrintDlgComponent } from '../../modals/print-dlg/print-dlg.component';
 import { InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
 import { InventoryCreateComponent } from '../inventory-create/inventory-create.component';
+import { InventoryUpdateComponent } from '../inventory-update/inventory-update.component';
 
 @Component({
   selector: 'app-inventory-view',
@@ -16,6 +18,7 @@ export class InventoryViewComponent implements OnInit {
 
   isBlock = false;
   isDelete = false;
+  isSearch = false;
   isDisplay = false;
 
   heading_text: string;
@@ -54,6 +57,19 @@ export class InventoryViewComponent implements OnInit {
     });
   }
 
+  openUpdateDialog(inventory: InventoryModel) {
+    const dialogRef = this.dialog.open(InventoryUpdateComponent, {
+      width: '800px',
+      data: inventory
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'refresh') {
+        this.getInventories();
+      }
+    });
+  }
+
   openPrintDialog(id: string) {
     const dialogRef = this.dialog.open(PrintDlgComponent, {
       width: '300px',
@@ -72,6 +88,10 @@ export class InventoryViewComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
     });
+  }
+
+  openFilterDialog() {
+    this.isSearch = true;
   }
 
   closeModal() {
@@ -96,5 +116,9 @@ export class InventoryViewComponent implements OnInit {
   refresh(): void {
     this.closeModal();
     this.getInventories();
+  }
+
+  getTotalCost(inventory: InventoryModel) {
+    return inventory.unitPrice + inventory.exportCost + inventory.commissionCost + inventory.certificateCost + inventory.recuttingCost
   }
 }

@@ -26,4 +26,8 @@ export class InventoryViewDlgComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
     });
   }
+
+  getTotalCost(inventory: InventoryModel) {
+    return inventory.unitPrice + inventory.exportCost + inventory.commissionCost + inventory.certificateCost + inventory.recuttingCost
+  }
 }
