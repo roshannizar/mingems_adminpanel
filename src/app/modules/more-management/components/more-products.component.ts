@@ -11,6 +11,7 @@ import { ResetPasswordComponent } from 'app/auth/components/reset-password/reset
 export class MoreProductsComponent implements OnInit {
 
     more = [
+        { name: 'Private Codes', icon: 'lock', path: '/more/privatecodes', cardcss: 'card-header-code', btnname: 'GO' },
         { name: 'Profile', icon: 'person', path: '/more/profile', cardcss: 'card-header-profile', btnname: 'GO' },
         { name: 'Users', icon: 'people_alt', path: '/more/users', cardcss: 'card-header-success',
         btnname: 'GO' },
