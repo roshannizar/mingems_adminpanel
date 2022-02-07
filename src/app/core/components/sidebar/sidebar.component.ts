@@ -22,6 +22,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/more/users', title: 'More/Users', icon: 'more', class: 'value' },
   { path: '/more/lastlogged', title: 'More/Last Logged', icon: 'more', class: 'value' },
   { path: '/more/profile', title: 'More/Profile', icon: 'more', class: 'value' },
+  { path: '/more/privatecodes', title: 'More/Private Code', icon: 'more', class: 'value' },
   { path: '/search', title: 'Search Inventory', icon: 'search', class: 'value' },
   // { path: '/more/report', title: 'More/Report', icon: 'more', class: 'value' },
   // { path: '/more/report/sales-report', title: 'More/Report/Sales Report', icon: 'more', class: 'value' }

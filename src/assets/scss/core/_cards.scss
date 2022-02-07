@@ -209,6 +209,14 @@
     &.card-rotate.bg-success .back{
       background: linear-gradient(60deg, $blue-600, $blue-700);
     }
+    .card-header-code .card-icon,
+    .card-header-code .card-text,
+    .card-header-code:not(.card-header-icon):not(.card-header-text),
+    &.bg-success,
+    &.card-rotate.bg-success .front,
+    &.card-rotate.bg-success .back{
+      background: linear-gradient(60deg, $black-color, $black);
+    }
     .card-header-warning .card-icon,
     .card-header-warning .card-text,
     .card-header-warning:not(.card-header-icon):not(.card-header-text),

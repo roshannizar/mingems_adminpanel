@@ -29,6 +29,7 @@ export class CustomerUpdateComponent implements OnInit {
 
   createCustomer() {
     this.customerGroup = this.fb.group({
+      id:[''],
       email: ['', Validators.email],
       firstName: ['', Validators.required],
       lastName: [''],
