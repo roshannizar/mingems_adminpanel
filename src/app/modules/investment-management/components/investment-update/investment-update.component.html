@@ -10,11 +10,11 @@
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Last Name" formControlName="lastName" required>
+                    <input matInput placeholder="Enter Last Name" formControlName="lastName">
                 </mat-form-field>
             </div>
             <div class="col-md-6" *ngIf="!isInvestorBlock">
-                <ng-select formControlName="refId" required placeholder="Select Investor"
+                <ng-select formControlName="refId" placeholder="Select Investor"
                     (change)="onSelectInvestor($event)">
                     <ng-option *ngFor="let investor of investors" [value]="investor.refId">{{investor.firstName }}
                         {{investor.lastname}} - £&nbsp;{{investor.remainingAmount}}</ng-option>

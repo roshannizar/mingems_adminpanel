@@ -34,9 +34,9 @@ export class InvestmentUpdateComponent implements OnInit {
   createInvestment() {
     this.investmentGroup = this.fb.group({
       id: ['', Validators.required],
-      refId: ['', Validators.required],
+      refId: [''],
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: [''],
       email: ['', Validators.email],
       contactno: ['', Validators.required],
       amount: [0, Validators.required]
