@@ -17,4 +17,8 @@ export class ProfileService extends BaseService<UserProfileModel>{
     getMetaData(){
         return this.getById(`${this.baseUrl}/metadata`);
     }
+
+    updateMetaData(userProfileModel : UserProfileModel){
+        return this.put(this.baseUrl, userProfileModel);
+    }
 }
