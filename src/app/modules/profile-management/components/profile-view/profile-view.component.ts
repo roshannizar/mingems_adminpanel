@@ -54,6 +54,23 @@ export class ProfileViewComponent implements OnInit {
     );
   }
 
+  updateMetaData(){
+      this.isBlock = true;
+      this.user = Object.assign({}, this.user, this.userGroup.value);
+      this.profileService.updateMetaData(this.user).subscribe(
+        (result) => {
+          this.isBlock = false;
+          this.toastr.success('User profile updated successfully!', 'Updated');
+          this.ngOnInit();
+          this.hide = false
+        },
+        (error) => {
+          this.isBlock = false;
+          this.toastr.error(error.message, 'Failed to update user profile');
+        }
+      );
+  }
+
   getUserRole() {
     return this.user?.role === 0 ? 'Admin' : 'Customer';
   }
