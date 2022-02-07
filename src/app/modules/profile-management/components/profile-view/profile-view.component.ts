@@ -62,6 +62,7 @@ export class ProfileViewComponent implements OnInit {
           this.isBlock = false;
           this.toastr.success('User profile updated successfully!', 'Updated');
           this.ngOnInit();
+          this.hide = false
         },
         (error) => {
           this.isBlock = false;
