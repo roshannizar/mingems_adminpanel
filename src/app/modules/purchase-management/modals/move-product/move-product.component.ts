@@ -70,15 +70,18 @@ export class MoveProductComponent implements OnInit {
 
   onImageUpload() {
     this.isImageBlock = true;
+    this.isBlock = true;
     this.inventoryService.uploadImage(this.file).subscribe(
       (result) => {
         this.isImageBlock = false;
+        this.isBlock = false;
         this.filePath = null;
         this.imageLines.push({ id: null, url: result.image, inventoryId: null, recordState: 0 });
         this.toastr.success('Success', 'Image Uploaded successfully!');
       },
       (error) => {
         this.isImageBlock = false;
+        this.isBlock = false;
         this.toastr.error(error, 'Failed to upload image!');
       }
     );

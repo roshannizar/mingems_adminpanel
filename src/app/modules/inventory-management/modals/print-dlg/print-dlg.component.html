@@ -2,6 +2,7 @@
 <div mat-dialog-content>
     <div class="page-one" id="page-one" *ngIf="!pageNo">
         <ngx-barcode [bc-value]="inventory.barcode" [bc-display-value]="true"></ngx-barcode>
+        <label>{{inventory.priceCode}}</label>
     </div>
     <div class="page-two" id="page-two" *ngIf="pageNo">
         <div class="side-one">
