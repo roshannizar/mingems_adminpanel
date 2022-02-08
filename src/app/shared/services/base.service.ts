@@ -13,7 +13,6 @@ export abstract class BaseService<T> {
     errorMessage: { status: any; message: string };
     protected baseApiEndPoint = environment.endpointUrl;
     imageBaseUrl = environment.cloudStorageUrl;
-    private router: Router;
 
     constructor(protected http: HttpClient) { }
 
@@ -70,13 +69,12 @@ export abstract class BaseService<T> {
     errorHandle(error: Response | any) {
         if (error.status === 0) {
             this.errorMessage = {
-                message: 'Please check your internet connection',
+                message: 'Please check your internet connection or token expired, Please try logging in',
                 status: error.status
             };
-            this.router.navigate(['login']);
         } else if (error.status === 401) {
             this.errorMessage = {
-                message: error.error,
+                message: error.error.Message,
                 status: error.status
             };
         } else if (error.status === 401 || error.status === 408) {
@@ -85,14 +83,10 @@ export abstract class BaseService<T> {
                 status: error.status
             };
         } else {
-            if (error.error.Message === 'Token expired') {
-                this.router.navigate(['login']);
-            } else {
-                this.errorMessage = {
-                    message: error.error.Message,
-                    status: error.status
-                };
-            }
+            this.errorMessage = {
+                message: error.error.Message,
+                status: error.status
+            };
         }
         const errorMsg = Object.assign({}, this.errorMessage);
         return throwError(errorMsg);
