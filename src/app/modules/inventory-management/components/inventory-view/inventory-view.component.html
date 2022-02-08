@@ -73,6 +73,8 @@
                                                 (click)="openViewModal(inventory)">visibility</i>
                                             <i class="material-icons btn-view"
                                                 (click)="openUpdateDialog(inventory)">create</i>
+                                                <i class="material-icons btn-view"
+                                                (click)="openDeleteModal(inventory)">delete</i>
                                             <i class="material-icons btn-view"
                                                 (click)="openPrintDialog(inventory.purchaseId)">print</i>
                                         </td>
@@ -97,7 +99,7 @@
         </div>
         <app-inventory-view-dlg *ngIf="inventory != null && !isDelete" [inventory]="inventory">
         </app-inventory-view-dlg>
-        <app-inventory-delete *ngIf="inventory != null && isDelete" [customer]="inventory" (deleted)="refresh()">
+        <app-inventory-delete *ngIf="inventory != null && isDelete" [inventory]="inventory" (deleted)="refresh()">
         </app-inventory-delete>
     </div>
 </aside>
