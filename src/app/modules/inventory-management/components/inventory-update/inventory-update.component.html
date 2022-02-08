@@ -74,14 +74,16 @@
                 </mat-form-field>
             </div>
             <div class="col-md-3">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Price Code" formControlName="priceCode" required>
-                </mat-form-field>
+                <ng-select formControlName="priceCode" required placeholder="Select Price Code">
+                    <ng-option *ngFor="let privateCode of privateCodes" [value]="privateCode.priceCode">{{privateCode.name}} -
+                        {{privateCode.priceCode}}</ng-option>
+                </ng-select>
             </div>
             <div class="col-md-3">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Last Code" formControlName="lastPriceCode" required>
-                </mat-form-field>
+                <ng-select formControlName="lastPriceCode" required placeholder="Select Last Price Code">
+                    <ng-option *ngFor="let privateCode of privateCodes" [value]="privateCode.priceCode">{{privateCode.name}} -
+                        {{privateCode.priceCode}}</ng-option>
+                </ng-select>
             </div>
         </form>
     </div>

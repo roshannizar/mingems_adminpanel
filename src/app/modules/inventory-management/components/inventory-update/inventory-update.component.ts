@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { PrivateCodeModel } from 'app/modules/private-code-management/models/private-code-model';
+import { PrivateCodeService } from 'app/modules/private-code-management/services/private.code.service';
 import { PurchaseViewComponent } from 'app/modules/purchase-management/components/purchase-view/purchase-view.component';
 import { ToastrService } from 'ngx-toastr';
 import { ImageLines, InventoryModel } from '../../models/inventory-model';
@@ -22,11 +24,13 @@ export class InventoryUpdateComponent implements OnInit {
 
   inventory = new InventoryModel();
   imageLines = new Array<ImageLines>();
+  privateCodes = new Array<PrivateCodeModel>();
 
   constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: InventoryModel,
-    private inventoryService: InventoryService, private toastr: ToastrService, public dialogRef: MatDialogRef<PurchaseViewComponent>) { }
+    private inventoryService: InventoryService, private toastr: ToastrService, public dialogRef: MatDialogRef<PurchaseViewComponent>,  private privateCodeService: PrivateCodeService) { }
 
   ngOnInit(): void {
+    this.getPrivateCodees();
     this.createInventory();
     this.patchInventory(this.data);
   }
@@ -72,6 +76,20 @@ export class InventoryUpdateComponent implements OnInit {
       priceCode: data.priceCode,
       lastPriceCode: data.lastPriceCode
     });
+  }
+
+  getPrivateCodees() {
+    this.isBlock = true;
+    this.privateCodeService.getPrivateCodes().subscribe(
+      (result) => {
+        this.privateCodes = result;
+        this.isBlock = false;
+      },
+      (error) => {
+        this.isBlock = false;
+        this.toastr.error(error.message, 'Failed to load Private Codes');
+      }
+    );
   }
 
   onFileChange(event) {

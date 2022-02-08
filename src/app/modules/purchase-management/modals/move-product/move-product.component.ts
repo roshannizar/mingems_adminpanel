@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ImageLines, InventoryModel } from 'app/modules/inventory-management/models/inventory-model';
 import { InventoryService } from 'app/modules/inventory-management/services/inventory.service';
+import { PrivateCodeModel } from 'app/modules/private-code-management/models/private-code-model';
+import { PrivateCodeService } from 'app/modules/private-code-management/services/private.code.service';
 import { ToastrService } from 'ngx-toastr';
 import { stringify } from 'querystring';
 import { PurchaseViewComponent } from '../../components/purchase-view/purchase-view.component';
@@ -24,11 +26,13 @@ export class MoveProductComponent implements OnInit {
 
   inventory = new InventoryModel();
   imageLines = new Array<ImageLines>();
+  privateCodes = new Array<PrivateCodeModel>();
 
   constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: PurchaseModel,
-    private inventoryService: InventoryService, private toastr: ToastrService, public dialogRef: MatDialogRef<PurchaseViewComponent>) { }
+    private inventoryService: InventoryService, private toastr: ToastrService, public dialogRef: MatDialogRef<PurchaseViewComponent>, private privateCodeService: PrivateCodeService) { }
 
   ngOnInit(): void {
+    this.getPrivateCodees();
     this.createInventory(this.data);
   }
 
@@ -86,6 +90,20 @@ export class MoveProductComponent implements OnInit {
 
   onRemoveSavedImage(index: number) {
     this.imageLines.splice(index, 1);
+  }
+
+  getPrivateCodees() {
+    this.isBlock = true;
+    this.privateCodeService.getPrivateCodes().subscribe(
+      (result) => {
+        this.privateCodes = result;
+        this.isBlock = false;
+      },
+      (error) => {
+        this.isBlock = false;
+        this.toastr.error(error.message, 'Failed to load Private Codes');
+      }
+    );
   }
 
   onSave() {
