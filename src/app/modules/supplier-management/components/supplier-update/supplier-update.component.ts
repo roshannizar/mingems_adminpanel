@@ -29,6 +29,7 @@ export class SupplierUpdateComponent implements OnInit {
 
   createSupplier() {
     this.supplierGroup = this.fb.group({
+      id: [''],
       email: ['', Validators.required],
       name: ['', Validators.required],
       city: [''],
