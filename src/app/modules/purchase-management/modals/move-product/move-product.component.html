@@ -2,7 +2,7 @@
 <div mat-dialog-content>
     <div class="container">
         <div class="row scrollable-row">
-            <div class="container-image unselected" *ngIf="filePath != null">
+            <div class="container-image unselected col-md3" *ngIf="filePath != null">
                 <img [src]="filePath" alt="image" class="image">
                 <div class="middle row">
                     <app-loading-ui [block]="isImageBlock"></app-loading-ui>
@@ -13,7 +13,7 @@
             <div class="col-md-3">
                 <input type="file" multiple accept='image/*' (change)="onFileChange($event)" />
             </div>
-            <div class="container-image selected" *ngFor="let image of imageLines;let i= index;">
+            <div class="container-image selected col-md-4" *ngFor="let image of imageLines;let i= index;">
                 <img [src]="image.url" alt="image" class="image">
                 <div class="middle row">
                     <i class="material-icons" (click)="onRemoveSavedImage(i)">close</i>
@@ -73,14 +73,16 @@
                 </mat-form-field>
             </div>
             <div class="col-md-3">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Price Code" formControlName="priceCode" required>
-                </mat-form-field>
+                <ng-select formControlName="priceCode" required placeholder="Select Price Code">
+                    <ng-option *ngFor="let privateCode of privateCodes" [value]="privateCode.priceCode">{{privateCode.name}} -
+                        {{privateCode.priceCode}}</ng-option>
+                </ng-select>
             </div>
             <div class="col-md-3">
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter Last Code" formControlName="lastPriceCode" required>
-                </mat-form-field>
+                <ng-select formControlName="lastPriceCode" required placeholder="Select Last Price Code">
+                    <ng-option *ngFor="let privateCode of privateCodes" [value]="privateCode.priceCode">{{privateCode.name}} -
+                        {{privateCode.priceCode}}</ng-option>
+                </ng-select>
             </div>
             <div class="col-md-3" *ngIf="false">
                 <mat-form-field class="example-full-width">
