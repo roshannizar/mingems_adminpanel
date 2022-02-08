@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { ROUTES } from '../sidebar/sidebar.component';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { SignalRService } from '../services/signalr.service';
 import { OrderHubModel } from '../models/order-hub-model';
