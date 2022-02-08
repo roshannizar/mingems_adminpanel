@@ -32,7 +32,7 @@ export class InvestmentCreateComponent implements OnInit {
     this.investmentGroup = this.fb.group({
       refId: [''],
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: [''],
       email: ['', Validators.email],
       contactno: ['', Validators.required],
       amount: [0, Validators.required]
@@ -41,7 +41,7 @@ export class InvestmentCreateComponent implements OnInit {
 
   getInvestors() {
     this.isInvestorBlock = true;
-    this.investmentService.getInvestments().subscribe(
+    this.investmentService.getOriginInvestments().subscribe(
       (result) => {
         this.investors = result;
         this.isInvestorBlock = false;
@@ -53,6 +53,18 @@ export class InvestmentCreateComponent implements OnInit {
     );
   }
 
+  onSelectInvestor(event) {
+    const investor = this.investors.find(i => i.refId === event);
+    if (investor) {
+      this.investmentGroup.patchValue({
+        firstName: investor.firstName,
+        lastName: investor.lastName,
+        email: investor.email,
+        contactno: investor.contactNo
+      })
+    }
+  }
+
   onSave() {
     this.isBlock = true;
     this.investment = Object.assign({}, this.investment, this.investmentGroup.value);
@@ -60,7 +72,7 @@ export class InvestmentCreateComponent implements OnInit {
       (result) => {
         this.investmentGroup.reset();
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastr.success('Investment created successfully!', 'Success');
       },
       (error) => {
@@ -70,7 +82,7 @@ export class InvestmentCreateComponent implements OnInit {
     );
   }
 
-  close(): void {
-    this.dialogRef.close();
+  close(response: string): void {
+    this.dialogRef.close(response);
   }
 }

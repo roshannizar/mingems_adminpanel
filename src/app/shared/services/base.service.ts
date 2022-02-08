@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { environment } from 'environments/environment';
 import { Observable, throwError, timer } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -12,6 +13,7 @@ export abstract class BaseService<T> {
     errorMessage: { status: any; message: string };
     protected baseApiEndPoint = environment.endpointUrl;
     imageBaseUrl = environment.cloudStorageUrl;
+
     constructor(protected http: HttpClient) { }
 
     public get(url: string): Observable<Array<T>> {
@@ -41,7 +43,7 @@ export abstract class BaseService<T> {
     public filePost(url: string, file: File) {
         const formData: FormData = new FormData();
         if (file != null && file !== undefined) {
-                formData.append('file', file);
+            formData.append('file', file);
         }
         return this.http.post(`${this.imageBaseUrl}/${url}`, formData, this.getAuthHeader()).pipe(catchError(this.errorHandle));
     }
@@ -67,12 +69,12 @@ export abstract class BaseService<T> {
     errorHandle(error: Response | any) {
         if (error.status === 0) {
             this.errorMessage = {
-                message: 'Please check your internet connection',
+                message: 'Please check your internet connection or token expired, Please try logging in',
                 status: error.status
             };
         } else if (error.status === 401) {
             this.errorMessage = {
-                message: error.error,
+                message: error.error.Message,
                 status: error.status
             };
         } else if (error.status === 401 || error.status === 408) {

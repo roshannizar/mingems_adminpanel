@@ -27,6 +27,7 @@
                                     <th>
                                         #
                                     </th>
+                                    <th> Ref Id</th>
                                     <th>
                                         First Name
                                     </th>
@@ -51,17 +52,18 @@
                                 </thead>
                                 <tbody>
                                     <tr *ngIf="isBlock">
-                                        <td colspan="8">
+                                        <td colspan="9">
                                             <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
                                     <tr *ngIf="investments.length == 0 && isBlock == false" class="text-center">
-                                        <td colspan="8">
+                                        <td colspan="9">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
                                     <tr *ngFor="let investment of investments; let i = index">
                                         <td>{{i + 1}}</td>
+                                        <td>{{investment.refId}}</td>
                                         <td>{{investment.firstName}}</td>
                                         <td>{{investment.lastName}}</td>
                                         <td>{{investment.email}}</td>

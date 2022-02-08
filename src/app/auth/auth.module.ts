@@ -4,11 +4,12 @@ import { AuthComponent } from './auth.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { SharedModule } from 'app/shared/shared.module';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 
 @NgModule({
-  declarations: [AuthComponent],
+  declarations: [AuthComponent, ResetPasswordComponent],
   imports: [
     CommonModule,
     SharedModule

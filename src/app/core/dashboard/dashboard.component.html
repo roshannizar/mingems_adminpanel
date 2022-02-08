@@ -63,7 +63,7 @@
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">account_box</i>Total User Found
+                            <i class="material-icons">account_box</i>Total Customers Found
                         </div>
                     </div>
                 </div>
@@ -80,8 +80,8 @@
                         <table class="table table-hover">
                             <thead class="text-warning-top">
                                 <th>Full Name</th>
-                                <th>Name</th>
-                                <th>Sold</th>
+                                <th>Total Investment (£)</th>
+                                <th>Balance (£)</th>
                             </thead>
                             <tbody>
                                 <tr *ngIf="block">
@@ -90,16 +90,16 @@
                                     </td>
                                 </tr>
 
-                                <tr *ngIf="!block">
+                                <tr *ngIf="dashboardModel.investors.length === 0 && !block">
                                     <td colspan="3" style="text-align: center;">
                                         No Records Found!
                                     </td>
                                 </tr>
 
-                                <tr *ngFor="let product of dashboardModel.spProductSolds">
-                                    <td>{{product.productName}}</td>
-                                    <td>{{product.name}}</td>
-                                    <td>{{product.salesCount}} Units</td>
+                                <tr *ngFor="let investor of dashboardModel.investors">
+                                    <td>{{investor.firstName}} {{investor.lastName}}</td>
+                                    <td>{{investor.fund | number: '1.2-2'}}</td>
+                                    <td>{{investor.balance | number: '1.2-2'}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -121,9 +121,9 @@
                                 <th>Amount</th>
                             </thead>
                             <tbody>
-                                <tr *ngIf="customerblock">
+                                <tr *ngIf="block">
                                     <td colspan="3">
-                                        <app-loading-ui [block]="customerblock"></app-loading-ui>
+                                        <app-loading-ui [block]="block"></app-loading-ui>
                                     </td>
                                 </tr>
 

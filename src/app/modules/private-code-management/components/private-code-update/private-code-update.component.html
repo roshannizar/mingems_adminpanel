@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Update Private Code</h1>
+<div mat-dialog-content>
+    <div class="container">
+        <form [formGroup]="privateCodeGroup" class="row">
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Name" formControlName="name" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Price Code" formControlName="priceCode" required>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="isBlock">
+    <app-loading-ui [block]="isBlock"></app-loading-ui>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="!isBlock">
+    <button mat-button (click)="close('close')">Cancel</button>
+    <button mat-button id="btn-update" [disabled]="!privateCodeGroup.dirty" (click)="onUpdate()">Save</button>
+</div>

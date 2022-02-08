@@ -29,6 +29,7 @@ export class CustomerUpdateComponent implements OnInit {
 
   createCustomer() {
     this.customerGroup = this.fb.group({
+      id:[''],
       email: ['', Validators.email],
       firstName: ['', Validators.required],
       lastName: [''],
@@ -52,7 +53,7 @@ export class CustomerUpdateComponent implements OnInit {
     this.customerService.updateCustomer(this.customer).subscribe(
       (result) => {
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastr.success('Customer updated successfully!', 'Updated');
       },
       (error) => {
@@ -62,7 +63,7 @@ export class CustomerUpdateComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }

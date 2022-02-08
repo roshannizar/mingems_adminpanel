@@ -34,9 +34,9 @@ export class InvestmentUpdateComponent implements OnInit {
   createInvestment() {
     this.investmentGroup = this.fb.group({
       id: ['', Validators.required],
-      refId: ['', Validators.required],
+      refId: [''],
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: [''],
       email: ['', Validators.email],
       contactno: ['', Validators.required],
       amount: [0, Validators.required]
@@ -45,7 +45,7 @@ export class InvestmentUpdateComponent implements OnInit {
 
   getInvestors() {
     this.isInvestorBlock = true;
-    this.investmentService.getInvestments().subscribe(
+    this.investmentService.getOriginInvestments().subscribe(
       (result) => {
         this.investors = result;
         this.isInvestorBlock = false;
@@ -57,13 +57,32 @@ export class InvestmentUpdateComponent implements OnInit {
     );
   }
 
+  onSelectInvestor(event) {
+    const investor = this.investors.find(i => i.refId === event);
+    if (investor) {
+      this.investmentGroup.patchValue({
+        firstName: investor.firstName,
+        lastName: investor.lastName,
+        email: investor.email,
+        contactno: investor.contactNo
+      });
+    } else {
+      this.investmentGroup.patchValue({
+        firstName: null,
+        lastName: null,
+        email: null,
+        contactno: null
+      })
+    }
+  }
+
   patchInvestment(investment: InvestmentModel) {
     this.investmentGroup.patchValue({
       id: investment.id,
       refId: investment.refId,
       firstName: investment.firstName,
       lastName: investment.lastName,
-      email:  investment.email,
+      email: investment.email,
       contactno: investment.contactNo,
       amount: investment.amount
     });
@@ -75,8 +94,8 @@ export class InvestmentUpdateComponent implements OnInit {
     this.investmentService.updateInvestment(this.investment).subscribe(
       (result) => {
         this.isBlock = false;
-        this.close();
-        this.toastr.success('Updated successfully!','Success');
+        this.close('refresh');
+        this.toastr.success('Updated successfully!', 'Success');
       },
       (error) => {
         this.isBlock = false;
@@ -85,7 +104,7 @@ export class InvestmentUpdateComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }

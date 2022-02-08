@@ -50,7 +50,9 @@ export class SupplierViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getSuppliers();
+      if (result === 'refresh') {
+        this.getSuppliers();
+      }
     });
   }
 
@@ -61,7 +63,9 @@ export class SupplierViewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.getSuppliers();
+      if (result === 'refresh') {
+        this.getSuppliers();
+      }
     });
   }
 

@@ -1,0 +1,19 @@
+.page-one {
+    text-align: center;
+}
+.page-two span {
+    font-weight: bold;
+}
+.side-one {
+    float:left;
+    width: 50%;
+}
+.side-two {
+    float:right;
+    width: 50%;
+    text-align: right;
+}
+.side-middle {
+    width: 100%;
+    text-align: center;
+}
