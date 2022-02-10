@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { PurchaseModel } from 'app/modules/purchase-management/model/purchase-model';
 import { ToastrService } from 'ngx-toastr';
-import { InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class InventoryDeleteComponent implements OnInit {
   isBlock = false;
   name: string;
 
-  @Input() inventory: InventoryModel;
+  @Input() inventory: PurchaseModel;
   @Output() deleted = new EventEmitter();
 
   constructor(private inventoryService: InventoryService, private toastr: ToastrService) { }

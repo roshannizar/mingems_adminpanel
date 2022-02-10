@@ -4,8 +4,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { PrivateCodeModel } from 'app/modules/private-code-management/models/private-code-model';
 import { PrivateCodeService } from 'app/modules/private-code-management/services/private.code.service';
 import { PurchaseViewComponent } from 'app/modules/purchase-management/components/purchase-view/purchase-view.component';
+import { ImageLines, PurchaseModel } from 'app/modules/purchase-management/model/purchase-model';
 import { ToastrService } from 'ngx-toastr';
-import { ImageLines, InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
 
 @Component({
@@ -22,11 +22,11 @@ export class InventoryUpdateComponent implements OnInit {
   filePath: string;
   inventoryGroup: FormGroup;
 
-  inventory = new InventoryModel();
+  inventory = new PurchaseModel();
   imageLines = new Array<ImageLines>();
   privateCodes = new Array<PrivateCodeModel>();
 
-  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: InventoryModel,
+  constructor(private fb: FormBuilder, @Inject(MAT_DIALOG_DATA) public data: PurchaseModel,
     private inventoryService: InventoryService, private toastr: ToastrService, public dialogRef: MatDialogRef<PurchaseViewComponent>,  private privateCodeService: PrivateCodeService) { }
 
   ngOnInit(): void {
@@ -56,11 +56,10 @@ export class InventoryUpdateComponent implements OnInit {
     });
   }
 
-  patchInventory(data: InventoryModel) {
+  patchInventory(data: PurchaseModel) {
     this.imageLines = data.imageLines;
     this.inventoryGroup.patchValue({
       id: data.id,
-      purchaseId: data.purchaseId,
       investorId: data.investorId,
       barcode: data.barcode,
       name: data.name,

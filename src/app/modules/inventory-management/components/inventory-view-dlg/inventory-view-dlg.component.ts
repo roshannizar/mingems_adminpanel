@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PurchaseModel } from 'app/modules/purchase-management/model/purchase-model';
 import { ImageViewDlgComponent } from '../../modals/image-view-dlg/image-view-dlg.component';
-import { InventoryModel } from '../../models/inventory-model';
 
 @Component({
   selector: 'app-inventory-view-dlg',
@@ -10,7 +10,7 @@ import { InventoryModel } from '../../models/inventory-model';
 })
 export class InventoryViewDlgComponent implements OnInit {
 
-  @Input() inventory = new InventoryModel();
+  @Input() inventory = new PurchaseModel();
   
   constructor(private dialog: MatDialog) { }
 
@@ -27,7 +27,7 @@ export class InventoryViewDlgComponent implements OnInit {
     });
   }
 
-  getTotalCost(inventory: InventoryModel) {
+  getTotalCost(inventory: PurchaseModel) {
     return inventory.unitPrice + inventory.exportCost + inventory.commissionCost + inventory.certificateCost + inventory.recuttingCost
   }
 }

@@ -1,14 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { ImageLines, InventoryModel } from 'app/modules/inventory-management/models/inventory-model';
 import { InventoryService } from 'app/modules/inventory-management/services/inventory.service';
 import { PrivateCodeModel } from 'app/modules/private-code-management/models/private-code-model';
 import { PrivateCodeService } from 'app/modules/private-code-management/services/private.code.service';
 import { ToastrService } from 'ngx-toastr';
 import { stringify } from 'querystring';
 import { PurchaseViewComponent } from '../../components/purchase-view/purchase-view.component';
-import { PurchaseModel } from '../../model/purchase-model';
+import { ImageLines, PurchaseModel } from '../../model/purchase-model';
 
 @Component({
   selector: 'app-move-product',
@@ -24,7 +23,7 @@ export class MoveProductComponent implements OnInit {
   filePath: string;
   inventoryGroup: FormGroup;
 
-  inventory = new InventoryModel();
+  inventory = new PurchaseModel();
   imageLines = new Array<ImageLines>();
   privateCodes = new Array<PrivateCodeModel>();
 
@@ -113,7 +112,7 @@ export class MoveProductComponent implements OnInit {
     this.isBlock = true;
     this.inventory = Object.assign({}, this.inventoryGroup.value, this.inventory);
     this.inventory.imageLines = this.imageLines;
-    this.inventoryService.createInventory(this.inventory).subscribe(
+    this.inventoryService.updateInventory(this.inventory).subscribe(
       (result) => {
         this.inventoryGroup.reset();
         this.imageLines = null;
