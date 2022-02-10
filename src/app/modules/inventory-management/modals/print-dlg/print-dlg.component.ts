@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PurchaseModel } from 'app/modules/purchase-management/model/purchase-model';
 import { ToastrService } from 'ngx-toastr';
-import { InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
 @Component({
   selector: 'app-print-dlg',
@@ -13,7 +13,7 @@ export class PrintDlgComponent implements OnInit {
   pageNo = false;
   isBlock = false;
 
-  inventory = new InventoryModel();
+  inventory = new PurchaseModel();
 
   constructor(public dialogRef: MatDialogRef<any>, @Inject(MAT_DIALOG_DATA) public data: string,
     private inventoryService: InventoryService, private toastr: ToastrService) { }
@@ -24,7 +24,7 @@ export class PrintDlgComponent implements OnInit {
 
   getInventoryPurchaseId(id: string) {
     this.isBlock = true;
-    this.inventoryService.getInventoryPurchase(id).subscribe(
+    this.inventoryService.getInventory(id).subscribe(
       (result) => {
         this.inventory = result;
         this.isBlock = false;

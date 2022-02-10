@@ -14,7 +14,6 @@ import { InvestmentViewComponent } from './investment-management/components/inve
 import { InvestmentUpdateComponent } from './investment-management/components/investment-update/investment-update.component';
 import { InvestmentDeleteComponent } from './investment-management/components/investment-delete/investment-delete.component';
 import { InventoryDeleteComponent } from './inventory-management/components/inventory-delete/inventory-delete.component';
-import { InventoryCreateComponent } from './inventory-management/components/inventory-create/inventory-create.component';
 import { InventoryViewComponent } from './inventory-management/components/inventory-view/inventory-view.component';
 import { InventoryUpdateComponent } from './inventory-management/components/inventory-update/inventory-update.component';
 import { SupplierUpdateComponent } from './supplier-management/components/supplier-update/supplier-update.component';
@@ -55,8 +54,8 @@ import { PrivateCodeViewDlgComponent } from './private-code-management/component
     MoreProductsComponent, UserViewComponent, LastLoggedComponent,
     SalesReportComponent, ProductReportComponent, ReportsComponent, FilterDialogComponent,
     InvestmentCreateComponent, InvestmentViewComponent, InvestmentUpdateComponent, InvestmentDeleteComponent,
-    InventoryDeleteComponent, InventoryCreateComponent, InventoryViewComponent,
-    InventoryUpdateComponent, SupplierUpdateComponent, SupplierCreateComponent,
+    InventoryDeleteComponent, InventoryViewComponent, InventoryUpdateComponent, 
+    SupplierUpdateComponent, SupplierCreateComponent,
     SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent,
     PurchaseCreateComponent, PurchaseUpdateComponent, OrderViewComponent,
     CustomerViewComponent, CustomerCreateComponent, CustomerUpdateComponent, CustomerDeleteComponent,
