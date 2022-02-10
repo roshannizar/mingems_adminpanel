@@ -12,11 +12,13 @@ import { CustomerViewComponent } from 'app/modules/customer-management/component
 import { PaymentViewComponent } from 'app/modules/payment-management/components/payment-view/payment-view.component';
 import { ProfileViewComponent } from 'app/modules/profile-management/components/profile-view/profile-view.component';
 import { PrivateCodeViewComponent } from 'app/modules/private-code-management/components/private-code-view/private-code-view.component';
+import { SearchViewComponent } from 'app/modules/search-management/components/search-view/search-view.component';
 
 export const AdminLayoutRoutes: Routes = [
 
     { path: 'dashboard', component: DashboardComponent },
     { path: 'inventory', component: InventoryViewComponent },
+    { path: 'search', component: SearchViewComponent },
     { path: 'purchase', component: PurchaseViewComponent },
     // { path: 'order', component: OrderViewComponent},
     { path: 'more/subscription', component: PaymentViewComponent },

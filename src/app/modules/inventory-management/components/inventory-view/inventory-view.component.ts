@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { PurchaseModel } from 'app/modules/purchase-management/model/purchase-model';
 import { ToastrService } from 'ngx-toastr';
 import { ImageViewDlgComponent } from '../../modals/image-view-dlg/image-view-dlg.component';
-import { InventorySearchDlgComponent } from '../../modals/inventory-search-dlg/inventory-search-dlg.component';
 import { PrintDlgComponent } from '../../modals/print-dlg/print-dlg.component';
 import { InventoryService } from '../../services/inventory.service';
 import { InventoryUpdateComponent } from '../inventory-update/inventory-update.component';
