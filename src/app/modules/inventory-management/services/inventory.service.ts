@@ -1,13 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PurchaseModel } from 'app/modules/purchase-management/model/purchase-model';
 import { BaseService } from 'app/shared/services/base.service';
 import { Observable } from 'rxjs';
-import { InventoryModel } from '../models/inventory-model';
 
 @Injectable({
     providedIn: 'root'
 })
-export class InventoryService extends BaseService<InventoryModel> {
+export class InventoryService extends BaseService<PurchaseModel> {
 
     baseUrl: string;
 
@@ -24,16 +24,8 @@ export class InventoryService extends BaseService<InventoryModel> {
         return this.getById(`${this.baseUrl}/${id}`);
     }
 
-    getInventoryPurchase(id: string) {
-        return this.getById(`${this.baseUrl}/${id}/purchase`);
-    }
-
-    createInventory(inventoryModel: InventoryModel) {
-        return this.post(this.baseUrl, inventoryModel);
-    }
-
-    updateInventory(inventoryModel: InventoryModel) {
-        return this.put(this.baseUrl, inventoryModel);
+    updateInventory(purchaseModel: PurchaseModel) {
+        return this.put(this.baseUrl, purchaseModel);
     }
 
     deleteInventory(id: string) {

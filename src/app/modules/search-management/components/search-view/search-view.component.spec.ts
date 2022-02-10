@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InventoryCreateComponent } from './inventory-create.component';
+import { SearchViewComponent } from './search-view.component';
 
-describe('InventoryCreateComponent', () => {
-  let component: InventoryCreateComponent;
-  let fixture: ComponentFixture<InventoryCreateComponent>;
+describe('SearchViewComponent', () => {
+  let component: SearchViewComponent;
+  let fixture: ComponentFixture<SearchViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InventoryCreateComponent ]
+      declarations: [ SearchViewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InventoryCreateComponent);
+    fixture = TestBed.createComponent(SearchViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

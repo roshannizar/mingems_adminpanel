@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { SearchViewComponent } from 'app/modules/search-management/components/search-view/search-view.component';
 import { version } from '../../../../../package.json';
 
 declare const $: any;
@@ -12,6 +14,7 @@ declare interface RouteInfo {
   class: string;
 }
 export const ROUTES: RouteInfo[] = [
+  { path: '/search', title: 'Search', icon: 'search', class: '' },
   { path: '/dashboard', title: 'Dashboard', icon: 'dashboard', class: '', },
   { path: '/inventory', title: 'Inventory', icon: 'diamond', class: '' },
   { path: '/purchase', title: 'Purchase', icon: 'inventory_2', class: '' },
@@ -42,7 +45,7 @@ export class SidebarComponent implements OnInit {
   fullname: string;
   app_version = version;
 
-  constructor(private router: Router, private jwtService: JwtHelperService) { }
+  constructor(private router: Router, private jwtService: JwtHelperService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.menuItems = ROUTES.filter(menuItem => menuItem);
@@ -65,7 +68,6 @@ export class SidebarComponent implements OnInit {
     const payload = this.jwtService.decodeToken(token);
     this.fullname = payload?.unique_name;
   }
-
 
   openLink() {
     window.open('https://trello.com/b/AHZpGF1G/mingem', '_blank');

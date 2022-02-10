@@ -1,0 +1,163 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card card-plain">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="card-title mt-0">Search</h4>
+                                <p class="card-subtitle">Now you can search and filter</p>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="showFilter()">Filter</button>
+                                <!-- <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateDialog()">Scan</button> -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="basic-border" *ngIf="isSearch">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1 mat-dialog-title>Search Filteration</h1>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Barcode" [(ngModel)]="barcode">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field>
+                                    <input matInput placeholder="Product Name" [(ngModel)]="name">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Investor Name" [(ngModel)]="investorName">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Investor Ref Id" [(ngModel)]="investorRefId">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Measurement" [(ngModel)]="measurement">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Weight" [(ngModel)]="weight">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-3">
+                                <mat-form-field class="example-full-width">
+                                    <input matInput placeholder="Unit Price" [(ngModel)]="unitPrice">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div mat-dialog-actions class="col-md-3 align-right" *ngIf="!isBlock">
+                                <button mat-button  class="btn btn-primary" id="btn-update" (click)="getPurchases()">Search</button>
+                            </div>
+                            <div mat-dialog-actions class="col-md-6 align-right">
+                               <label class="assign assign-green"></label>
+                               <label class="assign-label">Moved To Inventory</label>
+                                <label class="assign assign-red"></label>
+                                <label class="assign-label">Still in Purchase</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead class="">
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>
+                                        Barcode
+                                    </th>
+                                    <th>
+                                        Product Name
+                                    </th>
+                                    <th>
+                                        Investor
+                                    </th>
+                                    <th>
+                                        Supplier
+                                    </th>
+                                    <th>
+                                        Date
+                                    </th>
+                                    <th>
+                                        Cost(£)
+                                    </th>
+                                    <th>
+                                        Measurement
+                                    </th>
+                                    <th>
+                                        Weight
+                                    </th>
+                                    <th>
+                                        Status
+                                    </th>
+                                    <!-- <th>Action</th> -->
+                                </thead>
+                                <tbody>
+                                    <tr *ngIf="isBlock">
+                                        <td colspan="11">
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
+                                        </td>
+                                    </tr>
+                                    <tr *ngIf="purchases?.length === 0 && !isBlock" class="text-center">
+                                        <td colspan="11">
+                                            <span class="font-italic">No record found!</span>
+                                        </td>
+                                    </tr>
+                                    <tr *ngFor="let purchase of purchases; let i = index" [ngClass]="purchase.moved ? 'row-green': 'row-red'">
+                                        <td>
+                                            {{i + 1}}
+                                        </td>
+                                        <td>{{purchase.barcode}}</td>
+                                        <td>{{purchase.name}}</td>
+                                        <td>{{purchase?.investment?.firstName || 'N/A'}}</td>
+                                        <td>{{purchase?.supplier?.name || 'N/A'}}</td>
+                                        <td>{{purchase.transactionDate | date: 'medium'}}</td>
+                                        <td>{{purchase.unitPrice | number: '1.2-2'}}</td>
+                                        <td>{{purchase.measurement || 'N/A'}}</td>
+                                        <td>{{purchase.weight || 'N/A'}}</td>
+                                        <td>{{purchase.moved ? 'Inventory' : 'Purchases'}}</td>
+                                        <!-- <td>
+                                            <i class="material-icons btn-view"
+                                                (click)="openViewModal(purchase)">visibility</i>
+                                        </td> -->
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<aside class="aside-right" [ngClass]="{'open': isDisplay}">
+    <div *ngIf='isDisplay'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-purchase-view-dlg *ngIf="purchase != null && !isDelete" [purchase]="purchase">
+        </app-purchase-view-dlg>
+        <app-purchase-delete *ngIf="purchase != null && isDelete" [purchase]="purchase" (deleted)="refresh()">
+        </app-purchase-delete>
+    </div>
+</aside>

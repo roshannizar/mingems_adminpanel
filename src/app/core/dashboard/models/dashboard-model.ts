@@ -4,6 +4,8 @@ export class DashboardModel {
     totalCustomers: number;
     totalInvestor: number;
     totalSales: number;
+    totalPurchases: number;
+    totalSupplier: number;
     investors = new Array<TOpInvestors>();
     sPCustomers = new Array<DashboardProductsModel>();
 }

@@ -18,12 +18,11 @@ h4 {
 .create-btn:hover {
     border: 2px solid white;
 }
-.image-viewer {
-    color: blue;
+.btn-delete {
     cursor: pointer;
+    margin-left: 10px;
 }
 .btn-view {
-    margin-left: 10px;
     cursor: pointer;
 }
 .aside-right.open {
@@ -32,10 +31,10 @@ h4 {
     transition-duration: 0.5s;
   }
   .aside-right {
-    max-width: 350px;
+    max-width: 420px;
     width: 100%;
     position: fixed;
-    right: -360px;
+    right: -430px;
     top: 0;
     bottom: 0;
     background-color: #fff;
@@ -51,4 +50,29 @@ h4 {
   }
   .increase-width {
     width: 100%;
+}
+.basic-border {
+    border: 2px solid #ef8157;
+    padding: 10px 18px 10px 18px;
+    transition-duration: 1.0s;
+} 
+.assign-green {
+    background-color: green;
+}
+.assign {
+    width: 10px;
+    height: 10px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+.assign-red {
+    background-color: red;
+}
+.row-green {
+    border-left: 4px solid green;
+}
+.row-red {
+    border-left: 4px solid red;
 }

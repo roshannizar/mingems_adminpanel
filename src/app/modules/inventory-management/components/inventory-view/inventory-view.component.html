@@ -19,9 +19,6 @@
                             </div> -->
                         </div>
                     </div>
-                    <div class="basic-border" *ngIf="isSearch">
-                        <app-inventory-search-dlg></app-inventory-search-dlg>
-                    </div>
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -76,7 +73,7 @@
                                                 <i class="material-icons btn-view"
                                                 (click)="openDeleteModal(inventory)">delete</i>
                                             <i class="material-icons btn-view"
-                                                (click)="openPrintDialog(inventory.purchaseId)">print</i>
+                                                (click)="openPrintDialog(inventory.id)">print</i>
                                         </td>
                                     </tr>
                                 </tbody>

@@ -1,12 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { PurchaseModel } from 'app/modules/purchase-management/model/purchase-model';
 import { ToastrService } from 'ngx-toastr';
 import { ImageViewDlgComponent } from '../../modals/image-view-dlg/image-view-dlg.component';
-import { InventorySearchDlgComponent } from '../../modals/inventory-search-dlg/inventory-search-dlg.component';
 import { PrintDlgComponent } from '../../modals/print-dlg/print-dlg.component';
-import { InventoryModel } from '../../models/inventory-model';
 import { InventoryService } from '../../services/inventory.service';
-import { InventoryCreateComponent } from '../inventory-create/inventory-create.component';
 import { InventoryUpdateComponent } from '../inventory-update/inventory-update.component';
 
 @Component({
@@ -23,8 +21,8 @@ export class InventoryViewComponent implements OnInit {
 
   heading_text: string;
 
-  inventories = new Array<InventoryModel>();
-  inventory = new InventoryModel();
+  inventories = new Array<PurchaseModel>();
+  inventory = new PurchaseModel();
 
   constructor(private dialog: MatDialog, private inventoryService: InventoryService,
     private toastr: ToastrService) { }
@@ -47,17 +45,7 @@ export class InventoryViewComponent implements OnInit {
     );
   }
 
-  openCreateDialog() {
-    const dialogRef = this.dialog.open(InventoryCreateComponent, {
-      width: '1200px',
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.getInventories();
-    });
-  }
-
-  openUpdateDialog(inventory: InventoryModel) {
+  openUpdateDialog(inventory: PurchaseModel) {
     const dialogRef = this.dialog.open(InventoryUpdateComponent, {
       width: '800px',
       data: inventory
@@ -80,7 +68,7 @@ export class InventoryViewComponent implements OnInit {
     });
   }
 
-  openImageDialog(inventory: InventoryModel) {
+  openImageDialog(inventory: PurchaseModel) {
     const dialogRef = this.dialog.open(ImageViewDlgComponent, {
       width: '300px',
       data: inventory
@@ -100,13 +88,13 @@ export class InventoryViewComponent implements OnInit {
     this.isDelete = false;
   }
 
-  openViewModal(inventory: InventoryModel) {
+  openViewModal(inventory: PurchaseModel) {
     this.isDisplay = true;
     this.heading_text = 'View Inventory';
     this.inventory = inventory;
   }
 
-  openDeleteModal(inventory: InventoryModel) {
+  openDeleteModal(inventory: PurchaseModel) {
     this.isDelete = true;
     this.inventory = inventory;
     this.isDisplay = true;
@@ -118,7 +106,7 @@ export class InventoryViewComponent implements OnInit {
     this.getInventories();
   }
 
-  getTotalCost(inventory: InventoryModel) {
+  getTotalCost(inventory: PurchaseModel) {
     return inventory.unitPrice + inventory.exportCost + inventory.commissionCost + inventory.certificateCost + inventory.recuttingCost
   }
 }
