@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { PrintDlgComponent } from 'app/modules/inventory-management/modals/print-dlg/print-dlg.component';
-import { InventoryModel } from 'app/modules/inventory-management/models/inventory-model';
 import { InventoryService } from 'app/modules/inventory-management/services/inventory.service';
 import { ToastrService } from 'ngx-toastr';
 import { MoveProductComponent } from '../../modals/move-product/move-product.component';
