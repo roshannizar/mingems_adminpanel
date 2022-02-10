@@ -110,7 +110,7 @@ export class InventoryUpdateComponent implements OnInit {
       (result) => {
         this.isImageBlock = false;
         this.filePath = null;
-        this.imageLines.push({ id: null, url: result.image, inventoryId: null, recordState: 0 });
+        this.imageLines.push({ id: null, url: result.image, purchaseId: null, recordState: 0 });
         this.toastr.success('Success', 'Image Uploaded successfully!');
       },
       (error) => {

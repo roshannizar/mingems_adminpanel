@@ -26,7 +26,7 @@ export class PurchaseModel {
 export class ImageLines {
     id: string;
     url: string;
-    inventoryId: string;
+    purchaseId: string;
     recordState: RecordState;
 }
 export class PurchaseSupplierModel {

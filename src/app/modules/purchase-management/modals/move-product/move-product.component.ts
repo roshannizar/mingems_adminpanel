@@ -37,16 +37,16 @@ export class MoveProductComponent implements OnInit {
 
   createInventory(data: PurchaseModel) {
     this.inventoryGroup = this.fb.group({
+      id: data.id,
       name: data.name,
       description: data.description,
       quantity: [1, Validators.required],
       unitPrice: data.unitPrice,
       investorId: data.investorId,
-      purchaseId: data.id,
       recuttingCost: [0, Validators.required],
       certificateCost: [0, Validators.required],
       commissionCost: [0, Validators.required],
-      exportCost: [0, Validators.required],
+      exportCost: data.exportCost,
       measurement: ['', Validators.required],
       weight: ['', Validators.required],
       priceCode: ['', Validators.required],
@@ -75,13 +75,13 @@ export class MoveProductComponent implements OnInit {
         this.isImageBlock = false;
         this.isBlock = false;
         this.filePath = null;
-        this.imageLines.push({ id: null, url: result.image, inventoryId: null, recordState: 0 });
+        this.imageLines.push({ id: null, url: result.image, purchaseId: null, recordState: 0 });
         this.toastr.success('Success', 'Image Uploaded successfully!');
       },
       (error) => {
         this.isImageBlock = false;
         this.isBlock = false;
-        this.toastr.error(error, 'Failed to upload image!');
+        this.toastr.error(error.message, 'Failed to upload image!');
       }
     );
   }
