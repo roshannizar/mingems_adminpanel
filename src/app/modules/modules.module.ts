@@ -14,7 +14,6 @@ import { InvestmentViewComponent } from './investment-management/components/inve
 import { InvestmentUpdateComponent } from './investment-management/components/investment-update/investment-update.component';
 import { InvestmentDeleteComponent } from './investment-management/components/investment-delete/investment-delete.component';
 import { InventoryDeleteComponent } from './inventory-management/components/inventory-delete/inventory-delete.component';
-import { InventoryCreateComponent } from './inventory-management/components/inventory-create/inventory-create.component';
 import { InventoryViewComponent } from './inventory-management/components/inventory-view/inventory-view.component';
 import { InventoryUpdateComponent } from './inventory-management/components/inventory-update/inventory-update.component';
 import { SupplierUpdateComponent } from './supplier-management/components/supplier-update/supplier-update.component';
@@ -25,10 +24,6 @@ import { PurchaseDeleteComponent } from './purchase-management/components/purcha
 import { PurchaseViewComponent } from './purchase-management/components/purchase-view/purchase-view.component';
 import { PurchaseCreateComponent } from './purchase-management/components/purchase-create/purchase-create.component';
 import { PurchaseUpdateComponent } from './purchase-management/components/purchase-update/purchase-update.component';
-import { PrivateCodeUpdateComponent } from './private-code-management/components/private-code-update/private-code-update.component';
-import { PrivateCodeCreateComponent } from './private-code-management/components/private-code-create/private-code-create.component';
-import { PrivateCodeViewComponent } from './private-code-management/components/private-code-view/private-code-view.component';
-import { PrivateCodeDeleteComponent } from './private-code-management/components/private-code-delete/private-code-delete.component';
 import { OrderViewComponent } from './order-management/components/order-view/order-view.component';
 import { CustomerViewComponent } from './customer-management/components/customer-view/customer-view.component';
 import { CustomerCreateComponent } from './customer-management/components/customer-create/customer-create.component';
@@ -38,10 +33,33 @@ import { OrderCreateComponent } from './order-management/components/order-create
 import { InvestmentViewDlgComponent } from './investment-management/components/investment-view-dlg/investment-view-dlg.component';
 import { SupplierViewDlgComponent } from './supplier-management/components/supplier-view-dlg/supplier-view-dlg.component';
 import { PurchaseViewDlgComponent } from './purchase-management/components/purchase-view-dlg/purchase-view-dlg.component';
+import { CustomerViewDlgComponent } from './customer-management/components/customer-view-dlg/customer-view-dlg.component';
+import { PaymentUpdateComponent } from './payment-management/components/payment-update/payment-update.component';
+import { InventoryViewDlgComponent } from './inventory-management/components/inventory-view-dlg/inventory-view-dlg.component';
+import { ImageViewDlgComponent } from './inventory-management/modals/image-view-dlg/image-view-dlg.component';
+import { ProfileViewComponent } from './profile-management/components/profile-view/profile-view.component';
+import { MoveProductComponent } from './purchase-management/modals/move-product/move-product.component';
+import { PaymentViewComponent } from './payment-management/components/payment-view/payment-view.component';
+import { PrintDlgComponent } from './inventory-management/modals/print-dlg/print-dlg.component';
+import { PrivateCodeViewComponent } from './private-code-management/components/private-code-view/private-code-view.component';
+import { PrivateCodeCreateComponent } from './private-code-management/components/private-code-create/private-code-create.component';
+import { PrivateCodeUpdateComponent } from './private-code-management/components/private-code-update/private-code-update.component';
+import { PrivateCodeDeleteComponent } from './private-code-management/components/private-code-delete/private-code-delete.component';
+import { PrivateCodeViewDlgComponent } from './private-code-management/components/private-code-view-dlg/private-code-view-dlg.component';
+import { SearchViewComponent } from './search-management/components/search-view/search-view.component';
+
 
 @NgModule({
   declarations: [
-    MoreProductsComponent, UserViewComponent, LastLoggedComponent, SalesReportComponent, ProductReportComponent, ReportsComponent, FilterDialogComponent, InvestmentCreateComponent, InvestmentViewComponent, InvestmentUpdateComponent, InvestmentDeleteComponent, InventoryDeleteComponent, InventoryCreateComponent, InventoryViewComponent, InventoryUpdateComponent, SupplierUpdateComponent, SupplierCreateComponent, SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent, PurchaseCreateComponent, PurchaseUpdateComponent, PrivateCodeUpdateComponent, PrivateCodeCreateComponent, PrivateCodeViewComponent, PrivateCodeDeleteComponent, OrderViewComponent, CustomerViewComponent, CustomerCreateComponent, CustomerUpdateComponent, CustomerDeleteComponent, OrderCreateComponent, InvestmentViewDlgComponent, SupplierViewDlgComponent, PurchaseViewDlgComponent],
+    MoreProductsComponent, UserViewComponent, LastLoggedComponent,
+    SalesReportComponent, ProductReportComponent, ReportsComponent, FilterDialogComponent,
+    InvestmentCreateComponent, InvestmentViewComponent, InvestmentUpdateComponent, InvestmentDeleteComponent,
+    InventoryDeleteComponent, InventoryViewComponent, InventoryUpdateComponent, 
+    SupplierUpdateComponent, SupplierCreateComponent,
+    SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent,
+    PurchaseCreateComponent, PurchaseUpdateComponent, OrderViewComponent,
+    CustomerViewComponent, CustomerCreateComponent, CustomerUpdateComponent, CustomerDeleteComponent,
+    OrderCreateComponent, InvestmentViewDlgComponent, SupplierViewDlgComponent, PurchaseViewDlgComponent, CustomerViewDlgComponent, MoveProductComponent, PaymentViewComponent, PaymentUpdateComponent, PrintDlgComponent, InventoryViewDlgComponent, ImageViewDlgComponent, ProfileViewComponent, PrivateCodeViewComponent, PrivateCodeCreateComponent, PrivateCodeUpdateComponent, PrivateCodeDeleteComponent, PrivateCodeViewDlgComponent, SearchViewComponent],
   imports: [
     CommonModule,
     SharedModule,

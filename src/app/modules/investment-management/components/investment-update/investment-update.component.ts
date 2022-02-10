@@ -14,9 +14,12 @@ import { InvestmentViewComponent } from '../investment-view/investment-view.comp
 export class InvestmentUpdateComponent implements OnInit {
 
   isBlock = false;
+  isInvestorBlock = false;
 
   investmentGroup: FormGroup;
   investment: InvestmentModel;
+
+  investors = new Array<InvestmentModel>();
 
   constructor(public dialogRef: MatDialogRef<InvestmentViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: InvestmentModel, private fb: FormBuilder,
@@ -24,19 +27,53 @@ export class InvestmentUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.createInvestment();
+    this.getInvestors();
     this.patchInvestment(this.data);
   }
 
   createInvestment() {
     this.investmentGroup = this.fb.group({
       id: ['', Validators.required],
-      refId: ['', Validators.required],
+      refId: [''],
       firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
+      lastName: [''],
       email: ['', Validators.email],
       contactno: ['', Validators.required],
       amount: [0, Validators.required]
     })
+  }
+
+  getInvestors() {
+    this.isInvestorBlock = true;
+    this.investmentService.getOriginInvestments().subscribe(
+      (result) => {
+        this.investors = result;
+        this.isInvestorBlock = false;
+      },
+      (error) => {
+        this.isInvestorBlock = false;
+        this.toastr.error(error.message, 'Failed to load investors');
+      }
+    );
+  }
+
+  onSelectInvestor(event) {
+    const investor = this.investors.find(i => i.refId === event);
+    if (investor) {
+      this.investmentGroup.patchValue({
+        firstName: investor.firstName,
+        lastName: investor.lastName,
+        email: investor.email,
+        contactno: investor.contactNo
+      });
+    } else {
+      this.investmentGroup.patchValue({
+        firstName: null,
+        lastName: null,
+        email: null,
+        contactno: null
+      })
+    }
   }
 
   patchInvestment(investment: InvestmentModel) {
@@ -45,7 +82,7 @@ export class InvestmentUpdateComponent implements OnInit {
       refId: investment.refId,
       firstName: investment.firstName,
       lastName: investment.lastName,
-      email:  investment.email,
+      email: investment.email,
       contactno: investment.contactNo,
       amount: investment.amount
     });
@@ -57,8 +94,8 @@ export class InvestmentUpdateComponent implements OnInit {
     this.investmentService.updateInvestment(this.investment).subscribe(
       (result) => {
         this.isBlock = false;
-        this.close();
-        this.toastr.success('Updated successfully!','Success');
+        this.close('refresh');
+        this.toastr.success('Updated successfully!', 'Success');
       },
       (error) => {
         this.isBlock = false;
@@ -67,7 +104,7 @@ export class InvestmentUpdateComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }

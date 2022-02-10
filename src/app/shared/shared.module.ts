@@ -17,12 +17,15 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatTabsModule} from '@angular/material/tabs';
+import { MatTabsModule } from '@angular/material/tabs';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { ChartsModule } from 'ng2-charts';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
+import { NgxBarcodeModule } from 'ngx-barcode';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [LoadingUiComponent, ConfirmationModalComponent],
@@ -61,7 +64,10 @@ import { MatIconModule } from '@angular/material/icon';
     ChartsModule,
     MatPaginatorModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    NgxBarcodeModule,
+    MatToolbarModule,
+    MatCheckboxModule
   ],
   providers: [
     {

@@ -11,7 +11,7 @@
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Search" type="text" class="mat-input">
+                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search" class="mat-input" (input)="searchSupplier()">
                                 </mat-form-field>
                             </div>
                             <div class="col-md-2">
@@ -58,7 +58,7 @@
                                         <td>{{i + 1}}</td>
                                         <td>{{supplier.name}}</td>
                                         <td>{{supplier.email}}</td>
-                                        <td>{{supplier.city}}</td>
+                                        <td>{{supplier.city || '-'}}</td>
                                         <td>{{supplier.contactNo}}</td>
                                         <td>
                                             <i class="material-icons btn-view"

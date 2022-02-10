@@ -1,0 +1,32 @@
+<div class="modal-body">
+    <div class="col-md-12">
+        <label>Image Lines</label>
+        <p class="show-image" (click)="openImageDialog()">{{inventory.imageLines.length}} (inside)</p>
+        <label>Barcode</label>
+        <p>{{inventory.barcode}}</p>
+        <label>Name</label>
+        <p>{{inventory.name}}</p>
+        <label>Description</label>
+        <p>{{inventory.description}}</p>
+        <label>Investor</label>
+        <p>{{inventory.investment?.firstName}} {{inventory.investment?.lastName}}</p>
+        <label>Quantity</label>
+        <p>{{inventory.quantity}}</p>
+        <label>Unit Price(£)</label>
+        <p>{{inventory.unitPrice | number: '1.2-2'}}</p>
+        <label>Recutting Cost(£)</label>
+        <p>{{inventory.recuttingCost | number: '1.2-2'}}</p>
+        <label>Certificate Cost(£)</label>
+        <p>{{inventory.certificateCost | number: '1.2-2'}}</p>
+        <label>Commission Cost(£)</label>
+        <p>{{inventory.commissionCost | number: '1.2-2'}}</p>
+        <label>Export Cost(£)</label>
+        <p>{{inventory.exportCost | number: '1.2-2'}}</p>
+        <label>Total Cost(£)</label>
+        <p>{{getTotalCost(inventory) | number: '1.2-2'}}</p>
+        <label>Price Code</label>
+        <p>{{inventory.priceCode}}</p>
+        <label>Last Price Code</label>
+        <p>{{inventory.lastPriceCode}}</p>
+    </div>
+</div>

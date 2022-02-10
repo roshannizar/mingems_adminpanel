@@ -1,0 +1,78 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row slight-margin-top">
+            <div class="col-md-4">
+                <div class="card card-profile">
+                    <div class="card-avatar">
+                        <a>
+                            <img class="img"
+                                src="https://i.pinimg.com/originals/0c/3b/3a/0c3b3adb1a7530892e55ef36d3be6cb8.png" />
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h6 class="card-category text-gray">{{getUserRole()}}</h6>
+                        <h4>{{user.firstName}} {{user.lastName}}</h4>
+                    </div>
+                </div>
+            </div><br/>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Profile</h4>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="userGroup" *ngIf="!isBlock">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Email</label><br />
+                                    <label><strong>{{user.id}}</strong></label>
+                                </div>
+
+                                <div class="col-md-4" *ngIf="!hide">
+                                    <label>First Name</label><br />
+                                    <label><strong>{{user.firstName}}</strong></label>
+                                </div>
+
+                                <div class="col-md-4" *ngIf="!hide">
+                                    <label>Last Name</label><br />
+                                    <label><strong>{{user.lastName}}</strong></label>
+                                </div>
+
+                                <div class="col-md-3" *ngIf="hide">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="First Name" formControlName="firstName" disabled>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4" *ngIf="hide">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Last Name" formControlName="lastName">
+                                    </mat-form-field>
+                                </div><br />
+                                <div class="col-md-4">
+                                    <label>IP Address</label><br />
+                                    <label><strong>{{user.ipAddress}}</strong></label>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Last Logged Date</label><br />
+                                    <label><strong>{{user.lastLoggedDate | date: 'medium'}}</strong></label>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Role</label><br />
+                                    <label><strong>{{getUserRole()}}</strong></label>
+                                </div>
+
+                            </div>
+                            <button mat-raised-button class="btn btn-danger pull-right" *ngIf="!isBlock && !hide"
+                                (click)="onEnableEdit()">Edit Profile</button>
+                            <button mat-raised-button class="btn btn-primary pull-right" *ngIf="!isBlock && hide" (click)="updateMetaData()">Update
+                                Profile</button>
+                            <button mat-raised-button class="btn btn-danger pull-right" *ngIf="!isBlock && hide"
+                                (click)="onDisableEdit()">Cancel</button>
+                        </form>
+                        <app-loading-ui [block]="isBlock"></app-loading-ui>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

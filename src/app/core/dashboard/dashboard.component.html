@@ -7,8 +7,8 @@
                         <div class="card-icon">
                             <i class="material-icons">content_copy</i>
                         </div>
-                        <p class="card-category">Total Products</p>
-                        <h3 class="card-title">{{dashboardModel?.stockCount || '0'}}
+                        <p class="card-category">Products</p>
+                        <h3 class="card-title">{{dashboardModel.totalStocks || '0'}}
                             <small></small>
                         </h3>
                     </div>
@@ -26,8 +26,8 @@
                         <div class="card-icon">
                             <i class="material-icons">store</i>
                         </div>
-                        <p class="card-category">Total Sales</p>
-                        <h3 class="card-title">{{dashboardModel?.totalSalesToday || '0'}}</h3>
+                        <p class="card-category">Sales</p>
+                        <h3 class="card-title">{{dashboardModel.totalSales || '0'}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
@@ -40,14 +40,14 @@
                 <div class="card card-stats">
                     <div class="card-header card-header-danger card-header-icon">
                         <div class="card-icon">
-                            <i class="material-icons">info_outline</i>
+                            <i class="material-icons">money</i>
                         </div>
-                        <p class="card-category">Out Of Stock</p>
-                        <h3 class="card-title">{{dashboardModel?.outOfStockCount || '0'}}</h3>
+                        <p class="card-category">Investors</p>
+                        <h3 class="card-title">{{dashboardModel.totalInvestor || '0'}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">info_outline</i> Tracked from Products
+                            <i class="material-icons">info_outline</i> Tracked from Investors
                         </div>
                     </div>
                 </div>
@@ -58,12 +58,63 @@
                         <div class="card-icon">
                             <i class="material-icons">account_box</i>
                         </div>
-                        <p class="card-category">Users</p>
-                        <h3 class="card-title">{{dashboardModel?.totalUser || '0'}}</h3>
+                        <p class="card-category">Customer</p>
+                        <h3 class="card-title">{{dashboardModel.totalCustomers || '0'}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <i class="material-icons">account_box</i>Total User Found
+                            <i class="material-icons">account_box</i>Total Customers Found
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-info card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">inventory_2</i>
+                        </div>
+                        <p class="card-category">Purchase</p>
+                        <h3 class="card-title">{{dashboardModel.totalPurchases || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">account_box</i>Total Purchase Available
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-code card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">timer_sand</i>
+                        </div>
+                        <p class="card-category">Pending Sales</p>
+                        <h3 class="card-title">0</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">account_box</i>Total Sales pending
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-6">
+                <div class="card card-stats">
+                    <div class="card-header card-header-subs card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons">local_shipping</i>
+                        </div>
+                        <p class="card-category">Suppliers</p>
+                        <h3 class="card-title">{{dashboardModel.totalSupplier || '0'}}</h3>
+                    </div>
+                    <div class="card-footer">
+                        <div class="stats">
+                            <i class="material-icons">account_box</i>Total Suppliers
                         </div>
                     </div>
                 </div>
@@ -73,15 +124,15 @@
             <div class="col-lg-6 col-md-12">
                 <div class="card">
                     <div class="card-header card-header-warning-top">
-                        <h4 class="card-title">Top 5 Products</h4>
-                        <p class="card-category">Based on product sold</p>
+                        <h4 class="card-title">Top 5 Investors</h4>
+                        <p class="card-category">Based on investors investment</p>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="table table-hover">
                             <thead class="text-warning-top">
-                                <th>Product Name</th>
-                                <th>Name</th>
-                                <th>Sold</th>
+                                <th>Full Name</th>
+                                <th>Total Investment (£)</th>
+                                <th>Balance (£)</th>
                             </thead>
                             <tbody>
                                 <tr *ngIf="block">
@@ -90,16 +141,16 @@
                                     </td>
                                 </tr>
 
-                                <tr *ngIf="!block">
+                                <tr *ngIf="dashboardModel.investors.length === 0 && !block">
                                     <td colspan="3" style="text-align: center;">
                                         No Records Found!
                                     </td>
                                 </tr>
 
-                                <tr *ngFor="let product of dashboardModel.spProductSolds">
-                                    <td>{{product.productName}}</td>
-                                    <td>{{product.name}}</td>
-                                    <td>{{product.salesCount}} Units</td>
+                                <tr *ngFor="let investor of dashboardModel.investors">
+                                    <td>{{investor.firstName}} {{investor.lastName}}</td>
+                                    <td>{{investor.fund | number: '1.2-2'}}</td>
+                                    <td>{{investor.balance | number: '1.2-2'}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -121,9 +172,9 @@
                                 <th>Amount</th>
                             </thead>
                             <tbody>
-                                <tr *ngIf="customerblock">
+                                <tr *ngIf="block">
                                     <td colspan="3">
-                                        <app-loading-ui [block]="customerblock"></app-loading-ui>
+                                        <app-loading-ui [block]="block"></app-loading-ui>
                                     </td>
                                 </tr>
 

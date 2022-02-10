@@ -1,0 +1,103 @@
+<h1 mat-dialog-title>Create Inventory</h1>
+<div mat-dialog-content>
+    <div class="container">
+        <div class="row scrollable-row">
+            <div class="container-image unselected col-md3" *ngIf="filePath != null">
+                <img [src]="filePath" alt="image" class="image">
+                <div class="middle row">
+                    <app-loading-ui [block]="isImageBlock"></app-loading-ui>
+                    <i class="material-icons" *ngIf="!isImageBlock" (click)="onImageUpload()">save</i>
+                    <i class="material-icons" *ngIf="!isImageBlock" (click)="onRemoveImage()">close</i>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <input type="file" multiple accept='image/*' (change)="onFileChange($event)" />
+            </div>
+            <div class="container-image selected col-md-4" *ngFor="let image of imageLines;let i= index;">
+                <img [src]="image.url" alt="image" class="image">
+                <div class="middle row">
+                    <i class="material-icons" (click)="onRemoveSavedImage(i)">close</i>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <form [formGroup]="inventoryGroup" class="row">
+            <hr />
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Product Name" formControlName="name" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Description" formControlName="description" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Enter Unit Price" formControlName="unitPrice" required>
+                    <span matPrefix>£&nbsp;</span>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Enter Recutting Cost" formControlName="recuttingCost" required>
+                    <span matPrefix>£&nbsp;</span>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Enter Certificate Cost" formControlName="certificateCost" required>
+                    <span matPrefix>£&nbsp;</span>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Enter Commission Cost" formControlName="commissionCost" required>
+                    <span matPrefix>£&nbsp;</span>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput type="number" placeholder="Enter Export Cost" formControlName="exportCost" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Measurement" formControlName="measurement" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter Weight" formControlName="weight" required>
+                </mat-form-field>
+            </div>
+            <div class="col-md-3">
+                <ng-select formControlName="priceCode" required placeholder="Select Price Code">
+                    <ng-option *ngFor="let privateCode of privateCodes" [value]="privateCode.priceCode">{{privateCode.name}} -
+                        {{privateCode.priceCode}}</ng-option>
+                </ng-select>
+            </div>
+            <div class="col-md-3">
+                <ng-select formControlName="lastPriceCode" required placeholder="Select Last Price Code">
+                    <ng-option *ngFor="let privateCode of privateCodes" [value]="privateCode.priceCode">{{privateCode.name}} -
+                        {{privateCode.priceCode}}</ng-option>
+                </ng-select>
+            </div>
+            <div class="col-md-3" *ngIf="false">
+                <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Enter InvestorId" formControlName="investorId" required>
+                </mat-form-field>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="isBlock">
+    <app-loading-ui [block]="isBlock"></app-loading-ui>
+</div>
+
+<div mat-dialog-actions class="align-right" *ngIf="!isBlock">
+    <button mat-button (click)="close('close')">Cancel</button>
+    <button mat-button id="btn-update" [disabled]="inventoryGroup.invalid || imageLines.length === 0" (click)="onSave()">Move</button>
+</div>

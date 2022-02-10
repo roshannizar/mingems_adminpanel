@@ -15,6 +15,9 @@ h4 {
     color: #ef8157;
     font-weight: bold;
 }
+.create-btn:hover {
+    border: 2px solid white;
+}
 .btn-delete {
     cursor: pointer;
     margin-left: 10px;

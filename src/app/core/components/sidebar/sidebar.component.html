@@ -5,12 +5,30 @@
         </div>
     </a>
     <a href="dashboard" class="simple-text">
-        MINGEMS | Admin
+        MINGEMS | Admin <br>
     </a>
 </div>
 <div class="sidebar-wrapper">
     <div *ngIf="isMobileMenu()">
         <ul class="nav navbar-nav nav-mobile-menu">
+            <li class="nav-item">
+                <a class="nav-link">
+                    Welcome {{fullname}}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link">
+                    <span style="font-size: 9px;">VERSION {{app_version}}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" (click)="openLink()">
+                    <i class="material-icons">support_agent</i>
+                    <p>
+                        <span class="d-lg-none d-md-block">Support</span>
+                    </p>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="javascript:void(0)" (click)="logout()">
                     <i class="material-icons">exit_to_app</i>
@@ -29,5 +47,4 @@
             </a>
         </li>
     </ul>
-    <p style="font-size: 9px;text-align: center;">VERSION 1.42</p>
 </div>

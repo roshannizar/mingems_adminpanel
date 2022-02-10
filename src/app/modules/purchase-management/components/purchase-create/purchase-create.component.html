@@ -17,7 +17,7 @@
                 <ng-select formControlName="investorId" required placeholder="Select Investor"
                     (change)="activateAmount($event)">
                     <ng-option *ngFor="let investor of investors" [value]="investor.id">{{investor.firstName}}
-                        {{investor.lastName}}</ng-option>
+                        {{investor.lastName}} - £&nbsp;{{investor.remainingAmount}}</ng-option>
                 </ng-select>
             </div>
             <div class="col-md-6">
@@ -27,17 +27,20 @@
             </div>
             <div class="col-md-3" *ngIf="enableAmount">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Investor Remaining Amount" disabled value="{{remainingAmount}}">
+                    <input matInput type="number" placeholder="Investor Remaining Amount" disabled value="{{remainingAmount}}">
+                    <span matPrefix>£&nbsp;</span>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Enter UnitPrice" formControlName="unitPrice" (input)="reduceAmount()">
+                    <input matInput type="number" placeholder="Enter UnitPrice" formControlName="unitPrice" (input)="reduceAmount()">
+                    <span matPrefix>£&nbsp;</span>
                 </mat-form-field>
             </div>
             <div class="col-md-3">
                 <mat-form-field class="example-full-width">
                     <input matInput placeholder="Enter Export Cost" formControlName="exportCost" required>
+                    <span matPrefix>£&nbsp;</span>
                 </mat-form-field>
             </div>
         </form>
@@ -49,6 +52,6 @@
 </div>
 
 <div mat-dialog-actions class="align-right" *ngIf="!isBlock">
-    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button (click)="close('close')">Cancel</button>
     <button mat-button id="btn-update" [disabled]="purchaseGroup.invalid" (click)="onSave()">Save</button>
 </div>

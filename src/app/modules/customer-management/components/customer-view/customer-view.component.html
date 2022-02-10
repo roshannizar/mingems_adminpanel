@@ -11,8 +11,12 @@
                             </div>
                             <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
-                                    <input matInput placeholder="Search" type="text" class="mat-input">
+                                    <input matInput placeholder="Search" type="text" [(ngModel)]="search" class="mat-input" (input)="searchCustomer()">
                                 </mat-form-field>
+                            </div>
+                            <div class="col-md-2">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateDialog()">New</button>
                             </div>
                         </div>
                     </div>
@@ -32,37 +36,33 @@
                                     <th>
                                         Email
                                     </th>
-                                    <th>
-                                        Role
-                                    </th>
-                                    <th>
-                                        Account Status
-                                    </th>
-                                    <th>IP Address</th>
+                                    <th>Contact No</th>
+                                    <th>Actions</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngIf="block">
-                                        <td colspan="7">
-                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                    <tr *ngIf="isBlock">
+                                        <td colspan="6">
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="users?.length == 0 && block == false" class="text-center">
-                                        <td colspan="7">
+                                    <tr *ngIf="customers.length == 0 && isBlock == false" class="text-center">
+                                        <td colspan="6">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let user of users; let i = index">
+                                    <tr *ngFor="let customer of customers; let i = index">
                                         <td>{{i + 1}}</td>
-                                        <td>{{user.firstName}}</td>
-                                        <td>{{user.lastName}}</td>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.role === 0 ? "Super Admin" : user.role === 1 ? 'Admin' : user.role
-                                            === 2 ? 'User' : 'Customer'}}</td>
-                                        <td>{{user.verify ? 'Active': 'In-Active'}}</td>
-                                        <td>{{user.ipAddress || 'Not Available'}}</td>
+                                        <td>{{customer.firstName}}</td>
+                                        <td>{{customer.lastName}}</td>
+                                        <td>{{customer.email}}</td>
+                                        <td>{{customer.contactNo || '-'}}</td>
                                         <td>
                                             <i class="material-icons btn-view"
-                                                (click)="openCategoryDlgModal(category)">visibility</i>
+                                                (click)="openViewModal(customer)">visibility</i>
+                                                <i class="material-icons btn-delete"
+                                                (click)="openUpdateDialog(customer)">create</i>
+                                            <i class="material-icons btn-delete"
+                                                (click)="openDeleteModal(customer)">delete</i>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -74,3 +74,18 @@
         </div>
     </div>
 </div>
+
+<aside class="aside-right" [ngClass]="{'open': isDisplay}">
+    <div *ngIf='isDisplay'>
+        <div class="modal-header">
+            <h4>{{heading_text}}</h4>
+            <a class="btn-close" (click)="closeModal()">
+                <i class="material-icons">close</i>
+            </a>
+        </div>
+        <app-customer-view-dlg *ngIf="customer != null && !isDelete" [customer]="customer">
+        </app-customer-view-dlg>
+        <app-customer-delete *ngIf="customer != null && isDelete" [customer]="customer" (deleted)="refresh()">
+        </app-customer-delete>
+    </div>
+</aside>

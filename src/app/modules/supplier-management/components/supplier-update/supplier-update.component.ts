@@ -29,6 +29,7 @@ export class SupplierUpdateComponent implements OnInit {
 
   createSupplier() {
     this.supplierGroup = this.fb.group({
+      id: [''],
       email: ['', Validators.required],
       name: ['', Validators.required],
       city: [''],
@@ -52,7 +53,7 @@ export class SupplierUpdateComponent implements OnInit {
     this.supplierService.updateSupplier(this.supplier).subscribe(
       (result) => {
         this.isBlock = false;
-        this.close();
+        this.close('refresh');
         this.toastr.success('Supplier updated successfully!', 'Updated');
       },
       (error) => {
@@ -62,7 +63,7 @@ export class SupplierUpdateComponent implements OnInit {
     );
   }
 
-  close() {
-    this.dialogRef.close();
+  close(response: string) {
+    this.dialogRef.close(response);
   }
 }
