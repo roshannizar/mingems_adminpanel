@@ -4,8 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  endpointUrl: 'https://mingems-api.herokuapp.com/api',
-  signalrRUrl: 'https://mingems-api.herokuapp.com/api',
+  endpointUrl: 'https://mingems-api-staging.herokuapp.com/api',
+  signalrRUrl: 'https://mingems-api-staging.herokuapp.com/api',
   cloudStorageUrl: 'https://mingems-cloud.herokuapp.com/api',
   production: false
 };
