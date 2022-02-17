@@ -1,0 +1,30 @@
+.align-right {
+    float:right;
+}
+.table-header {
+    background-color: #ef8157;
+}
+.btn-no-outline {
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+.btn-outline-green {
+    color: #ef8157;
+}
+.btn-no-outline-red {
+    color: red;
+}
+.align-format-right {
+    text-align: right;
+}
+.btn-edit {
+    display: block;
+}
+.hidden-action {
+    display: none;
+    color:red;
+}
+.show-action {
+    display: block;
+}
