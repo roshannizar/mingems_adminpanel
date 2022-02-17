@@ -9,13 +9,30 @@
                                 <h4 class="card-title mt-0">Orders</h4>
                                 <p class="card-subtitle">Now you can view order details</p>
                             </div>
-                            <div class="col-md-4">
+                            <!-- <div class="col-md-4">
                                 <mat-form-field class="example-full-width">
                                     <input matInput placeholder="Search" type="text" class="mat-input">
                                 </mat-form-field>
-                            </div>
+                            </div> -->
+                            <!-- <div class="col-md-6">
+                                <button class="btn btn-primary create-btn pull-right"
+                                    (click)="openCreateDialog()">New</button>
+                            </div> -->
                         </div>
                     </div>
+                    <br/>
+                    <mat-chip-list aria-label="Order selection">
+                        <mat-chip (click)="getOrders(4)" [selected]="selectedOrderStatus === 4? true: false">All
+                        </mat-chip>
+                        <mat-chip (click)="getOrders(0)" [selected]="selectedOrderStatus === 0? true: false">Pending
+                        </mat-chip>
+                        <mat-chip (click)="getOrders(1)" [selected]="selectedOrderStatus === 1? true: false">Paid
+                        </mat-chip>
+                        <mat-chip (click)="getOrders(2)" [selected]="selectedOrderStatus === 2? true: false">
+                            Cancelled
+                        </mat-chip>
+                    </mat-chip-list>
+
                     <div class="card-body">
                         <div class="table-responsive">
                             <table class="table table-hover">
@@ -24,42 +41,54 @@
                                         #
                                     </th>
                                     <th>
-                                        First Name
+                                        Ref Id
                                     </th>
                                     <th>
-                                        Last Name
+                                        Customer Name
                                     </th>
                                     <th>
-                                        Email
+                                        Item(s)
                                     </th>
                                     <th>
-                                        Role
+                                        Transaction Date
                                     </th>
                                     <th>
-                                        Account Status
+                                        Total Amount(£)
                                     </th>
-                                    <th>IP Address</th>
+                                    <th>
+                                        Order Status
+                                    </th>
+                                    <th>Payment Status</th>
+                                    <th>Action</th>
                                 </thead>
                                 <tbody>
-                                    <tr *ngIf="block">
-                                        <td colspan="7">
-                                            <app-loading-ui [block]="block"></app-loading-ui>
+                                    <tr *ngIf="isBlock">
+                                        <td colspan="9">
+                                            <app-loading-ui [block]="isBlock"></app-loading-ui>
                                         </td>
                                     </tr>
-                                    <tr *ngIf="users?.length == 0 && block == false" class="text-center">
-                                        <td colspan="7">
+                                    <tr *ngIf="orders.length == 0 && isBlock == false" class="text-center">
+                                        <td colspan="9">
                                             <span class="font-italic">No record found!</span>
                                         </td>
                                     </tr>
-                                    <tr *ngFor="let user of users; let i = index">
+                                    <tr *ngFor="let order of orders; let i = index">
                                         <td>{{i + 1}}</td>
-                                        <td>{{user.firstName}}</td>
-                                        <td>{{user.lastName}}</td>
-                                        <td>{{user.email}}</td>
-                                        <td>{{user.role === 0 ? "Super Admin" : user.role === 1 ? 'Admin' : user.role
-                                            === 2 ? 'User' : 'Customer'}}</td>
-                                        <td>{{user.verify ? 'Active': 'In-Active'}}</td>
-                                        <td>{{user.ipAddress || 'Not Available'}}</td>
+                                        <td>{{order.refId}}</td>
+                                        <td>{{order.customer.firstName}} {{order.customer.lastName}}</td>
+                                        <td>{{order.orderLines.length}} Item(s) inside</td>
+                                        <td>{{order.transactionDate | date:'medium'}}</td>
+                                        <td class="number-right">{{order.totalAmount | number: '1.2-2'}}</td>
+                                        <td>
+                                            <mat-chip [className]="getStatusColors(order.orderStatus)" [selected]="true">
+                                                {{getOrderStatus(order.orderStatus)}}
+                                            </mat-chip>
+                                        </td>
+                                        <td>
+                                            <mat-chip [selected]="true">
+                                                {{getPaymentStatus(order.paymentStatus)}}
+                                            </mat-chip>
+                                        </td>
                                         <td>
                                             <i class="material-icons btn-view"
                                                 (click)="openCategoryDlgModal(category)">visibility</i>
