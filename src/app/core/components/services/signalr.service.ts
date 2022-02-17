@@ -13,8 +13,8 @@ export class SignalRService {
     signalSent = new EventEmitter<boolean>();
 
     constructor(private toastr: ToastrService) {
-        //this.buildConnection();
-        //this.startConnection();
+        this.buildConnection();
+        this.startConnection();
     }
 
     private buildConnection = () => {
@@ -30,7 +30,7 @@ export class SignalRService {
     }
 
     private registerSignalEvents() {
-        this.hubConnection.on('orderMessage', (data: OrderHubModel) => {
+        this.hubConnection.on('notification', (data: OrderHubModel) => {
             this.signalReceived.emit(data);
         })
     }
