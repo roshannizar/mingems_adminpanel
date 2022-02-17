@@ -14,6 +14,7 @@ import { ProfileViewComponent } from 'app/modules/profile-management/components/
 import { PrivateCodeViewComponent } from 'app/modules/private-code-management/components/private-code-view/private-code-view.component';
 import { SearchViewComponent } from 'app/modules/search-management/components/search-view/search-view.component';
 import { OrderViewComponent } from 'app/modules/order-management/components/order-view/order-view.component';
+import { OrderCreateComponent } from 'app/modules/order-management/components/order-create/order-create.component';
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -21,7 +22,8 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'inventory', component: InventoryViewComponent },
     { path: 'search', component: SearchViewComponent },
     { path: 'purchase', component: PurchaseViewComponent },
-    { path: 'order', component: OrderViewComponent},
+    { path: 'order', component: OrderViewComponent },
+    { path: 'order/create', component: OrderCreateComponent },
     { path: 'more/subscription', component: PaymentViewComponent },
     { path: 'more/supplier', component: SupplierViewComponent },
     { path: 'investment', component: InvestmentViewComponent },

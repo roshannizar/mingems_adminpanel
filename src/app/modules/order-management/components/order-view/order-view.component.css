@@ -37,3 +37,6 @@ h4 {
 .number-right {
     text-align: right;
 }
+.status {
+    text-align: center;
+}

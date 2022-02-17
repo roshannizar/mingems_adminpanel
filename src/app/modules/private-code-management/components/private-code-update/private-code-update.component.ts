@@ -29,7 +29,7 @@ export class PrivateCodeUpdateComponent implements OnInit {
 
   createPrivateCode() {
     this.privateCodeGroup = this.fb.group({
-      id:[''],
+      id: [''],
       name: ['', Validators.email],
       priceCode: ['', Validators.required]
     });

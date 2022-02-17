@@ -1,19 +1,3 @@
-export class OrderModel {
-    id: string;
-    refId: string;
-    customerId: string;
-    transactionDate: Date;
-    paymentDate: Date;
-    discount: number;
-    totalAmount: number;
-    creationDate: Date;
-    modificationDate: Date;
-    orderStatus: OrderStatus;
-    paymentStatus: PaymentStatus;
-    Customer: OrderCustomer
-    OrderLine = new Array<OrderLine>();
-}
-
 export enum OrderStatus {
     Pending,
     Paid,
@@ -33,20 +17,36 @@ export class OrderCustomer {
     contactNo: string;
 }
 
-export class OrderLine {
-    id: string;
-    orderId: string;
-    purchaseId: string;
-    quantity: number;
-    soldPrice: number;
-    actualPrice: number;
-    purchase: OrderPurchase;
-}
-
 export class OrderPurchase {
     barcode: string;
     name: string;
     description: string;
     measurement: string;
     weight: string;
+}
+export class OrderLine {
+    id: string;
+    orderId: string;
+    productId: string;
+    quantity: number;
+    soldPrice: number;
+    actualPrice: number;
+    purchase = new OrderPurchase();
+}
+
+export class OrderModel {
+    id: string;
+    refId: string;
+    customerId: string;
+    transactionDate: Date;
+    paymentDate: Date;
+    discount: number;
+    vat: number;
+    totalAmount: number;
+    creationDate: Date;
+    modificationDate: Date;
+    orderStatus: OrderStatus;
+    paymentStatus: PaymentStatus;
+    customer: OrderCustomer
+    orderLines = new Array<OrderLine>();
 }
