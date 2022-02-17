@@ -13,6 +13,7 @@ import { PaymentViewComponent } from 'app/modules/payment-management/components/
 import { ProfileViewComponent } from 'app/modules/profile-management/components/profile-view/profile-view.component';
 import { PrivateCodeViewComponent } from 'app/modules/private-code-management/components/private-code-view/private-code-view.component';
 import { SearchViewComponent } from 'app/modules/search-management/components/search-view/search-view.component';
+import { OrderViewComponent } from 'app/modules/order-management/components/order-view/order-view.component';
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -20,17 +21,16 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'inventory', component: InventoryViewComponent },
     { path: 'search', component: SearchViewComponent },
     { path: 'purchase', component: PurchaseViewComponent },
-    // { path: 'order', component: OrderViewComponent},
+    { path: 'order', component: OrderViewComponent},
     { path: 'more/subscription', component: PaymentViewComponent },
-    { path: 'supplier', component: SupplierViewComponent },
+    { path: 'more/supplier', component: SupplierViewComponent },
     { path: 'investment', component: InvestmentViewComponent },
     { path: 'customer', component: CustomerViewComponent },
     { path: 'more', component: MoreProductsComponent },
     { path: 'more/users', component: UserViewComponent },
     // { path: 'more/report', component: ReportsComponent },
-    { path: 'more/lastlogged', component: LastLoggedComponent },
+    { path: 'more/last-logged', component: LastLoggedComponent },
     { path: 'more/profile', component: ProfileViewComponent },
-    { path: 'more/privatecodes', component: PrivateCodeViewComponent }
-    // { path: 'more/private-code', component: PrivateCodeViewComponent},
+    { path: 'more/private-codes', component: PrivateCodeViewComponent }
     // { path: 'more/report/sales-report', component: SalesReportComponent }
 ];

@@ -11,11 +11,12 @@ import { ResetPasswordComponent } from 'app/auth/components/reset-password/reset
 export class MoreProductsComponent implements OnInit {
 
     more = [
-        { name: 'Private Codes', icon: 'lock', path: '/more/privatecodes', cardcss: 'card-header-code', btnname: 'GO' },
+        { name: 'Supplier', icon: 'local_shipping', path: '/more/supplier', cardcss: 'card-header-supplier', btnname: 'GO' },
+        { name: 'Private Codes', icon: 'lock', path: '/more/private-codes', cardcss: 'card-header-code', btnname: 'GO' },
         { name: 'Profile', icon: 'person', path: '/more/profile', cardcss: 'card-header-profile', btnname: 'GO' },
         { name: 'Users', icon: 'people_alt', path: '/more/users', cardcss: 'card-header-success',
         btnname: 'GO' },
-        { name: 'Last Login', icon: 'preview', path: '/more/lastlogged', cardcss: 'card-header-danger', btnname: 'GO' },
+        { name: 'Last Login', icon: 'preview', path: '/more/last-logged', cardcss: 'card-header-danger', btnname: 'GO' },
         { name: 'Reset Password', icon: 'pattern', path: 'extra', cardcss: 'card-header-report',
         btnname: 'GO' },
         { name: 'Subscription', icon: 'credit_card_outline', path: '/more/subscription', cardcss: 'card-header-subs', btnname: 'GO' },
