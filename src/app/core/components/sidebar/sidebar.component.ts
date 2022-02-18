@@ -30,7 +30,7 @@ export const ROUTES: RouteInfo[] = [
   { path: '/more/profile', title: 'More/Profile', icon: 'more', class: 'value' },
   { path: '/more/private-codes', title: 'More/Private Code', icon: 'more', class: 'value' },
   { path: '/search', title: 'Search Inventory', icon: 'search', class: 'value' },
-  // { path: '/more/report', title: 'More/Report', icon: 'more', class: 'value' },
+  { path: '/more/report', title: 'More/Report', icon: 'more', class: 'value' },
   // { path: '/more/report/sales-report', title: 'More/Report/Sales Report', icon: 'more', class: 'value' }
 ];
 

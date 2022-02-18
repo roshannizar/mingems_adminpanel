@@ -15,13 +15,31 @@ export class ReportsComponent implements OnInit {
       name: 'Sales Report',
       description: 'Generate sales report based on days, month and year',
       icon: 'receipt',
-      path: 'more/report/sales-report'
+      path: ''
     },
     {
       name: 'Product Report',
       description: 'Generate product report, to check your top product sales',
       icon: 'inventory_2',
-      path: 'not'
+      path: ''
+    },
+    {
+      name: 'Investor Report',
+      description: 'Generate investor report, to check investor\'s investments',
+      icon: 'paid',
+      path: ''
+    },
+    {
+      name: 'Total Investment Report',
+      description: 'Generate investor report, based on total investment of the investor',
+      icon: 'money',
+      path: ''
+    },
+    {
+      name: 'Supplier Report',
+      description: 'Generate supplier report, to check the top suppliers',
+      icon: 'local_shipping',
+      path: ''
     }
   ];
 
@@ -31,7 +49,7 @@ export class ReportsComponent implements OnInit {
   }
 
   handleNavigation(path: string) {
-    if (path !== 'not') {
+    if (path !== '') {
       this.router.navigate([path]);
     } else {
       this.toastr.info('Data is not accurate enough, this might take some time', 'Coming soon');

@@ -15,6 +15,7 @@ import { PrivateCodeViewComponent } from 'app/modules/private-code-management/co
 import { SearchViewComponent } from 'app/modules/search-management/components/search-view/search-view.component';
 import { OrderViewComponent } from 'app/modules/order-management/components/order-view/order-view.component';
 import { OrderCreateComponent } from 'app/modules/order-management/components/order-create/order-create.component';
+import { ReportsComponent } from 'app/modules/more-management/components/reports/reports.component';
 
 export const AdminLayoutRoutes: Routes = [
 
@@ -30,7 +31,7 @@ export const AdminLayoutRoutes: Routes = [
     { path: 'customer', component: CustomerViewComponent },
     { path: 'more', component: MoreProductsComponent },
     { path: 'more/users', component: UserViewComponent },
-    // { path: 'more/report', component: ReportsComponent },
+    { path: 'more/report', component: ReportsComponent },
     { path: 'more/last-logged', component: LastLoggedComponent },
     { path: 'more/profile', component: ProfileViewComponent },
     { path: 'more/private-codes', component: PrivateCodeViewComponent }

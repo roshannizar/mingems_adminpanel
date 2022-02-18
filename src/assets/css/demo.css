@@ -32,3 +32,6 @@
 .spinner-border {
   border-right-color: #ef8157;
 }
+.mat-button-toggle-label-content {
+  line-height: 25px;
+}
