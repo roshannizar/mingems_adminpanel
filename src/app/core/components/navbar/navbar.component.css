@@ -12,3 +12,8 @@
 .slight-margin {
     margin-left: 25%;
 }
+.slight-margin:hover {
+    background-color: transparent;
+    box-shadow: none;
+    color: black;
+}
