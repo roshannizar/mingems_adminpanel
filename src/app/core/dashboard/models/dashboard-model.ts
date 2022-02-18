@@ -1,4 +1,3 @@
-import { DashboardProductsModel } from '../../../shared/models/dashboard-products-model';
 export class DashboardModel {
     totalStocks: number;
     totalCustomers: number;
@@ -7,13 +6,21 @@ export class DashboardModel {
     totalPendingSales: number;
     totalPurchases: number;
     totalSupplier: number;
-    investors = new Array<TOpInvestors>();
-    sPCustomers = new Array<DashboardProductsModel>();
+    investors = new Array<TopInvestors>();
+    customers = new Array<TopCustomers>();
+
 }
 
-export class TOpInvestors {
+export class TopInvestors {
     firstName: string;
     lastName: string;
     fund: number;
     balance: number;
+}
+
+export class TopCustomers {
+    firstName: string;
+    lastName: string;
+    email: string;
+    totalAmount: string;
 }
