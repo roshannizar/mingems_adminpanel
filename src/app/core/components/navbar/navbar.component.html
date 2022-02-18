@@ -46,8 +46,10 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                         <img src="../../../../assets/img/man.png" class="person-icon" />
+                        <label class="dropdown-item slight-margin">{{role}}</label>
                         <label class="dropdown-item">Welcome {{fullname}}</label>
                         <label class="dropdown-item">Version {{app_version}}</label>
+                        <hr/>
                         <a class="dropdown-item curs" (click)="logout()">Logout</a>
                     </div>
                 </li>

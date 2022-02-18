@@ -14,14 +14,19 @@ import { version } from '../../../../../package.json';
     styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-    private listTitles: any[];
-    location: Location;
+
     mobile_menu_visible: any = 0;
     private toggleButton: any;
     private sidebarVisible: boolean;
-    private orderHubModel = new Array<OrderHubModel>();
+
+    role: string;
     fullname: string;
     app_version = version;
+
+    location: Location;
+    private listTitles: any[];
+    private orderHubModel = new Array<OrderHubModel>();
+
 
     constructor(location: Location, private element: ElementRef,
         private router: Router, private signalrService: SignalRService,
@@ -70,6 +75,7 @@ export class NavbarComponent implements OnInit {
         const token = localStorage.getItem('session');
         const payload = this.jwtService.decodeToken(token);
         this.fullname = payload?.unique_name;
+        this.role = payload?.role;
     }
 
     logout() {
