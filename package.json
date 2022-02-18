@@ -1,6 +1,6 @@
 {
   "name": "mingems-dashboard",
-  "version": "7.1.1",
+  "version": "7.2.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
