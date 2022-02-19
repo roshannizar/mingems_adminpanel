@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { InvoiceModalComponent } from '../../modals/invoice-modal/invoice-modal.component';
 import { OrderModel, OrderStatus, PaymentStatus } from '../../models/order-model';
 import { OrderService } from '../../services/order.service';
 import { OrderCreateComponent } from '../order-create/order-create.component';
@@ -73,6 +74,19 @@ export class OrderViewComponent implements OnInit {
 
   openViewDialog(order: OrderModel) {
     const dialogRef = this.dialog.open(OrderViewDlgComponent, {
+      width: '800px',
+      data: order
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === 'refresh') {
+        this.getOrders(0);
+      }
+    });
+  }
+
+  openInvoiceDialog(order: OrderModel) {
+    const dialogRef = this.dialog.open(InvoiceModalComponent, {
       width: '800px',
       data: order
     });

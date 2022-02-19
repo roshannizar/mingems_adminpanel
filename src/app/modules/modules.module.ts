@@ -49,6 +49,7 @@ import { PrivateCodeViewDlgComponent } from './private-code-management/component
 import { SearchViewComponent } from './search-management/components/search-view/search-view.component';
 import { OrderViewDlgComponent } from './order-management/components/order-view-dlg/order-view-dlg.component';
 import { PaymentModalComponent } from './order-management/modals/payment-modal/payment-modal.component';
+import { InvoiceModalComponent } from './order-management/modals/invoice-modal/invoice-modal.component';
 
 
 @NgModule({
@@ -61,7 +62,7 @@ import { PaymentModalComponent } from './order-management/modals/payment-modal/p
     SupplierViewComponent, SupplierDeleteComponent, PurchaseDeleteComponent, PurchaseViewComponent,
     PurchaseCreateComponent, PurchaseUpdateComponent, OrderViewComponent,
     CustomerViewComponent, CustomerCreateComponent, CustomerUpdateComponent, CustomerDeleteComponent,
-    OrderCreateComponent, InvestmentViewDlgComponent, SupplierViewDlgComponent, PurchaseViewDlgComponent, CustomerViewDlgComponent, MoveProductComponent, PaymentViewComponent, PaymentUpdateComponent, PrintDlgComponent, InventoryViewDlgComponent, ImageViewDlgComponent, ProfileViewComponent, PrivateCodeViewComponent, PrivateCodeCreateComponent, PrivateCodeUpdateComponent, PrivateCodeDeleteComponent, PrivateCodeViewDlgComponent, SearchViewComponent, OrderViewDlgComponent, PaymentModalComponent],
+    OrderCreateComponent, InvestmentViewDlgComponent, SupplierViewDlgComponent, PurchaseViewDlgComponent, CustomerViewDlgComponent, MoveProductComponent, PaymentViewComponent, PaymentUpdateComponent, PrintDlgComponent, InventoryViewDlgComponent, ImageViewDlgComponent, ProfileViewComponent, PrivateCodeViewComponent, PrivateCodeCreateComponent, PrivateCodeUpdateComponent, PrivateCodeDeleteComponent, PrivateCodeViewDlgComponent, SearchViewComponent, OrderViewDlgComponent, PaymentModalComponent, InvoiceModalComponent],
   imports: [
     CommonModule,
     SharedModule,
