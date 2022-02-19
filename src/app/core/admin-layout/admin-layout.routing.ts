@@ -16,6 +16,7 @@ import { SearchViewComponent } from 'app/modules/search-management/components/se
 import { OrderViewComponent } from 'app/modules/order-management/components/order-view/order-view.component';
 import { OrderCreateComponent } from 'app/modules/order-management/components/order-create/order-create.component';
 import { ReportsComponent } from 'app/modules/more-management/components/reports/reports.component';
+import { InvoiceModalComponent } from 'app/modules/order-management/modals/invoice-modal/invoice-modal.component';
 
 export const AdminLayoutRoutes: Routes = [
 
