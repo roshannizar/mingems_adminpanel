@@ -38,7 +38,7 @@ export class PaymentModalComponent implements OnInit {
   }
 
   onSelectPaymentMode(event) {
-    this.order.paymentStatus = event;
+    this.order.paymentType = event;
   }
 
   checkDate() {
