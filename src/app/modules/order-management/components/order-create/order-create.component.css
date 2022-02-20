@@ -1,6 +1,12 @@
 .selection :hover {
+    cursor: pointer;
+}
+.selection {
     border: 1px solid #ef8157;
-
+    height: 120px;
+    padding: 10px;
+    margin: 5px;
+    overflow: hidden;
 }
 .scrollable-div {
     overflow-y: scroll;
