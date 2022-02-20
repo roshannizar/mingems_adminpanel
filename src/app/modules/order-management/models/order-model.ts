@@ -46,7 +46,7 @@ export class OrderModel {
     creationDate: Date;
     modificationDate: Date;
     orderStatus: OrderStatus;
-    paymentStatus: PaymentStatus;
+    paymentType: PaymentStatus;
     customer: OrderCustomer
     orderLines = new Array<OrderLine>();
 }

@@ -26,7 +26,7 @@
                 <div class='i-col-6'>
                     <p class='i-sub-heading'>Full Name: {{order.customer.firstName}} {{order.customer.lastName}}</p>
                     <p class='i-sub-heading'>Phone Number: {{order.customer.contactNo}}</p>
-                    <p class='i-sub-heading'>Payment Mode: {{order.paymentStatus === 0 ? 'Cash' : 'Card'}}</p>
+                    <p class='i-sub-heading'>Payment Mode: {{order.paymentType === 0 ? 'Cash' : 'Card'}}</p>
                     <p class='i-sub-heading'>Payment Status: {{order.orderStatus === 0 ? 'Pending' : order.orderStatus
                         === 1 ? 'Paid' : 'Cancelled'}}</p>
                 </div>
