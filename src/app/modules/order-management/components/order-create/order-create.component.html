@@ -1,6 +1,39 @@
 <div class="main-content">
     <div class="container-fluid">
         <div class="row">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width slight-margin-textbox">
+                            <input matInput placeholder="Search Product" type="text" [(ngModel)]="search"
+                                class="mat-input" (input)="filterProduct()">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <ng-select placeholder="Search Customer" (change)="onSelectCustomer($event)">
+                            <ng-option *ngFor="let customer of customers" [value]="customer.id">
+                                {{customer.firstName}} {{customer.lastName}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div *ngIf="isBlock" class="text-center my-2">
+                    <app-loading-ui [block]="isBlock"></app-loading-ui>
+                </div>
+
+                <div class="text-center my-2" *ngIf="!isBlock && products.length === 0">
+                    <label>No Products found</label>
+                </div>
+
+                <div class="row scrollable-div" *ngIf="!isBlock">
+                    <div class="col-md-2 selection" *ngFor="let item of products" (click)="onSelectProduct(item)">
+                        <div>
+                            <img [src]="item.imageLines[0].url" width="100%" />
+                            <p class="product-name">{{item.name}} - £ {{getTotalPrice(item)}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="col-md-5">
                 <div class="scrollable-div stable-div">
                     <div class="table-responsive">
@@ -82,38 +115,6 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-7">
-                <div class="row">
-                    <div class="col-md-6">
-                        <mat-form-field class="example-full-width slight-margin-textbox">
-                            <input matInput placeholder="Search Product" type="text" [(ngModel)]="search"
-                                class="mat-input" (input)="filterProduct()">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                        <ng-select placeholder="Search Customer" (change)="onSelectCustomer($event)">
-                            <ng-option *ngFor="let customer of customers" [value]="customer.id">
-                                {{customer.firstName}} {{customer.lastName}}</ng-option>
-                        </ng-select>
-                    </div>
-                </div>
-                <div *ngIf="isBlock" class="text-center my-2">
-                    <app-loading-ui [block]="isBlock"></app-loading-ui>
-                </div>
-
-                <div class="text-center my-2" *ngIf="!isBlock && products.length === 0">
-                    <label>No Products found</label>
-                </div>
-
-                <div class="row scrollable-div" *ngIf="!isBlock">
-                    <div class="col-md-2 selection" *ngFor="let item of products" (click)="onSelectProduct(item)">
-                        <div>
-                            <img [src]="item.imageLines[0].url" width="100%" />
-                            <p class="product-name">{{item.name}} - £ {{getTotalPrice(item)}}</p>
-                        </div>
                     </div>
                 </div>
             </div>
