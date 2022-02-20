@@ -93,14 +93,14 @@
                                     <td colspan="2">Discount</td>
                                     <td colspan="2">
                                         <input type="number" class="text-width" [(ngModel)]="discount"
-                                            (change)="onDiscount()" />
+                                            (input)="onDiscount()" />
                                     </td>
                                 </tr>
                                 <tr class="reduce-padding">
                                     <td colspan="2">VAT</td>
                                     <td colspan="2">
                                         <input type="number" class="text-width" [(ngModel)]="vat"
-                                            (change)="calculateVat()" />
+                                            (input)="calculateVat()" />
                                     </td>
                                 </tr>
                                 <tr class="reduce-padding">

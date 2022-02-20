@@ -80,6 +80,8 @@ export class OrderCreateComponent implements OnInit {
 
     this.order.orderLines.push(orderLines);
     this.calculatePrice();
+    this.totalAmount -= this.discount;
+    this.totalAmount += this.vat;
   }
 
   onChangeQuantity(index: number) {
@@ -87,6 +89,8 @@ export class OrderCreateComponent implements OnInit {
     item.quantity = parseFloat((<HTMLInputElement>document.getElementById(`quantity${index}`)).value);
     this.order.orderLines[index] = item;
     this.calculatePrice();
+    this.totalAmount -= this.discount;
+    this.totalAmount += this.vat;
   }
 
   onChangePrice(index: number) {
@@ -94,6 +98,8 @@ export class OrderCreateComponent implements OnInit {
     item.soldPrice = parseFloat((<HTMLInputElement>document.getElementById(`soldPrice${index}`)).value);
     this.order.orderLines[index] = item;
     this.calculatePrice();
+    this.totalAmount -= this.discount;
+    this.totalAmount += this.vat;
   }
 
   private calculatePrice() {
@@ -105,7 +111,11 @@ export class OrderCreateComponent implements OnInit {
 
   onDiscount() {
     if (this.discount !== null) {
-      this.totalAmount = this.totalAmount - this.discount;
+      this.calculatePrice();
+      if (this.vat !== null) {
+        this.totalAmount += this.vat;
+      }
+      this.totalAmount -= this.discount;
       this.order.discount = this.discount;
     } else {
       this.calculatePrice();
@@ -113,8 +123,12 @@ export class OrderCreateComponent implements OnInit {
   }
 
   calculateVat() {
-    if (this.discount !== null) {
-      this.totalAmount = this.totalAmount + this.vat;
+    if (this.vat !== null) {
+      this.calculatePrice();
+      if (this.discount !== null) {
+        this.totalAmount -= this.discount;
+      }
+      this.totalAmount += this.vat;
       this.order.vat = this.vat;
     } else {
       this.calculatePrice();
@@ -125,6 +139,8 @@ export class OrderCreateComponent implements OnInit {
     this.order.orderLines.splice(index, 1);
     this.totalAmount = 0;
     this.calculatePrice();
+    this.totalAmount -= this.discount;
+    this.totalAmount += this.vat;
   }
 
   filterProduct() {
