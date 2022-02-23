@@ -1,0 +1,102 @@
+<h1 mat-dialog-title>Order Ref & Name: {{order.refId}} for {{order.customer.firstName}} {{order.customer.lastName}}
+</h1>
+<div mat-dialog-content>
+    <div class="table-responsive">
+        <table class="table table-hover table-striped">
+            <thead class="text-white font-weight-bolder table-header" id="main_table_header">
+                <tr>
+                    <th class="font-weight-bold">
+                        #
+                    </th>
+                    <th class="font-weight-bold">
+                        Product Name
+                    </th>
+                    <th class="font-weight-bold">
+                        Quantity
+                    </th>
+                    <th class="font-weight-bold align-format-right">
+                        Unit Price (£)
+                    </th>
+                    <th class="font-weight-bold align-format-right">
+                        Total (£)
+                    </th>
+                    <!-- <th class="align-format-right">Action</th> -->
+                </tr>
+
+            </thead>
+            <tbody>
+
+                <!--'No record' row-->
+                <tr *ngIf="order?.orderLines?.length === 0">
+                    <td colspan="8" class="text-center">
+                        <span class="font-italic">No record</span>
+                    </td>
+                </tr>
+                <!--end of 'No record' row-->
+
+                <tr *ngFor="let product of order.orderLines; let i = index" id="i" class="font-weight-bold"
+                    id="edit-tab{{i}}">
+                    <td>{{i + 1}}</td>
+                    <td>{{product.purchase.name}}</td>
+                    <td>
+                        <label class="show-action" id="quantity{{i}}">
+                            {{product.quantity}}
+                        </label>
+                        <!-- <input matInput type="number" min="0" value="{{product?.quantity}}" id="qty{{i}}"
+                            class="hidden-action"> -->
+                    </td>
+                    <td class="align-format-right">
+                        <label class="show-action" id="unitprice{{i}}">
+                            {{ product.soldPrice | number: '1.2-2'}}
+                        </label>
+                        <input matInput type="number"
+                            value="{{(product.unitPrice != 0 ? product.unitPrice : product?.products.descriptionLines[0]?.unitPrice) | number: '1.2-2'}}"
+                            id="unit{{i}}" class="hidden-action">
+                    </td>
+
+                    <td class="align-format-right">{{ product.quantity *
+                        product.soldPrice | number: '1.2-2'}}
+                    </td>
+                    <!-- <td class="align-format-right hidden-action" id="action{{i}}">
+                        <button class="btn-no-outline btn-no-outline-green material-icons"
+                            (click)="saveField(product, i)">
+                            check
+                        </button>
+
+                        <button class="btn-no-outline btn-no-outline-red material-icons" (click)="cancelField(i)"
+                            id="btn{{i}}">
+                            close
+                        </button>
+                    </td>
+                    <td class="align-format-right btn-edit" id="btn-edit{{i}}">
+                        <button class="btn-no-outline material-icons" (click)="editField(i)">
+                            edit
+                        </button>
+                    </td> -->
+                </tr>
+                <tr>
+                    <td>Sub Total</td>
+                    <td colspan="4" style="text-align: right;">{{order.totalAmount | number: '1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>Discount</td>
+                    <td colspan="4" style="text-align: right;">{{order.discount | number: '1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>VAT</td>
+                    <td colspan="4" style="text-align: right;">{{order.vat || 0 | number: '1.2-2'}}</td>
+                </tr>
+                <tr>
+                    <td>Order Total</td>
+                    <td colspan="4" style="text-align: right;">{{order.totalAmount - order.discount |
+                        number: '1.2-2'}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<div mat-dialog-actions class="align-right">
+    <button mat-button (click)="close('close')">Close</button>
+</div>

@@ -1,6 +1,7 @@
 <div class="main-content more-margin-top">
     <div class="container-fluid">
         <div class="row">
+
             <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let item of more">
                 <div class="card card-stats">
                     <div class="card-header card-header-icon" [ngClass]=item.cardcss>
@@ -8,6 +9,9 @@
                             <i class="material-icons">{{item.icon}}</i>
                         </div>
                         <p class="card-category">{{item.name}}</p>
+                        <div class="card-category" *ngIf="item.name === 'Database Backup'">
+                            <mat-slide-toggle disabled>Back-up</mat-slide-toggle>
+                        </div>
                     </div>
                     <div class="card-footer">
                         <button class="more-btn" (click)="navigateToPath(item.path)">

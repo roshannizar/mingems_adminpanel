@@ -1,3 +1,19 @@
 .nav-link {
     cursor: pointer;
 }
+.curs {
+    cursor: pointer;
+}
+.person-icon {
+    width: 50%; 
+    margin-left: 25%;
+    padding-bottom: 10px;
+}
+.slight-margin {
+    margin-left: 25%;
+}
+.slight-margin:hover {
+    background-color: transparent;
+    box-shadow: none;
+    color: black;
+}

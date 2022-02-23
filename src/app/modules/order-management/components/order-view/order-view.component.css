@@ -10,3 +10,33 @@
 h4 {
     font-weight: bold;
 }
+.create-btn {
+    background-color: white;
+    color: #ef8157;
+    font-weight: bold;
+}
+.create-btn:hover {
+    border: 2px solid white;
+}
+.btn-delete {
+    cursor: pointer;
+    margin-left: 10px;
+}
+.btn-view {
+    cursor: pointer;
+}
+.paid {
+    background-color: green;
+}
+.pending {
+    background-color: darkgoldenrod;
+}
+.cancelled {
+    background-color: red;
+}
+.number-right {
+    text-align: right;
+}
+.status {
+    text-align: center;
+}

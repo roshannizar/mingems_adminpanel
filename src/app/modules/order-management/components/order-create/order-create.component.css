@@ -1,0 +1,59 @@
+.selection :hover {
+    cursor: pointer;
+}
+.selection {
+    border: 1px solid #ef8157;
+    height: 120px;
+    padding: 10px;
+    margin: 5px;
+    overflow: hidden;
+}
+.scrollable-div {
+    overflow-y: scroll;
+    height: 500px;
+}
+.product-name {
+    font-size: 12px;
+    text-align: center;
+}
+.stable-div {
+    height: 330px;
+}
+.reduce-padding td {
+    padding:5px;
+    font-size: 12px;
+}
+.btn-delete {
+    cursor: pointer;
+}
+.small-font {
+    font-size: 14px;
+}
+.small-font-head th {
+    font-size: 14px;
+}
+.font-loading {
+    font-size: 12px;
+    text-align: center;
+}
+.text-width {
+    width:100%;
+    background-color: none;
+    border: none;
+    outline: none;
+}
+.btn {
+    width: 100%;
+}
+.number-total {
+    text-align: right;
+}
+.slight-margin {
+    margin-top: 30px;
+}
+.slight-margin-textbox {
+    margin-top: 6px;
+}
+.selection {
+    cursor: pointer;
+}

@@ -1,1 +1,123 @@
-<p>order-create works!</p>
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-6">
+                        <mat-form-field class="example-full-width slight-margin-textbox">
+                            <input matInput placeholder="Search Product" type="text" [(ngModel)]="search"
+                                class="mat-input" (input)="filterProduct()">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                        <ng-select placeholder="Search Customer" (change)="onSelectCustomer($event)">
+                            <ng-option *ngFor="let customer of customers" [value]="customer.id">
+                                {{customer.firstName}} {{customer.lastName}}</ng-option>
+                        </ng-select>
+                    </div>
+                </div>
+                <div *ngIf="isBlock" class="text-center my-2">
+                    <app-loading-ui [block]="isBlock"></app-loading-ui>
+                </div>
+
+                <div class="text-center my-2" *ngIf="!isBlock && products.length === 0">
+                    <label>No Products found</label>
+                </div>
+
+                <div class="row scrollable-div" *ngIf="!isBlock">
+                    <div class="col-md-2 selection" *ngFor="let item of products" (click)="onSelectProduct(item)">
+                        <div>
+                            <img [src]="item.imageLines[0].url" width="100%" />
+                            <p class="product-name">{{item.name}} - £ {{getTotalPrice(item)}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="scrollable-div stable-div">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead class="">
+                                <tr class="small-font-head">
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Quantity</th>
+                                    <th>Price (£)</th>
+                                    <th>Total (£)</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngIf="order.orderLines.length == 0">
+                                    <td colspan="6" class="font-loading">
+                                        Cart is empty!
+                                    </td>
+                                </tr>
+                                <tr *ngFor="let item of order.orderLines; let i = index" class="small-font">
+                                    <td>{{i + 1}}</td>
+                                    <td>{{item.purchase?.name}}</td>
+                                    <td>
+                                        <input type='number' class="text-width" id="quantity{{i}}"
+                                            (input)="onChangeQuantity(i)" value="{{item.quantity}}" />
+                                    </td>
+                                    <td>
+                                        <input type='number' class="text-width" id="soldPrice{{i}}"
+                                            (input)="onChangePrice(i)" value="{{item.soldPrice}}" />
+                                    </td>
+                                    <td>{{item.soldPrice * item.quantity | number: '1.2-2'}}</td>
+                                    <td>
+                                        <i class="material-icons btn-delete" (click)="onRemoveProduct(i)">close</i>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr class="reduce-padding">
+                                    <td colspan="2">Amount</td>
+                                    <td colspan="2" class="number-total">£ {{totalAmount| number: '1.2-2'}}</td>
+                                </tr>
+                                <tr class="reduce-padding">
+                                    <td colspan="2">Discount</td>
+                                    <td colspan="2">
+                                        <input type="number" class="text-width" [(ngModel)]="discount"
+                                            (input)="onDiscount()" />
+                                    </td>
+                                </tr>
+                                <tr class="reduce-padding">
+                                    <td colspan="2">VAT</td>
+                                    <td colspan="2">
+                                        <input type="number" class="text-width" [(ngModel)]="vat"
+                                            (input)="calculateVat()" />
+                                    </td>
+                                </tr>
+                                <tr class="reduce-padding">
+                                    <td colspan="2">Final Price</td>
+                                    <td colspan="2" class="number-total">£ {{totalAmount| number: '1.2-2'}}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4">
+                                        <button class="btn btn-primary" (click)="openPaymentModal()">PAY £ {{totalAmount| number:
+                                            '1.2-2'}}</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

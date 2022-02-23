@@ -16,16 +16,6 @@
                         Welcome {{fullname}}
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link">
-                        <span style="font-size: 9px;">VERSION {{app_version}}</span>
-                    </a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link" [routerLink]="['/inventory']">
-                        <span class="material-icons">search</span>
-                    </a>
-                </li> -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" href="javascript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -37,8 +27,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink"
                         *ngFor="let order of orderHubModel">
-                        <a class="dropdown-item" href="javascript:void(0)">{{order.firstName}} {{order.lastName}} Placed
-                            an order worth: {{order.orderTotal | currency : 'LKR'}}</a>
+                        <a class="dropdown-item" href="javascript:void(0)">{{order.message}}</a>
                     </div>
                 </li>
                 <li>
@@ -46,14 +35,25 @@
                         <span class="material-icons">support_agent</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" (click)="logout()">
-                        <i class="material-icons">exit_to_app</i>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="material-icons">account_circle</i>
                         <p>
-                            <span class="d-lg-none d-md-block">Logout</span>
+                            <span class="d-lg-none d-md-block">Profile</span>
                         </p>
                     </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <img src="../../../../assets/img/man.png" class="person-icon" />
+                        <label class="dropdown-item slight-margin">{{role}}</label>
+                        <label class="dropdown-item">Welcome {{fullname}}</label>
+                        <label class="dropdown-item">Version {{app_version}}</label>
+                        <hr/>
+                        <a class="dropdown-item curs" (click)="logout()">Logout</a>
+                    </div>
                 </li>
+
             </ul>
         </div>
     </div>
