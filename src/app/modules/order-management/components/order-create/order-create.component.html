@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="row scrollable-div" *ngIf="!isBlock">
-                    <div class="col-md-2 selection" *ngFor="let item of products" (click)="onSelectProduct(item)">
+                    <div class="col-sm-2 col-md-2 selection" *ngFor="let item of products" (click)="onSelectProduct(item)">
                         <div>
                             <img [src]="item.imageLines[0].url" width="100%" />
                             <p class="product-name">{{item.name}} - £ {{getTotalPrice(item)}}</p>

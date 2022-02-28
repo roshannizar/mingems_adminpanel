@@ -141,6 +141,12 @@ export class OrderCreateComponent implements OnInit {
     this.calculatePrice();
     this.totalAmount -= this.discount;
     this.totalAmount += this.vat;
+
+    if (this.order.orderLines.length === 0) {
+      this.discount = 0;
+      this.vat = 0;
+      this.totalAmount = 0;
+    }
   }
 
   filterProduct() {
